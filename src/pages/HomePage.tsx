@@ -1,3 +1,5 @@
+import CarAddOne from "@/components/CarAddOne";
+import CarAddTwo from "@/components/CarAddTow";
 import CarCard from "@/components/CarCard";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
@@ -19,6 +21,9 @@ export default function HomePage(){
 
     return(
 		<div className="flex flex-wrap gap-5">
+			 <div className="pl-32 px-4 pt-6 w-full flex gap-5  ">
+        <CarAddOne /> <CarAddTwo />
+      </div>
 			{vehiclesData?.map((el) => {
 				return <CarCard 
 					brand={el.brand} carImg={el.carImg} 
