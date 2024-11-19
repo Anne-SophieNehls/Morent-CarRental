@@ -20,7 +20,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-5">
+    <div className="flex flex-wrap gap-5 bg-slate-50 p-10">
       {vehiclesData?.map((el) => {
         return (
           <CarCard

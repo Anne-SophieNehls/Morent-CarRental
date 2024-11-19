@@ -9,21 +9,30 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./ui/button";
+import LightDarkThemeSwitcher from "./LightDarkThemeSwitcher";
 
 export default function Header() {
   function handleLogout() {}
 
   return (
-    <header className="flex">
+    <header className="flex space-x-72 m-10">
       <nav>
         <NavLink to="/">
-          <h1 className="logo">MORENT</h1>
+          <h1 className="logo text-5xl	">MORENT</h1>
         </NavLink>
       </nav>
       <form>
-        <Input type="text" id="search" placeholder="Search here" />
+        <Input
+          type="text"
+          id="search"
+          placeholder="Search here"
+          className="pr-60 rounded-full"
+        />
       </form>
-      <div>
+      <div className="flex space-x-2">
+        {/*         <Button variant={"outline"} className="rounded-full">
+          <LightDarkThemeSwitcher />
+        </Button> */}
         <Button variant={"outline"} className="rounded-full">
           <img
             src="../../public/img/icons/glocke-grau-notification.svg"
