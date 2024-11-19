@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer>
-      <section>
+      <section className="flex">
         <div>
           <h2 className="logo">MORENT</h2>
           <p>
@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
       </section>
       <hr />
-      <div>
+      <div className="flex">
         <p>©2024 MORENT. All rights reserved</p>
         <p>Privacy & Policy</p>
         <p>Terms & Condition</p>
