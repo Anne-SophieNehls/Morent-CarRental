@@ -22,8 +22,7 @@ return (
         <Route path='/favorites/:id' element={<FavoritesPage/>}/>
         <Route path='/profile/:id' element={<ProfilePage/>}/>
         <Route path='/rent/:id' element={<RentPage/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
-        
+        <Route path='/login' element={<LoginPage/>}/>       
       </Routes>
     </BrowserRouter>
   </QueryClientProvider>
