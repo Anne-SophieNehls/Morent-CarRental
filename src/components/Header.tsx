@@ -14,7 +14,7 @@ export default function Header() {
   function handleLogout() {}
 
   return (
-    <header>
+    <header className="flex">
       <nav>
         <NavLink to="/">
           <h1 className="logo">MORENT</h1>
