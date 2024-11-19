@@ -8,6 +8,9 @@ export default function Header() {
           <h1>MORENT</h1>
         </NavLink>
       </nav>
+      <form>
+        <input type="text" id="search" />
+      </form>
       <div>Profil</div>
     </header>
   );
