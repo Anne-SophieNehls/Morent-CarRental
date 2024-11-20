@@ -1,4 +1,3 @@
-
 import tankIcon from "/img/icons/tank-icon.svg";
 import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
@@ -22,12 +21,9 @@ interface CarCardProps {
 export default function CarCard(props: CarCardProps) {
   return (
     <div className="w-1/4 p-3 bg-white rounded-lg">
-    <div className="w-1/4 p-3 bg-white rounded-lg">
       <div className="flex justify-between">
         <h2 className="font-bold mb-2 mx-2">{`${props.brand} ${props.model}`}</h2>
-        <h2 className="font-bold mb-2 mx-2">{`${props.brand} ${props.model}`}</h2>
         <div>
-          <img className="hover:h-7" src={whiteHeartIcon} alt="favorited" />
           <img className="hover:h-7" src={whiteHeartIcon} alt="favorited" />
         </div>
       </div>
@@ -55,7 +51,6 @@ export default function CarCard(props: CarCardProps) {
           </p>
         </div>
       </div>
-      <div className="flex justify-between items-center mb-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-bold">
           {`${props.pricePerDay}/`}
