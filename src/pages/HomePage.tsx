@@ -18,14 +18,21 @@ export default function HomePage(){
     return result;
   };
 
-	const getLocations = async () => {
-		const result = await supabase.from('locations').select('*').single();
-		return result;
-	  };
-	  
+  const getLocations = async () => {
+    const result = await supabase.from("locations").select("*").single();
+    return result;
+  };
 
-	type VehicleData = QueryData<ReturnType<typeof getVehicles>>;
-	type LocationsData = QueryData<ReturnType<typeof getLocations>>;
+  type VehicleData = QueryData<ReturnType<typeof getVehicles>>;
+  type LocationsData = QueryData<ReturnType<typeof getLocations>>;
+
+  useEffect(() => {
+    getVehicles().then((result) => setVehiclesData(result.data));
+    getLocations().then((locations) => setLocationsData(locations.data));
+  }, []);
+
+  const locationsString = locationsData?.locations?.toString();
+  const locationsArray = locationsString?.split(",");
 
 	useEffect(() => {
 		getVehicles().then((result) => setVehiclesData(result.data));
@@ -113,4 +120,3 @@ export default function HomePage(){
 				</div>
 			</div>
 		)
-}

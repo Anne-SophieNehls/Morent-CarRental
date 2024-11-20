@@ -69,7 +69,7 @@
 
 @font-face {
   font-family: "Jakarta";
-  src: url("./public/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf");
+  src: url("/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf");
   font-weight: 700;
 }
 .logo {
@@ -77,4 +77,33 @@
   font-family: "Jakarta";
 }
 
+.slide-right {
+  -webkit-animation: slide-right 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  animation: slide-right 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
 
+/**
+ * ----------------------------------------
+ * animation slide-right
+ * ----------------------------------------
+ */
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+}

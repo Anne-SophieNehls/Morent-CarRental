@@ -1,12 +1,14 @@
 import { useUserContext } from "@/context/userContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
+import { Button } from "@/components/ui/button";
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser } = useUserContext();
+  const { user, setUser } = useUserContext();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,8 +37,13 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Sign in</button>
-        <p>No Account? Register Here</p>
+        <Button>Sign in</Button>
+        <p>
+          No Account? Register{" "}
+          <Button asChild variant="ghost">
+            {!user && <NavLink to="/sign-up">Here</NavLink>}
+          </Button>
+        </p>
       </form>
     </div>
   );

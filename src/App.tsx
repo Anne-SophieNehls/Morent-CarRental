@@ -10,11 +10,13 @@ import ProfilePage from "./pages/ProfilePage";
 import Layout from "./components/Layout";
 import SignUpPage from "./pages/SignUpPage";
 import { SearchProvider } from "./context/searchContext";
+import { UserContextProvider } from "./context/userContext";
 
-const client = new QueryClient();
+  const client = new QueryClient();
 
-function App() {
-  return (
+  function App() {
+    return (
+      <UserContextProvider>
     <QueryClientProvider client={client}>
 		<SearchProvider>
 			<BrowserRouter>
@@ -33,6 +35,7 @@ function App() {
 			</BrowserRouter>
 		</SearchProvider>
     </QueryClientProvider>
+  </UserContextProvider>
   );
 }
 

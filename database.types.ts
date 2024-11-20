@@ -9,21 +9,111 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      locations: {
+      bookings: {
         Row: {
+          address: string
           created_at: string
+          drop_off_date: string
+          drop_off_location: string
+          drop_off_time: string
           id: string
-          locations: Json
+          name: string
+          payment_method: string
+          phone_number: number
+          pick_up_date: string
+          pick_up_location: string
+          pick_up_time: string
+          town: string
+          user_id: string
+          vehicleID: string
         }
         Insert: {
-          created_at: string
-          id: string
-          locations: Json
+          address: string
+          created_at?: string
+          drop_off_date: string
+          drop_off_location: string
+          drop_off_time: string
+          id?: string
+          name: string
+          payment_method: string
+          phone_number: number
+          pick_up_date: string
+          pick_up_location: string
+          pick_up_time: string
+          town: string
+          user_id: string
+          vehicleID: string
         }
         Update: {
+          address?: string
           created_at?: string
+          drop_off_date?: string
+          drop_off_location?: string
+          drop_off_time?: string
           id?: string
-          locations?: Json
+          name?: string
+          payment_method?: string
+          phone_number?: number
+          pick_up_date?: string
+          pick_up_location?: string
+          pick_up_time?: string
+          town?: string
+          user_id?: string
+          vehicleID?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      locations: {
+        Row: {
+          created_at: string | null
+          id: string
+          locations: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id: string
+          locations?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          locations?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          first_name: string
+          id: string
+          last_name: string
+          profile_img: string | null
+        }
+        Insert: {
+          first_name: string
+          id?: string
+          last_name: string
+          profile_img?: string | null
+        }
+        Update: {
+          first_name?: string
+          id?: string
+          last_name?: string
+          profile_img?: string | null
         }
         Relationships: []
       }

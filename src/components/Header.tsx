@@ -11,14 +11,19 @@ import {
 import { Button } from "./ui/button";
 import LightDarkThemeSwitcher from "./LightDarkThemeSwitcher";
 import { useSearch } from "@/context/searchContext";
+import { supabase } from "@/lib/supabase";
+import { useUserContext } from "@/context/userContext";
 
 export default function Header() {
-  function handleLogout() {}
-  const{ setSearchFor } = useSearch();
+  const { user, setUser } = useUserContext();
+  const handleLogoutClick = () => {
+    setUser(null);
+    supabase.auth.signOut();
+  };
+    const{ setSearchFor } = useSearch();
   const {searchFor} = useSearch();
-
   return (
-    <header className="flex m-10 justify-between">
+    <header className="flex justify-between m-10">
       <nav>
         <NavLink to="/">
           <h1 className="logo text-5xl	">MORENT</h1>
@@ -39,24 +44,22 @@ export default function Header() {
         {/*         <Button variant={"outline"} className="rounded-full">
           <LightDarkThemeSwitcher />
         </Button> */}
-        <Button variant={"outline"} className="rounded-full">
+        <Button variant={"outline"} className="rounded-full h-14">
           <img
             src="../../public/img/icons/glocke-grau-notification.svg"
             alt="profil img"
           />
         </Button>
-        <Button variant={"outline"} className="rounded-full">
-          <img
-            src="../../public/img/icons/setting-zahnrad-icon.svg"
-            alt="profil img"
-          />
+        <Button variant={"outline"} className="rounded-full h-14">
+          <img src="/img/icons/setting-zahnrad-icon.svg" alt="profil img" />
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant={"ghost"}>
+            <Button variant={"ghost"} className="h-14 w-20 rounded-full ">
               <img
-                src="../../public/img/icons/profile-without-profilpictuare.svg"
+                src="/img/icons/profile-without-profilpictuare.svg"
                 alt="profil img"
+                className="h-14"
               />
             </Button>
           </DropdownMenuTrigger>
@@ -66,10 +69,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="/profile/:id">
                 <span>
-                  <img
-                    src="../../public/img/icons/zum-profile-icon.svg"
-                    alt="to profil"
-                  />
+                  <img src="/img/icons/zum-profile-icon.svg" alt="to profil" />
                   Profile
                 </span>
               </Link>
@@ -77,10 +77,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="/profile/:id">
                 <span>
-                  <img
-                    src="../../public/img/icons/save-icon.svg"
-                    alt="to profil"
-                  />
+                  <img src="/img/icons/save-icon.svg" alt="to profil" />
                   My Bookings
                 </span>
               </Link>
@@ -88,18 +85,18 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="/favorites/:id">
                 <span>
-                  <img
-                    src="../../public/img/icons/heart-gray-icon.svg"
-                    alt="to profil"
-                  />
+                  <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
                   Favorites
                 </span>
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <Button onClick={handleLogout}>
-              <span>Log out</span>
-            </Button>
+            <Button asChild variant="ghost">
+            {!user && <NavLink to="/login">Login</NavLink>}
+          </Button>
+          <Button asChild variant="ghost" onClick={handleLogoutClick}>
+            {user && <NavLink to="/login">Logout</NavLink>}
+          </Button>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
