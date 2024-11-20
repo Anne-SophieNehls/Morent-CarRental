@@ -4,6 +4,7 @@ import CarCard from "@/components/CarCard";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function HomePage(){
 	const [vehiclesData, setVehiclesData] = useState<VehicleData | null>(null);
@@ -68,7 +69,4 @@ export default function HomePage(){
 			</div>
 		</div>
 	)
-}
-    </div>
-  );
 }
