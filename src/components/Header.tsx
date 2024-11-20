@@ -23,7 +23,7 @@ export default function Header() {
   const { setSearchFor } = useSearch();
   const { searchFor } = useSearch();
   return (
-    <header className="flex justify-between m-10">
+    <header className="flex space-x-72 m-10">
       <nav>
         <NavLink to="/">
           <h1 className="logo text-5xl	">MORENT</h1>
@@ -41,9 +41,10 @@ export default function Header() {
         />
       </form>
       <div className="flex space-x-2">
-        {/* <LightDarkThemeSwitcher /> */}
-
-        <Button variant={"outline"} className="rounded-full h-14">
+        {/*         <Button variant={"outline"} className="rounded-full">
+          <LightDarkThemeSwitcher />
+        </Button> */}
+        <Button variant={"outline"} className="rounded-full">
           <img
             src="../../public/img/icons/glocke-grau-notification.svg"
             alt="profil img"
