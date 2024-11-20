@@ -10,9 +10,15 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./ui/button";
 import LightDarkThemeSwitcher from "./LightDarkThemeSwitcher";
+import { supabase } from "@/lib/supabase";
+import { useUserContext } from "@/context/userContext";
 
 export default function Header() {
-  function handleLogout() {}
+  const { user, setUser } = useUserContext();
+  const handleLogoutClick = () => {
+    setUser(null);
+    supabase.auth.signOut();
+  };
 
   return (
     <header className="flex justify-between m-10">
@@ -92,9 +98,12 @@ export default function Header() {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <Button onClick={handleLogout}>
-              <span>Log out</span>
-            </Button>
+            <Button asChild variant="ghost">
+            {!user && <NavLink to="/login">Login</NavLink>}
+          </Button>
+          <Button asChild variant="ghost" onClick={handleLogoutClick}>
+            {user && <NavLink to="/login">Logout</NavLink>}
+          </Button>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
