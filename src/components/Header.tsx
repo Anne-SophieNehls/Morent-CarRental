@@ -15,7 +15,7 @@ export default function Header() {
   function handleLogout() {}
 
   return (
-    <header className="flex space-x-72 m-10">
+    <header className="flex m-10 justify-between">
       <nav>
         <NavLink to="/">
           <h1 className="logo text-5xl	">MORENT</h1>
@@ -29,7 +29,7 @@ export default function Header() {
           className="pr-60 rounded-full"
         />
       </form>
-      <div className="flex space-x-2">
+      <div className="flex">
         {/*         <Button variant={"outline"} className="rounded-full">
           <LightDarkThemeSwitcher />
         </Button> */}

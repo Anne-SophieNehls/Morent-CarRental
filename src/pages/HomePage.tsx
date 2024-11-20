@@ -33,43 +33,61 @@ export default function HomePage(){
 	const locationsArray = locationsString?.split(',');
 
     return(
-		<div className="bg-[#F6F7F9]">
-			<div className="flex">
-				<CarAddOne></CarAddOne>
-				<CarAddTwo></CarAddTwo>
-			</div>
-			<div className="">
-				<h3>Pickup</h3>
-				<div className="flex">
+			<div className="bg-[#F6F7F9]">
+				<div className="flex gap-5 justify-center mb-40">
+					<CarAddOne></CarAddOne>
+					<CarAddTwo></CarAddTwo>
+				</div>
+				<div className="flex justify-around">
 					<div>
-						<p>Location:</p>
-						<select>
-							<option>Please Select</option>
-							{locationsArray?.map((el) => <option value={el}>{el}</option>)};
-						</select>
+						<h3>Pickup</h3>
+						<div className="flex">
+							<div>
+								<p>Location:</p>
+								<select>
+									<option>Please Select</option>
+									{locationsArray?.map((el) => <option value={el}>{el}</option>)};
+								</select>
+							</div>
+							<div>
+								<p>Date</p>
+								<input type="date" />
+							</div>
+						</div>
 					</div>
 					<div>
-						<p>Date</p>
-						<input type="date" />
+						<h3>Drop-Off</h3>
+							<div className="flex">
+								<div>
+									<p>Location:</p>
+									<select>
+										<option>Please Select</option>
+										{locationsArray?.map((el) => <option value={el}>{el}</option>)};
+									</select>
+								</div>
+								<div>
+									<p>Date</p>
+									<input type="date" />
+								</div>
+							</div>
 					</div>
-					<div>
+				</div>
+				<div>
+					<div className="flex flex-wrap gap-5 justify-center">
+					{vehiclesData?.map((el) => {
+						return <CarCard
+							key={el.id}
+							brand={el.brand} carImg={el.carImg} 
+							model={el.model} gearType={el.gearType} 
+							vehicleType={el.vehicleType} 
+							year={el.year.toString()} 
+							seats={el.seats.toString()} 
+							pricePerDay={el.pricePerDay.toString()} 
+							consumption={el.consumption}>
+						</CarCard>
+					})}
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-wrap gap-5">
-				{vehiclesData?.map((el) => {
-					return <CarCard
-						key={el.id}
-						brand={el.brand} carImg={el.carImg} 
-						model={el.model} gearType={el.gearType} 
-						vehicleType={el.vehicleType} 
-						year={el.year.toString()} 
-						seats={el.seats.toString()} 
-						pricePerDay={el.pricePerDay.toString()} 
-						consumption={el.consumption}>
-					</CarCard>
-				})}
-			</div>
-		</div>
-	)
+		)
 }
