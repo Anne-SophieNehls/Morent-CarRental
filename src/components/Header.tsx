@@ -103,6 +103,9 @@ export default function Header() {
             <Button asChild variant="ghost">
               {!user && <NavLink to="/login">Login</NavLink>}
             </Button>
+            <Button asChild variant="ghost">
+              {!user && <NavLink to="/sign-up">Sign in</NavLink>}
+            </Button>
             <Button asChild variant="ghost" onClick={handleLogoutClick}>
               {user && <NavLink to="/login">Logout</NavLink>}
             </Button>
