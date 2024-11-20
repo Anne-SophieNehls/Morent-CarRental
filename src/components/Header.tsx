@@ -10,9 +10,12 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./ui/button";
 import LightDarkThemeSwitcher from "./LightDarkThemeSwitcher";
+import { useSearch } from "@/context/searchContext";
 
 export default function Header() {
   function handleLogout() {}
+  const{ setSearchFor } = useSearch();
+  const {searchFor} = useSearch();
 
   return (
     <header className="flex m-10 justify-between">
@@ -27,6 +30,9 @@ export default function Header() {
           id="search"
           placeholder="Search here"
           className="pr-60 rounded-full"
+		  onChange={(e)=> {
+			setSearchFor(e.target.value);
+		  }}
         />
       </form>
       <div className="flex">
