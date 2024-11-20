@@ -1,3 +1,5 @@
+import CarAddOne from "@/components/CarAddOne";
+import CarAddTwo from "@/components/CarAddTow";
 import CarCard from "@/components/CarCard";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
@@ -7,10 +9,11 @@ export default function HomePage(){
 	const [vehiclesData, setVehiclesData] = useState<VehicleData | null>(null);
 	const [locationsData, setLocationsData] = useState<LocationsData | null>(null);
 
-	const getVehicles = async () => {
-		const result = await supabase.from('vehicles').select('*');
-		return result;
-	}
+
+  const getVehicles = async () => {
+    const result = await supabase.from("vehicles").select("*");
+    return result;
+  };
 
 	const getLocations = async () => {
 		const result = await supabase.from('locations').select('*').single();
@@ -65,4 +68,7 @@ export default function HomePage(){
 			</div>
 		</div>
 	)
+}
+    </div>
+  );
 }
