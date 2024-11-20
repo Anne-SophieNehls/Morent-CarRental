@@ -1,12 +1,12 @@
 export default function Footer() {
   return (
     <footer>
-      <section>
+      <section className="flex justify-between">
         <div>
           <h2>Logo</h2>
           <p>Slogan</p>
         </div>
-        <div>
+        <div className="flex">
           <div>
             <h4>About Us</h4>
             <p>1</p>
