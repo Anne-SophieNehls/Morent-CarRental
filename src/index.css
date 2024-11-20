@@ -69,7 +69,7 @@
 
 @font-face {
   font-family: "Jakarta";
-  src: url("./public/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf");
+  src: url("/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf");
   font-weight: 700;
 }
 .logo {
