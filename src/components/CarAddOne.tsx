@@ -14,7 +14,7 @@ export default function CarAddOne() {
       <img
         src="../../public/img/autoAdd1.png"
         alt=""
-        className="-mt-12 pl-36 w-5/6"
+        className="-mt-16 pl-6 w-3/4 slide-right"
       />
     </div>
   );

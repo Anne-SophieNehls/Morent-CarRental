@@ -15,7 +15,7 @@ export default function CarAddTwo() {
       <img
         src="../../public/img/autoAdd2.png"
         alt=""
-        className="pl-40 w-4/5	-mt-8"
+        className="pl-20 w-4/5	-mt-12 slide-right"
       />
     </div>
   );
