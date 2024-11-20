@@ -20,8 +20,9 @@ export default function Header() {
     setUser(null);
     supabase.auth.signOut();
   };
-    const{ setSearchFor } = useSearch();
-  const {searchFor} = useSearch();
+  
+const{ setSearchFor } = useSearch();
+
   return (
     <header className="flex justify-between m-10">
       <nav>

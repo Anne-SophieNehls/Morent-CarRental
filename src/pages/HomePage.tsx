@@ -3,15 +3,29 @@ import CarAddTwo from "@/components/CarAddTow";
 import CarCard from "@/components/CarCard";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/Sidebar";
 import { useSearch } from "@/context/searchContext";
+import { useFilter } from "@/context/filterContext";
 
 export default function HomePage(){
 	const [vehiclesData, setVehiclesData] = useState<VehicleData | null>(null);
 	const [locationsData, setLocationsData] = useState<LocationsData | null>(null);
 	const { searchFor } = useSearch();
+
+	const {
+		filter2Persons,
+		filter4Persons,
+		filter6Persons,
+		filter8OrMorePersons,
+		filterCoupe,
+		filterSUV,
+		filterSedan,
+		filterSport,
+		filterHatchback,
+		filterMPV,
+	  } = useFilter();
 
   const getVehicles = async () => {
     const result = await supabase.from("vehicles").select("*").ilike("brand", `%${searchFor}%`);
@@ -22,7 +36,7 @@ export default function HomePage(){
     const result = await supabase.from("locations").select("*").single();
     return result;
   };
-
+  
   type VehicleData = QueryData<ReturnType<typeof getVehicles>>;
   type LocationsData = QueryData<ReturnType<typeof getLocations>>;
   const locationsString = locationsData?.locations?.toString();
@@ -53,7 +67,7 @@ export default function HomePage(){
 								<p>Location:</p>
 								<select>
 									<option>Please Select</option>
-									{locationsArray?.map((el) => <option value={el}>{el}</option>)};
+									{locationsArray?.map((el, index) => <option key={index} value={el}>{el}</option>)};
 								</select>
 							</div>
 								<div>
