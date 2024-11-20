@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer>
-      <section className="flex space-x-72 m-6 pt-6">
+
+      <section className="flex justify-between">
+
         <div>
           <h2 className="logo text-3xl">MORENT</h2>
           <p>
@@ -11,8 +13,8 @@ export default function Footer() {
             business.
           </p>
         </div>
-        <div className="flex space-x-20">
-          <div className=" flex flex-col">
+        <div className="flex">
+          <div>
             <h4>About Us</h4>
             <Link to="/">How it works</Link>
             <Link to="/">Featured</Link>
