@@ -15,7 +15,7 @@ export default function Header() {
   function handleLogout() {}
 
   return (
-    <header className="flex space-x-72 m-10">
+    <header className="flex justify-between m-10">
       <nav>
         <NavLink to="/">
           <h1 className="logo text-5xl	">MORENT</h1>
@@ -33,13 +33,13 @@ export default function Header() {
         {/*         <Button variant={"outline"} className="rounded-full">
           <LightDarkThemeSwitcher />
         </Button> */}
-        <Button variant={"outline"} className="rounded-full">
+        <Button variant={"outline"} className="rounded-full h-14">
           <img
             src="../../public/img/icons/glocke-grau-notification.svg"
             alt="profil img"
           />
         </Button>
-        <Button variant={"outline"} className="rounded-full">
+        <Button variant={"outline"} className="rounded-full h-14">
           <img
             src="../../public/img/icons/setting-zahnrad-icon.svg"
             alt="profil img"
@@ -47,10 +47,11 @@ export default function Header() {
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant={"ghost"}>
+            <Button variant={"ghost"} className="h-14 w-20 rounded-full ">
               <img
                 src="../../public/img/icons/profile-without-profilpictuare.svg"
                 alt="profil img"
+                className="h-14"
               />
             </Button>
           </DropdownMenuTrigger>
