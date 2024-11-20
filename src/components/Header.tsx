@@ -40,16 +40,13 @@ export default function Header() {
           />
         </Button>
         <Button variant={"outline"} className="rounded-full h-14">
-          <img
-            src="../../public/img/icons/setting-zahnrad-icon.svg"
-            alt="profil img"
-          />
+          <img src="/img/icons/setting-zahnrad-icon.svg" alt="profil img" />
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant={"ghost"} className="h-14 w-20 rounded-full ">
               <img
-                src="../../public/img/icons/profile-without-profilpictuare.svg"
+                src="/img/icons/profile-without-profilpictuare.svg"
                 alt="profil img"
                 className="h-14"
               />
@@ -61,10 +58,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="/profile/:id">
                 <span>
-                  <img
-                    src="../../public/img/icons/zum-profile-icon.svg"
-                    alt="to profil"
-                  />
+                  <img src="/img/icons/zum-profile-icon.svg" alt="to profil" />
                   Profile
                 </span>
               </Link>
@@ -72,10 +66,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="/profile/:id">
                 <span>
-                  <img
-                    src="../../public/img/icons/save-icon.svg"
-                    alt="to profil"
-                  />
+                  <img src="/img/icons/save-icon.svg" alt="to profil" />
                   My Bookings
                 </span>
               </Link>
@@ -83,10 +74,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="/favorites/:id">
                 <span>
-                  <img
-                    src="../../public/img/icons/heart-gray-icon.svg"
-                    alt="to profil"
-                  />
+                  <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
                   Favorites
                 </span>
               </Link>
