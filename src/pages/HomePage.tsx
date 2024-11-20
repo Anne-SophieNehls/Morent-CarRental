@@ -34,9 +34,9 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#F6F7F9]">
-      <div className="flex">
-        <CarAddOne></CarAddOne>
-        <CarAddTwo></CarAddTwo>
+      <div className="flex gap-5">
+        <CarAddOne />
+        <CarAddTwo />
       </div>
       <div className="">
         <h3>Pickup</h3>
@@ -58,10 +58,7 @@ export default function HomePage() {
           <div></div>
         </div>
       </div>
-      <div>
-        <CarAddOne />
-        <CarAddTwo />
-      </div>
+
       <div className="flex flex-wrap gap-5">
         {vehiclesData?.map((el) => {
           return (
