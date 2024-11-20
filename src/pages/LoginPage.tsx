@@ -41,7 +41,7 @@ export default function LoginPage() {
         <p>
           No Account? Register{" "}
           <Button asChild variant="ghost">
-            {!user && <NavLink to="/signup">Here</NavLink>}
+            {!user && <NavLink to="/sign-up">Here</NavLink>}
           </Button>
         </p>
       </form>
