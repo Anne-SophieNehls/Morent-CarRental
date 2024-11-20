@@ -4,7 +4,6 @@ import CarCard from "@/components/CarCard";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 
 export default function HomePage(){
 	const [vehiclesData, setVehiclesData] = useState<VehicleData | null>(null);
@@ -34,7 +33,11 @@ export default function HomePage(){
 	const locationsArray = locationsString?.split(',');
 
     return(
-		<div className="">
+		<div className="bg-[#F6F7F9]">
+			<div className="flex">
+				<CarAddOne></CarAddOne>
+				<CarAddTwo></CarAddTwo>
+			</div>
 			<div className="">
 				<h3>Pickup</h3>
 				<div className="flex">

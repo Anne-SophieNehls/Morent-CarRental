@@ -20,7 +20,7 @@ interface CarCardProps {
 
 export default function CarCard(props: CarCardProps) {
   return (
-    <div className="w-1/5 p-3 bg-slate-200 rounded-lg">
+    <div className="w-1/5 p-3 bg-white rounded-lg">
       <div className="flex justify-between">
         <h2 className="font-bold">{`${props.brand} ${props.model}`}</h2>
         <div>
