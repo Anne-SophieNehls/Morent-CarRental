@@ -13,33 +13,32 @@ import { SearchProvider } from "./context/searchContext";
 import { UserContextProvider } from "./context/userContext";
 import { FilterProvider } from "./context/filterContext";
 
+const client = new QueryClient();
 
-  const client = new QueryClient();
-
-  function App() {
-    return (
-      <UserContextProvider>
-    	<QueryClientProvider client={client}>
-			<FilterProvider>
-				<SearchProvider>
-					<BrowserRouter>
-						<Routes>
-							<Route element={<Layout />}>
-								<Route path="/" element={<HomePage />} />
-								<Route path="/details/:id" element={<DetailsPage />} />
-								<Route path="/bookings" element={<BookingPage />} />
-								<Route path="/favorites/:id" element={<FavoritesPage />} />
-								<Route path="/profile/:id" element={<ProfilePage />} />
-								<Route path="/rent/:id" element={<RentPage />} />
-								<Route path="/login" element={<LoginPage />} />
-								<Route path="/sign-up" element={<SignUpPage />} />
-							</Route>
-						</Routes>
-					</BrowserRouter>
-				</SearchProvider>
-			</FilterProvider>
-    	</QueryClientProvider>
-  	</UserContextProvider>
+function App() {
+  return (
+    <UserContextProvider>
+      <QueryClientProvider client={client}>
+        <FilterProvider>
+          <SearchProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/details/:id" element={<DetailsPage />} />
+                  <Route path="/bookings" element={<BookingPage />} />
+                  <Route path="/favorites/:id" element={<FavoritesPage />} />
+                  <Route path="/profile/:id" element={<ProfilePage />} />
+                  <Route path="/rent/:id" element={<RentPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/sign-up" element={<SignUpPage />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </SearchProvider>
+        </FilterProvider>
+      </QueryClientProvider>
+    </UserContextProvider>
   );
 }
 

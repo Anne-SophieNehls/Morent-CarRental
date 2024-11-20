@@ -22,13 +22,18 @@ interface CarCardProps {
 export default function CarCard(props: CarCardProps) {
   return (
     <div className="w-1/4 p-3 bg-white rounded-lg">
+    <div className="w-1/4 p-3 bg-white rounded-lg">
       <div className="flex justify-between">
+        <h2 className="font-bold mb-2 mx-2">{`${props.brand} ${props.model}`}</h2>
         <h2 className="font-bold mb-2 mx-2">{`${props.brand} ${props.model}`}</h2>
         <div>
           <img className="hover:h-7" src={whiteHeartIcon} alt="favorited" />
+          <img className="hover:h-7" src={whiteHeartIcon} alt="favorited" />
         </div>
       </div>
-      <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">{props.vehicleType}</p>
+      <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
+        {props.vehicleType}
+      </p>
       <img className="rounded-xl mb-4" src={props.carImg} alt="Car Image" />
       <div className="flex justify-between mb-6">
         <div className="flex">
@@ -50,6 +55,7 @@ export default function CarCard(props: CarCardProps) {
           </p>
         </div>
       </div>
+      <div className="flex justify-between items-center mb-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-bold">
           {`${props.pricePerDay}/`}
