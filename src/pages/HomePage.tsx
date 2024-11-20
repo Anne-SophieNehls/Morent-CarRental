@@ -58,6 +58,10 @@ export default function HomePage() {
           <div></div>
         </div>
       </div>
+      <div>
+        <CarAddOne />
+        <CarAddTwo />
+      </div>
       <div className="flex flex-wrap gap-5">
         {vehiclesData?.map((el) => {
           return (
