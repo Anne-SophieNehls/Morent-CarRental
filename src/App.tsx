@@ -9,6 +9,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 import ProfilePage from "./pages/ProfilePage";
 import Layout from "./components/Layout";
 import SignUpPage from "./pages/SignUpPage";
+import { SearchProvider } from "./context/searchContext";
 import { UserContextProvider } from "./context/userContext";
 
   const client = new QueryClient();
@@ -17,20 +18,22 @@ import { UserContextProvider } from "./context/userContext";
     return (
       <UserContextProvider>
     <QueryClientProvider client={client}>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/details/:id" element={<DetailsPage />} />
-            <Route path="/bookings" element={<BookingPage />} />
-            <Route path="/favorites/:id" element={<FavoritesPage />} />
-            <Route path="/profile/:id" element={<ProfilePage />} />
-            <Route path="/rent/:id" element={<RentPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/sign-up" element={<SignUpPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+		<SearchProvider>
+			<BrowserRouter>
+				<Routes>
+				<Route element={<Layout />}>
+					<Route path="/" element={<HomePage />} />
+					<Route path="/details/:id" element={<DetailsPage />} />
+					<Route path="/bookings" element={<BookingPage />} />
+					<Route path="/favorites/:id" element={<FavoritesPage />} />
+					<Route path="/profile/:id" element={<ProfilePage />} />
+					<Route path="/rent/:id" element={<RentPage />} />
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/sign-up" element={<SignUpPage />} />
+				</Route>
+				</Routes>
+			</BrowserRouter>
+		</SearchProvider>
     </QueryClientProvider>
   </UserContextProvider>
   );

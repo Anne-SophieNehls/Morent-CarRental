@@ -10,6 +10,7 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { Button } from "./ui/button";
 import LightDarkThemeSwitcher from "./LightDarkThemeSwitcher";
+import { useSearch } from "@/context/searchContext";
 import { supabase } from "@/lib/supabase";
 import { useUserContext } from "@/context/userContext";
 
@@ -19,7 +20,8 @@ export default function Header() {
     setUser(null);
     supabase.auth.signOut();
   };
-
+    const{ setSearchFor } = useSearch();
+  const {searchFor} = useSearch();
   return (
     <header className="flex justify-between m-10">
       <nav>
@@ -33,9 +35,12 @@ export default function Header() {
           id="search"
           placeholder="Search here"
           className="pr-60 rounded-full"
+		  onChange={(e)=> {
+			setSearchFor(e.target.value);
+		  }}
         />
       </form>
-      <div className="flex space-x-2">
+      <div className="flex">
         {/*         <Button variant={"outline"} className="rounded-full">
           <LightDarkThemeSwitcher />
         </Button> */}
