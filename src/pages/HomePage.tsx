@@ -38,9 +38,6 @@ export default function HomePage(){
 		getVehicles().then((result) => setVehiclesData(result.data));
 		getLocations().then((locations ) => setLocationsData(locations.data));
 	},[searchFor]);
- 
-	const locationsString = locationsData?.locations?.toString();
-	const locationsArray = locationsString?.split(',');
 
 	const handleSubmit = () => {
 		
@@ -120,3 +117,4 @@ export default function HomePage(){
 				</div>
 			</div>
 		)
+}
