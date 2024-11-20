@@ -25,12 +25,6 @@ export default function HomePage(){
 
   type VehicleData = QueryData<ReturnType<typeof getVehicles>>;
   type LocationsData = QueryData<ReturnType<typeof getLocations>>;
-
-  useEffect(() => {
-    getVehicles().then((result) => setVehiclesData(result.data));
-    getLocations().then((locations) => setLocationsData(locations.data));
-  }, []);
-
   const locationsString = locationsData?.locations?.toString();
   const locationsArray = locationsString?.split(",");
 
@@ -44,24 +38,24 @@ export default function HomePage(){
 	}
 
     return(
-			<div className="bg-[#F6F7F9] flex justify-center">
-				<Sidebar></Sidebar>
-				<div className="flex flex-col w-11/12">
-					<div className="flex gap-5 mb-40 justify-around">
-						<CarAddOne></CarAddOne>
-						<CarAddTwo></CarAddTwo>
-					</div>
-					<div className="flex justify-around mb-10 items-center">
-						<div className="bg-white rounded-lg shadow-sm">
-							<h3>Pickup</h3>
-							<div className="flex">
-								<div>
-									<p>Location:</p>
-									<select>
-										<option>Please Select</option>
-										{locationsArray?.map((el) => <option value={el}>{el}</option>)};
-									</select>
-								</div>
+		<div className="bg-[#F6F7F9] flex justify-center">
+			<Sidebar></Sidebar>
+			<div className="flex flex-col w-11/12">
+				<div className="flex gap-5 mb-40 justify-around">
+					<CarAddOne></CarAddOne>
+					<CarAddTwo></CarAddTwo>
+				</div>
+				<div className="flex justify-around mb-10 items-center">
+					<div className="bg-white rounded-lg shadow-sm">
+						<h3>Pickup</h3>
+						<div className="flex">
+							<div>
+								<p>Location:</p>
+								<select>
+									<option>Please Select</option>
+									{locationsArray?.map((el) => <option value={el}>{el}</option>)};
+								</select>
+							</div>
 								<div>
 									<p>Date</p>
 									<input type="date" />
