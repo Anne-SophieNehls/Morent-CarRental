@@ -17,6 +17,7 @@ import { useThemeContext } from "@/context/LightDarkModeContext";
 //import { user } from "@/context/userContext";
 
 export default function Header() {
+
   const { theme } = useThemeContext();
 
   const { user, setUser } = useUserContext();

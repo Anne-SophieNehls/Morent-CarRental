@@ -17,28 +17,99 @@ export default function HomePage() {
     null
   );
   const { searchFor } = useSearch();
-
+  const [locationsFilter, setLocationsFilter] = useState("");
   const {
-    filter2Persons,
-    filter4Persons,
-    filter6Persons,
-    filter8OrMorePersons,
+    filter2Seats,
+    filter5Seats,
+    filter7Seats,
+    filter4Seats,
     filterCoupe,
     filterSUV,
     filterSedan,
     filterSport,
     filterHatchback,
     filterMPV,
+	filteByPriceRange
   } = useFilter();
+
+  const filtersVehicles = [
+	{isActive: filterCoupe, value: "vehicleType.eq.Electric Car"},
+	{isActive: filterSUV, value: "vehicleType.eq.SUV"},
+	{isActive: filterSedan, value: "vehicleType.eq.Sedan"},
+	{isActive: filterSport, value: "vehicleType.eq.Sportscar"},
+	{isActive: filterHatchback, value: "vehicleType.eq.Hatchback"},
+	{isActive: filterMPV, value: "vehicleType.eq.Van"}
+  ];
+  const filterSeats = [
+	{isActive: filter2Seats, value: "seats.eq.2"},
+	{isActive: filter5Seats, value: "seats.eq.5"},
+	{isActive: filter7Seats, value: "seats.eq.7"},
+	{isActive: filter4Seats, value: "seats.eq.4"},
+  ];
+
+
+  function getFilterVehicles(){
+	const filterStrings: String[] = [];
+	filtersVehicles.forEach((filter) => {
+		if (filter.isActive) {
+		  filterStrings.push(filter.value);
+		}
+		else {
+			const index = filterStrings.indexOf(filter.value);
+			if (index !== -1) {
+			  filterStrings.splice(index, 1);
+			}
+		  }
+	  });
+	  if (filterStrings.length == 0){
+		  filtersVehicles.forEach((filter) => {
+			  filterStrings.push(filter.value);
+		  })
+		return (filterStrings.join(","));
+	  }
+	return filterStrings.join(",");
+  }
+  
+  function getFilterSeats(){
+	const filterStrings: String[] = [];
+	filterSeats.forEach((filter) => {
+		if (filter.isActive) {
+		  filterStrings.push(filter.value);
+		}
+		else {
+			const index = filterStrings.indexOf(filter.value);
+			if (index !== -1) {
+			  filterStrings.splice(index, 1);
+			}
+		  }
+	  });
+	  if (filterStrings.length == 0){
+		  filterSeats.forEach((filter) => {
+			  filterStrings.push(filter.value);
+		  })
+		return (filterStrings.join(","));
+	  }
+	return filterStrings.join(",");
+  }
+
+  const priceRange = () =>
+  {
+	if (filteByPriceRange == 0)
+		return 350
+	return filteByPriceRange;
+  }
 
   const getVehicles = async () => {
     const result = await supabase
       .from("vehicles")
       .select("*")
-      .ilike("brand", `%${searchFor}%`);
+      .ilike("brand", `%${searchFor}%`)
+	  .or(getFilterVehicles())
+	  .or(getFilterSeats())
+	  .lte("pricePerDay", priceRange())
+	  .like("locations", locationsFilter);
     return result;
   };
-
   const getLocations = async () => {
     const result = await supabase.from("locations").select("*").single();
     return result;
@@ -51,10 +122,22 @@ export default function HomePage() {
 
   useEffect(() => {
     getVehicles().then((result) => setVehiclesData(result.data));
+  }, [searchFor, filter2Seats, filter4Seats, filter5Seats, filter7Seats, filterCoupe,
+	filterHatchback, filterSUV, filterSedan, filterSport, filterMPV, filteByPriceRange, locationsFilter]);
+
+  useEffect(() => {
     getLocations().then((locations) => setLocationsData(locations.data));
   }, [searchFor]);
-
+  
   const handleSubmit = () => {};
+
+  const handleLocation = (event) => {
+	if (event.target.value)
+		setLocationsFilter(event?.target.value);
+	else
+		setLocationsFilter("*");
+	console.log(locationsFilter)
+  }
 
   return (
     <div className={`bg-[#F6F7F9] flex justify-center ${`theme--${theme}-bg`}`}>
@@ -70,7 +153,7 @@ export default function HomePage() {
             <div className="flex">
               <div>
                 <p>Location:</p>
-                <select>
+                <select onChange={handleLocation}>
                   <option>Please Select</option>
                   {locationsArray?.map((el, index) => (
                     <option key={index} value={el}>
@@ -100,10 +183,9 @@ export default function HomePage() {
                 <p>Location:</p>
                 <select>
                   <option>Please Select</option>
-                  {locationsArray?.map((el) => (
-                    <option value={el}>{el}</option>
-                  ))}
-                  ;
+                  {locationsArray?.map((el, index) => (
+                    <option key={index} value={el}>{el}</option>
+                  ))};
                 </select>
               </div>
               <div className="">
