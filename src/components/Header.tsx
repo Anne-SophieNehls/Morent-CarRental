@@ -75,7 +75,7 @@ export default function Header() {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to="/profile/:id">
+              <Link to="bookings">
                 <span>
                   <img src="/img/icons/save-icon.svg" alt="to profil" />
                   My Bookings
