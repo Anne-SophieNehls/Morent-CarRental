@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 
 interface CarCardProps {
+  id: string;
   brand: string;
   carImg: string;
   model: string;
@@ -56,7 +57,7 @@ export default function CarCard(props: CarCardProps) {
           {`${props.pricePerDay}/`}
           <span className="text-xs text-[#90A3BF]">day</span>
         </h2>
-        <Link to="/details/:id">
+        <Link to={`/details/${props.id}`}>
           <Button className="bg-[#3563E9]">Rent now</Button>
         </Link>
       </div>
