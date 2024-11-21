@@ -80,28 +80,28 @@
 /* ############ Darkmode ####### */
 
 .theme--dark-bg {
-  background-color: #0b133e;
+  background-color: #141414;
   color: white;
 }
 
 .theme--dark-bg select {
-  background-color: #101d55;
+  background-color: #2c2c2c;
 }
 
 .theme--dark-hf {
-  background-color: #264bba;
+  background-color: #081b52;
 }
 
 .theme--dark-hf input {
-  background-color: #101d55;
+  background-color: #2c2c2c;
 }
 
 .theme--dark-card {
-  background-color: #101d55;
+  background-color: #2c2c2c;
 }
 
 .theme--dark-drop {
-  background-color: #1c41af;
+  background-color: #2c2c2c;
   color: white;
 }
 
@@ -114,7 +114,8 @@
 }
 
 .theme--dark-bg form {
-  background-color: #101d55;
+ background-color: #2c2c2c;
+  ;
 }
 
 /* ENDE Dakmot beginn animation */
