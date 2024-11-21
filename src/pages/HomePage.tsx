@@ -123,6 +123,7 @@ export default function HomePage() {
             {vehiclesData?.map((el) => {
               return (
                 <CarCard
+                  id={el.id}
                   key={el.id}
                   brand={el.brand}
                   carImg={el.carImg}
