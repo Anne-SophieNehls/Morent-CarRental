@@ -30,8 +30,9 @@ setUser(result.data.user);
 
 return (
 
-  <div>
-    <h1>Sign Up</h1>
+  <div className="w-96 p-3 bg-white rounded-lg">
+    <h1 className="font-semibold text-2xl text-center mb-7">Neuen Account anlegen</h1>
+    <div>
     <form onSubmit={handleSubmit}>
     <label htmlFor="E-mail">E-mail</label>
     <Input
@@ -47,8 +48,7 @@ return (
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <br />
-      <label htmlFor="E-mail">First Name</label>
+      <label htmlFor="E-mail">First name</label>
       <Input
         type="text"
         placeholder="Vorname"
@@ -65,8 +65,9 @@ return (
         <img src={`${imageIcon}`} alt="" />
         <label>Profile picture</label>
         <Input type="file" src="" alt={` Image-Upload`}/>
-      <Button className="bg-[#3563E9]">Sign up</Button>
+      <Button className="bg-[#3563E9] w-full">Sign up</Button>
     </form>
+    </div>
   </div>
 );
 }

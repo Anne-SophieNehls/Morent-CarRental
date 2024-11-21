@@ -22,9 +22,9 @@ export default function LoginPage() {
     }
   };
   return (
-    <div>
+    <div className="w-96 p-3 bg-white rounded-lg">
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1 className="font-semibold text-2xl text-center mb-7">Login</h1>
         <input
           type="text"
           placeholder="email"
@@ -37,14 +37,14 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button className="bg-[#3563E9]">Sign in</Button>
+        <Button className="bg-[#3563E9] w-full">Sign in</Button>
+      </form>
         <p>
-          No Account? Register{" "}
+          No Account? Register
           <Button asChild variant="ghost">
             {!user && <NavLink to="/sign-up">Here</NavLink>}
           </Button>
         </p>
-      </form>
     </div>
   );
 }
