@@ -1,22 +1,27 @@
 import { useThemeContext } from "@/context/LightDarkModeContext";
+import { Button } from "./ui/button";
 
 export default function LightDarkThemeSwitcher() {
   const { theme, toggleTheme } = useThemeContext();
   return (
-    <button onClick={toggleTheme}>
+    <Button
+      variant={"outline"}
+      className="rounded-full h-14  mx-2"
+      onClick={toggleTheme}
+    >
       {theme === "light" ? (
         <img
-          src="../../public/img/icon/sun-darkmode-icon.svg"
-          alt="darkmode"
+          src="/img/icons/sun-lightmode-icon.svg"
+          alt="lightmode"
           className="L-D-Mode"
         />
       ) : (
         <img
-          src="../../public/img/icon/sun-lightmode-icon.svg"
-          alt="lightmode"
+          src="/img/icons/sun-darkmode-icon.svg"
+          alt="darkmode"
           className="L-D-Mode"
         />
       )}
-    </button>
+    </Button>
   );
 }
