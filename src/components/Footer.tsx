@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
         </div>
       </section>
-      <div className="flex justify-between	 m-4 px-8 pt-4 border-t-2">
+      <div className="flex justify-between  px-12 p-6 border-t-2">
         <p className="pr-80 mr-72">©2024 MORENT. All rights reserved</p>
         <p>Privacy & Policy</p>
         <p>Terms & Condition</p>

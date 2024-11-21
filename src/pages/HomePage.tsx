@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/Sidebar";
 import { useSearch } from "@/context/searchContext";
 import { useFilter } from "@/context/filterContext";
+import { useThemeContext } from "@/context/LightDarkModeContext";
 
 export default function HomePage() {
+  const { theme } = useThemeContext();
   const [vehiclesData, setVehiclesData] = useState<VehicleData | null>(null);
   const [locationsData, setLocationsData] = useState<LocationsData | null>(
     null
@@ -138,15 +140,15 @@ export default function HomePage() {
   }
 
   return (
-    <div className="bg-[#F6F7F9] flex justify-center -mt-8">
-      <Sidebar></Sidebar>
+    <div className={`bg-[#F6F7F9] flex justify-center ${`theme--${theme}-bg`}`}>
+      <Sidebar />
       <div className="flex flex-col w-11/12">
         <div className="flex gap-5 mb-40 justify-around">
-          <CarAddOne></CarAddOne>
-          <CarAddTwo></CarAddTwo>
+          <CarAddOne />
+          <CarAddTwo />
         </div>
         <div className="flex justify-around mb-10 items-center">
-          <div className="bg-white rounded-lg shadow-sm">
+          <form className="bg-white rounded-lg p-4 shadow-sm">
             <h3>Pickup</h3>
             <div className="flex">
               <div>
@@ -170,9 +172,11 @@ export default function HomePage() {
                 <input type="time" />
               </div>
             </div>
-          </div>
-          <Button className="bg-[#3563E9]">↑↓</Button>
-          <div className="rounded-lg bg-white shadow-sm">
+          </form>
+          <Button size={"lg"} className="bg-[#3563E9]">
+            ↑↓
+          </Button>
+          <form className="rounded-lg p-4  bg-white shadow-sm">
             <h3>Drop-Off</h3>
             <div className="flex">
               <div>
@@ -193,7 +197,7 @@ export default function HomePage() {
                 <input type="time" />
               </div>
             </div>
-          </div>
+          </form>
         </div>
         <div className="text-right mr-24 mb-5">
           <Button onSubmit={handleSubmit} className="bg-[#3563E9]">
@@ -205,6 +209,7 @@ export default function HomePage() {
             {vehiclesData?.map((el) => {
               return (
                 <CarCard
+                  id={el.id}
                   key={el.id}
                   brand={el.brand}
                   carImg={el.carImg}

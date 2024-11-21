@@ -5,8 +5,10 @@ import redHeartIcon from "/img/icons/heart-red-icon.svg";
 import whiteHeartIcon from "/img/icons/heart-outline-white.svg";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+import { useThemeContext } from "@/context/LightDarkModeContext";
 
 interface CarCardProps {
+  id: string;
   brand: string;
   carImg: string;
   model: string;
@@ -19,10 +21,14 @@ interface CarCardProps {
 }
 
 export default function CarCard(props: CarCardProps) {
+  const { theme } = useThemeContext();
+
   return (
-    <div className="w-1/4 p-3 bg-white rounded-lg">
+    <div className={`w-1/4 p-3 bg-white rounded-lg theme--${theme}-card`}>
       <div className="flex justify-between">
-        <h2 className="font-bold mb-2 mx-2">{`${props.brand} ${props.model}`}</h2>
+        <h2
+          className={`font-bold mb-2 mx-2 `}
+        >{`${props.brand} ${props.model}`}</h2>
         <div>
           <img className="hover:h-7" src={whiteHeartIcon} alt="favorited" />
         </div>
@@ -56,7 +62,7 @@ export default function CarCard(props: CarCardProps) {
           {`${props.pricePerDay}/`}
           <span className="text-xs text-[#90A3BF]">day</span>
         </h2>
-        <Link to="/details/:id">
+        <Link to={`/details/${props.id}`}>
           <Button className="bg-[#3563E9]">Rent now</Button>
         </Link>
       </div>
