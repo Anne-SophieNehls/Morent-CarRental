@@ -56,11 +56,11 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#F6F7F9] flex justify-center">
-      <Sidebar></Sidebar>
+      <Sidebar/>
       <div className="flex flex-col w-11/12">
         <div className="flex gap-5 mb-40 justify-around">
-          <CarAddOne></CarAddOne>
-          <CarAddTwo></CarAddTwo>
+          <CarAddOne/>
+          <CarAddTwo/>
         </div>
         <div className="flex justify-around mb-10 items-center">
           <div className="bg-white rounded-lg shadow-sm">
