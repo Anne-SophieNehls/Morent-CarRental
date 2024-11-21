@@ -91,10 +91,10 @@ export default function Header() {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <Button asChild variant="ghost">
+            <Button className="bg-[#3563E9]" asChild variant="ghost">
             {!user && <NavLink to="/login">Login</NavLink>}
           </Button>
-          <Button asChild variant="ghost" onClick={handleLogoutClick}>
+          <Button className="bg-[#3563E9]" asChild variant="ghost" onClick={handleLogoutClick}>
             {user && <NavLink to="/login">Logout</NavLink>}
           </Button>
           </DropdownMenuContent>
