@@ -13,10 +13,10 @@ export default function Sidebar() {
     setFilterSport,
     setFilterHatchback,
     setFilterMPV,
-	setFilterByPriceRange
+    setFilterByPriceRange,
   } = useFilter();
 
-const {filteByPriceRange} = useFilter();
+  const { filteByPriceRange } = useFilter();
 
   const availableSportsCars = 0;
   const availableSUVCars = 0;
@@ -31,20 +31,20 @@ const {filteByPriceRange} = useFilter();
 
   const highestPrice = 350;
 
-  const handleCheckboxChange = (setter: (value: boolean) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-	if (e.target.checked)
-		setter(true);
-	else
-		setter(false);
-  };
+  const handleCheckboxChange =
+    (setter: (value: boolean) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.checked) setter(true);
+      else setter(false);
+    };
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilterByPriceRange(Number(e.target.value));
   };
 
   return (
-    <div className="w-1/4 bg-white -ml-7">
-      <form action="" className="ml-5">
+    <div className="w-1/4 -ml-7">
+      <form action="" className="ml-5 p-4 rounded-md">
         <p className="text-xs text-[#90A3BF] my-6">TYPE</p>
         <div className="flex">
           <input
@@ -134,7 +134,7 @@ const {filteByPriceRange} = useFilter();
           type="range"
           min="0"
           max={highestPrice}
-		  value={filteByPriceRange.toString()}
+          value={filteByPriceRange.toString()}
           onChange={handlePriceChange}
         />
         <p>{`$${filteByPriceRange}`}</p>
