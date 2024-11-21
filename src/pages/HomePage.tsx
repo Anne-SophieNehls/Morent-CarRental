@@ -93,7 +93,7 @@ export default function HomePage() {
     if (filteByPriceRange == 0) return 350;
     return filteByPriceRange;
   };
-
+  console.log(locationsFilter);
   const getVehicles = async () => {
     const result = await supabase
       .from("vehicles")
@@ -102,7 +102,7 @@ export default function HomePage() {
       .or(getFilterVehicles())
       .or(getFilterSeats())
       .lte("pricePerDay", priceRange())
-      .like("locations", locationsFilter);
+      .ilike("locations", `%${locationsFilter}%`);
     return result;
   };
   const getLocations = async () => {
@@ -140,8 +140,12 @@ export default function HomePage() {
   const handleSubmit = () => {};
 
   const handleLocation = (event) => {
-    if (event.target.value) setLocationsFilter(event?.target.value);
-    else setLocationsFilter("*");
+    const selectedLocation = event.target.value;
+    if (selectedLocation === "Please Select") {
+      setLocationsFilter("");
+    } else {
+      setLocationsFilter(selectedLocation);
+    }
     console.log(locationsFilter);
   };
 
