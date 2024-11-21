@@ -1,29 +1,53 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
-interface SearchContext {
+interface FilterContext {
+	available2SeatsCars: Number
+    available4SeatsCars: Number
+    available5SeatsCars: Number
+    available7SeatsCars: Number
+	availableSportsCars: Number;
+	availableSUVs: Number;
+	availableMPVs: Number;
+	availableElectricCars: Number;
+	availableSedans: Number;
+	availableHatchbacks: Number;
+	availableCoupes: Number;
 	filterSport: boolean;
 	filterSUV: boolean;
 	filterMPV: boolean;
 	filterSedan: boolean;
 	filterCoupe: boolean;
 	filterHatchback: boolean;
-	filter2Persons: boolean;
-	filter4Persons: boolean;
-	filter6Persons: boolean;
-	filter8OrMorePersons: boolean;
+	filter2Seats: boolean;
+	filter4Seats: boolean;
+	filter7Seats: boolean;
+	filter5Seats: boolean;
+	filteByPriceRange: Number;
 	setFilterSport: (term: boolean) => void;
 	setFilterSUV: (term: boolean) => void;
 	setFilterMPV: (term: boolean) => void;
 	setFilterSedan: (term: boolean) => void;
 	setFilterCoupe: (term: boolean) => void;
 	setFilterHatchback: (term: boolean) => void;
-	setFilter2Persons: (term: boolean) => void;
-	setFilter4Persons: (term: boolean) => void;
-	setFilter6Persons: (term: boolean) => void;
-	setFilter8OrMorePersons: (term: boolean) => void;
+	setFilter2Seats: (term: boolean) => void;
+	setFilter4Seats: (term: boolean) => void;
+	setFilter5Seats: (term: boolean) => void;
+	setFilter7Seats: (term: boolean) => void;
+	setFilterByPriceRange: (term: number) => void;
+	setAvailableSportsCars: (term: number) => void;
+	setAvailableSUVs: (term: number) => void;
+	setAvailableMPVs: (term: number) => void;
+	setAvailableSedans: (term: number) => void;
+	setAvailableCoupes: (term: number) => void;
+	setAvailableElectricCars: (term: number) => void;
+	setAvailableHatchbacks: (term: number) => void;
+	setAvailable2SeatsCars: (term: number) => void;
+    setAvailable4SeatsCars: (term: number) => void;
+    setAvailable5SeatsCars: (term: number) => void;
+    setAvailable7SeatsCars: (term: number) => void;
 }
 
-const FilterContext = createContext<SearchContext | undefined>(undefined);
+const FilterContext = createContext<FilterContext | undefined>(undefined);
 
 export const FilterProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -34,17 +58,37 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
   const [filterSedan, setFilterSedan] = useState(false);
   const [filterCoupe, setFilterCoupe] = useState(false);
   const [filterHatchback, setFilterHatchback] = useState(false);
-  const [filter2Persons, setFilter2Persons] = useState(false);
-  const [filter4Persons, setFilter4Persons] = useState(false);
-  const [filter6Persons, setFilter6Persons] = useState(false);
-  const [filter8OrMorePersons, setFilter8OrMorePersons] = useState(false);
-
+  const [filter2Seats, setFilter2Seats] = useState(false);
+  const [filter4Seats, setFilter4Seats] = useState(false);
+  const [filter5Seats, setFilter5Seats] = useState(false);
+  const [filter7Seats, setFilter7Seats] = useState(false);
+  const [filteByPriceRange, setFilterByPriceRange] = useState(0);
+  const [available2SeatsCars, setAvailable2SeatsCars] = useState(0);
+  const [available4SeatsCars, setAvailable4SeatsCars] = useState(0);
+  const [available5SeatsCars, setAvailable5SeatsCars] = useState(0);
+  const [available7SeatsCars, setAvailable7SeatsCars] = useState(0);
+  const [availableCoupes, setAvailableCoupes] = useState(0);
+  const [availableSportsCars, setAvailableSportsCars] = useState(0);
+  const [availableSUVs, setAvailableSUVs] = useState(0);
+  const [availableHatchbacks, setAvailableHatchbacks] = useState(0);
+  const [availableElectricCars, setAvailableElectricCars] = useState(0);
+  const [availableSedans, setAvailableSedans] = useState(0);
+  const [availableMPVs, setAvailableMPVs] = useState(0);
 
   return (
     <FilterContext.Provider value={{filterSport, filterSUV, filterMPV, filterSedan, filterCoupe,
-		filterHatchback, filter2Persons, filter4Persons, filter6Persons, filter8OrMorePersons,
-		setFilter2Persons, setFilter4Persons, setFilter6Persons, setFilter8OrMorePersons,
-		setFilterCoupe, setFilterHatchback, setFilterMPV, setFilterSedan, setFilterSport, setFilterSUV
+		filterHatchback, filter2Seats, filter4Seats, filter5Seats, filter7Seats, filteByPriceRange,
+		availableSportsCars, availableSUVs, availableMPVs,availableElectricCars,availableSedans, availableCoupes,
+		availableHatchbacks, available2SeatsCars, available4SeatsCars, available5SeatsCars, available7SeatsCars, setAvailableCoupes,
+		setFilter2Seats, setFilter4Seats, setFilter5Seats, setFilter7Seats,
+		setFilterCoupe, setFilterHatchback, setFilterMPV, setFilterSedan, setFilterSport, setFilterSUV,
+		setFilterByPriceRange, setAvailable2SeatsCars, setAvailable4SeatsCars, setAvailable5SeatsCars, setAvailable7SeatsCars,
+		setAvailableSportsCars,
+		setAvailableSUVs,
+		setAvailableMPVs,
+		setAvailableSedans,
+		setAvailableElectricCars,
+		setAvailableHatchbacks
 	}}>
       {children}
     </FilterContext.Provider>

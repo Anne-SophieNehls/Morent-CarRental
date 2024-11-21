@@ -15,15 +15,17 @@ import { supabase } from "@/lib/supabase";
 import { useUserContext } from "@/context/userContext";
 
 export default function Header() {
-  const { user, setUser } = useUserContext();
-  const handleLogoutClick = () => {
+	const { user, setUser } = useUserContext();
+	const handleLogoutClick = () => {
     setUser(null);
     supabase.auth.signOut();
-  };
+	};
+
     const{ setSearchFor } = useSearch();
-  const {searchFor} = useSearch();
+
+
   return (
-    <header className="flex justify-between m-10">
+    <header className="flex justify-between p-6 items-center">
       <nav>
         <NavLink to="/">
           <h1 className="logo text-5xl	">MORENT</h1>
