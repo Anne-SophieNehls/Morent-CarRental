@@ -146,9 +146,7 @@ export default function HomePage() {
   };
 
   return (
-    <div
-      className={`bg-[#F6F7F9] flex justify-center -mt-8 ${`theme--${theme}-bg`}`}
-    >
+    <div className={`bg-[#F6F7F9] flex justify-center ${`theme--${theme}-bg`}`}>
       <Sidebar />
       <div className="flex flex-col w-11/12">
         <div className="flex gap-5 mb-40 justify-around">
