@@ -1,4 +1,3 @@
-
 import tankIcon from "/img/icons/tank-icon.svg";
 import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
@@ -28,7 +27,9 @@ export default function CarCard(props: CarCardProps) {
           <img className="hover:h-7" src={whiteHeartIcon} alt="favorited" />
         </div>
       </div>
-      <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">{props.vehicleType}</p>
+      <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
+        {props.vehicleType}
+      </p>
       <img className="rounded-xl mb-4" src={props.carImg} alt="Car Image" />
       <div className="flex justify-between mb-6">
         <div className="flex">
