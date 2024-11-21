@@ -20,10 +20,10 @@ export default function Header() {
     setUser(null);
     supabase.auth.signOut();
   };
-  const { setSearchFor } = useSearch();
-  const { searchFor } = useSearch();
+    const{ setSearchFor } = useSearch();
+  const {searchFor} = useSearch();
   return (
-    <header className="flex space-x-72 m-10">
+    <header className="flex justify-between m-10">
       <nav>
         <NavLink to="/">
           <h1 className="logo text-5xl	">MORENT</h1>
@@ -35,16 +35,16 @@ export default function Header() {
           id="search"
           placeholder="Search here"
           className="pr-60 rounded-full"
-          onChange={(e) => {
-            setSearchFor(e.target.value);
-          }}
+		  onChange={(e)=> {
+			setSearchFor(e.target.value);
+		  }}
         />
       </form>
-      <div className="flex space-x-2">
+      <div className="flex">
         {/*         <Button variant={"outline"} className="rounded-full">
           <LightDarkThemeSwitcher />
         </Button> */}
-        <Button variant={"outline"} className="rounded-full">
+        <Button variant={"outline"} className="rounded-full h-14">
           <img
             src="../../public/img/icons/glocke-grau-notification.svg"
             alt="profil img"
@@ -67,39 +67,36 @@ export default function Header() {
             <DropdownMenuLabel>Hi, Max</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              {user && (
-                <Link to="/profile/:id">
-                  <span>
-                    <img
-                      src="/img/icons/zum-profile-icon.svg"
-                      alt="to profil"
-                    />
-                    Profile
-                  </span>
-                </Link>
-              )}
+              <Link to="/profile/:id">
+                <span>
+                  <img src="/img/icons/zum-profile-icon.svg" alt="to profil" />
+                  Profile
+                </span>
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              {user && (
-                <Link to="/profile/:id">
-                  <span>
-                    <img src="/img/icons/save-icon.svg" alt="to profil" />
-                    My Bookings
-                  </span>
-                </Link>
-              )}
+              <Link to="/profile/:id">
+                <span>
+                  <img src="/img/icons/save-icon.svg" alt="to profil" />
+                  My Bookings
+                </span>
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              {user && (
-                <Link to="/favorites/:id">
-                  <span>
-                    <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
-                    Favorites
-                  </span>
-                </Link>
-              )}
+              <Link to="/favorites/:id">
+                <span>
+                  <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
+                  Favorites
+                </span>
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
+            <Button className="bg-[#3563E9]" asChild variant="ghost">
+            {!user && <NavLink to="/login">Login</NavLink>}
+          </Button>
+          <Button className="bg-[#3563E9]" asChild variant="ghost" onClick={handleLogoutClick}>
+            {user && <NavLink to="/login">Logout</NavLink>}
+          </Button>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
