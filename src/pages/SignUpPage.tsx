@@ -63,8 +63,9 @@ return (
         onChange={(e) => setLastname(e.target.value)}
       />
         <img src={`${imageIcon}`} alt="" />
-        <Input type="image" src="" alt={` Image-Upload`}/>
-      <Button>Sign up</Button>
+        <label>Profile picture</label>
+        <Input type="file" src="" alt={` Image-Upload`}/>
+      <Button className="bg-[#3563E9]">Sign up</Button>
     </form>
   </div>
 );

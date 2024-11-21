@@ -37,7 +37,7 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button>Sign in</Button>
+        <Button className="bg-[#3563E9]">Sign in</Button>
         <p>
           No Account? Register{" "}
           <Button asChild variant="ghost">
