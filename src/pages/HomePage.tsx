@@ -31,6 +31,8 @@ export default function HomePage() {
     filterMPV,
 	filteByPriceRange
   } = useFilter();
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [pickupLocation, setPickupLocation] = useState<string>("");
 
   const filtersVehicles = [
 	{isActive: filterCoupe, value: "vehicleType.eq.Electric Car"},
@@ -98,7 +100,6 @@ export default function HomePage() {
 		return 350
 	return filteByPriceRange;
   }
-  console.log(locationsFilter)
   const getVehicles = async () => {
     const result = await supabase
       .from("vehicles")
@@ -141,10 +142,13 @@ export default function HomePage() {
 	console.log(locationsFilter)
   };
   
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  }
 
   return (
     <div className={`bg-[#F6F7F9] flex justify-center ${`theme--${theme}-bg`}`}>
-      <Sidebar />
+      {sidebarVisible && <Sidebar />}
       <div className="flex flex-col w-11/12">
         <div className="flex gap-5 mb-40 justify-around">
           <CarAddOne />
@@ -203,7 +207,7 @@ export default function HomePage() {
           </form>
         </div>
         <div className="text-right mr-24 mb-5">
-          <Button onSubmit={handleSubmit} className="bg-[#3563E9]">
+          <Button disabled={!locationsFilter || locationsFilter === "Please Select"} className="bg-[#3563E9]" onClick={toggleSidebar}>
             Filter
           </Button>
         </div>
