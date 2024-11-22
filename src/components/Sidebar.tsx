@@ -43,7 +43,7 @@ export default function Sidebar() {
   };
 
   return (
-      <form action="" className="ml-5 p-4 rounded-md w-1/5">
+      <form action="" className=" p-4 w-1/5 bg-white">
         <p className="text-xs text-[#90A3BF] my-6">TYPE</p>
         <div className="flex">
           <input
@@ -136,7 +136,7 @@ export default function Sidebar() {
           value={filteByPriceRange.toString()}
           onChange={handlePriceChange}
         />
-        <p>{`$${filteByPriceRange}`}</p>
+        <p className="text-[#6C757D]">{`Max. $${filteByPriceRange}`}</p>
       </form>
   );
 }
