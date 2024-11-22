@@ -32,7 +32,6 @@ export default function HomePage() {
 	filteByPriceRange
   } = useFilter();
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [pickupLocation, setPickupLocation] = useState<string>("");
 
   const filtersVehicles = [
 	{isActive: filterCoupe, value: "vehicleType.eq.Electric Car"},
@@ -129,10 +128,8 @@ export default function HomePage() {
   useEffect(() => {
     getLocations().then((locations) => setLocationsData(locations.data));
   }, [searchFor]);
-  
-  const handleSubmit = () => {};
 
-  const handleLocation = (event) => {
+  const handleLocation = (event: React.ChangeEvent<HTMLSelectElement>) => {
 	const selectedLocation = event.target.value;
 	if (selectedLocation === "Please Select") {
 	  setLocationsFilter("");
