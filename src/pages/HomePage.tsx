@@ -133,6 +133,7 @@ export default function HomePage() {
 	const selectedLocation = event.target.value;
 	if (selectedLocation === "Please Select") {
 	  setLocationsFilter("");
+	  setSidebarVisible(false);
 	} else {
 	  setLocationsFilter(selectedLocation);
 	}
@@ -147,7 +148,7 @@ export default function HomePage() {
     <div className={`bg-[#F6F7F9] flex justify-center ${`theme--${theme}-bg`}`}>
       {sidebarVisible && <Sidebar />}
       <div className="flex flex-col w-11/12">
-        <div className="flex gap-5 mb-40 justify-around">
+        <div className="flex gap-5 mb-40 justify-around mt-5">
           <CarAddOne />
           <CarAddTwo />
         </div>
