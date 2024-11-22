@@ -13,6 +13,7 @@ import { SearchProvider } from "./context/searchContext";
 import { UserContextProvider } from "./context/userContext";
 import { FilterProvider } from "./context/filterContext";
 import { ThemeContextProvider } from "./context/LightDarkModeContext";
+import PaymentPage from "./pages/PaymentPage";
 
 const client = new QueryClient();
 
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/favorites/:id" element={<FavoritesPage />} />
                     <Route path="/profile/:id" element={<ProfilePage />} />
                     <Route path="/rent/:id" element={<RentPage />} />
+                    <Route path="/payment/:id" element={<PaymentPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/sign-up" element={<SignUpPage />} />
                   </Route>

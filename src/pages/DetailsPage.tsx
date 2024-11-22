@@ -44,6 +44,9 @@ export default function DetailsPage() {
         <p>Usage/100Km: {car.consumption}L</p>
         <p>Luggage: {car.luggage}</p>
       </div>
+      <Button className="bg-[#54a6ff] ">
+        <Link to={`/payment/${id}`}>Rental This Car</Link>
+      </Button>
     </div>
   );
 }
