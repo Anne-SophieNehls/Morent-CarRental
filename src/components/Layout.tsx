@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import { useThemeContext } from "@/context/LightDarkModeContext";
 
 export default function Layout() {
+  const { theme } = useThemeContext();
+
   return (
-    <div>
+    <div className={`theme--${theme}-hf`}>
       <Header />
-      <main className="p-8  bg-slate-50 ">
+      <main className={`bg-[#F6F7F9] ${`theme--${theme}-bg`}`}>
         <Outlet />
       </main>
       <Footer />

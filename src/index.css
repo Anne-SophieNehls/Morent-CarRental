@@ -77,6 +77,49 @@
   font-family: "Jakarta";
 }
 
+/* ############ Darkmode ####### */
+
+.theme--dark-bg {
+  background-color: #141414;
+  color: white;
+}
+
+.theme--dark-bg select {
+  background-color: #2c2c2c;
+}
+
+.theme--dark-hf {
+  background-color: #081b52;
+}
+
+.theme--dark-hf input {
+  background-color: #2c2c2c;
+}
+
+.theme--dark-card {
+  background-color: #2c2c2c;
+}
+
+.theme--dark-drop {
+  background-color: #2c2c2c;
+  color: white;
+}
+
+.theme--dark-hf .logo {
+  color: #ffffff;
+}
+
+.theme--dark-hf footer {
+  color: white;
+}
+
+.theme--dark-bg form {
+ background-color: #2c2c2c;
+  ;
+}
+
+/* ENDE Dakmot beginn animation */
+
 .slide-right {
   -webkit-animation: slide-right 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
   animation: slide-right 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
