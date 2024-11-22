@@ -43,8 +43,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="w-1/4 -ml-7">
-      <form action="" className="ml-5 p-4 rounded-md">
+      <form action="" className="ml-5 p-4 rounded-md w-1/5">
         <p className="text-xs text-[#90A3BF] my-6">TYPE</p>
         <div className="flex">
           <input
@@ -139,6 +138,5 @@ export default function Sidebar() {
         />
         <p>{`$${filteByPriceRange}`}</p>
       </form>
-    </div>
   );
 }
