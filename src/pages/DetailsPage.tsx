@@ -1,7 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function DetailsPage() {
   const { id } = useParams();
@@ -34,14 +35,14 @@ export default function DetailsPage() {
       </h1>
       <img src={car.carImg} alt="" />
       <div>
-      <p>Vehicle type: {car.vehicleType}</p>
-      <p>Gear: {car.gearType}</p>
-      <p>HP: {car.ps}ps</p>
-      <p>Colour: {car.colors}</p>
-      <p>Capacity: {car.seats} Persons</p>
-      <p>Fuel: {car.fuel}</p>
-      <p>Usage/100Km: {car.consumption}L</p>
-      <p>Luggage: {car.luggage}</p>
+        <p>Vehicle type: {car.vehicleType}</p>
+        <p>Gear: {car.gearType}</p>
+        <p>HP: {car.ps}ps</p>
+        <p>Colour: {car.colors}</p>
+        <p>Capacity: {car.seats} Persons</p>
+        <p>Fuel: {car.fuel}</p>
+        <p>Usage/100Km: {car.consumption}L</p>
+        <p>Luggage: {car.luggage}</p>
       </div>
     </div>
   );
