@@ -9,7 +9,8 @@ export default function SignUpPage() {
 const [email, setEmail] = useState("");
 const [firstName, setFirstname] = useState("")
 const [lastName, setLastname] = useState("");
-const [password, setPassword] = useState("")
+const [password, setPassword] = useState("");
+const [image, setImage] = useState("");
 const {setUser} = useUserContext()
 
 const handleSubmit = async (e: React.FormEvent) => {
@@ -18,7 +19,7 @@ const result = await supabase.auth.signUp({
 email,
 password,
 options: {
-data: { first_name: firstName, last_name: lastName },
+data: { first_name: firstName, last_name: lastName, image_url: image }
 },
 });
 if (result.error) {
@@ -30,9 +31,8 @@ setUser(result.data.user);
 
 return (
 
-  <div className="w-96 p-3 bg-white rounded-lg">
-    <h1 className="font-semibold text-2xl text-center mb-7">Neuen Account anlegen</h1>
-    <div>
+  <div>
+    <h1>Sign Up</h1>
     <form onSubmit={handleSubmit}>
     <label htmlFor="E-mail">E-mail</label>
     <Input
@@ -48,7 +48,8 @@ return (
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <label htmlFor="E-mail">First name</label>
+      <br />
+      <label htmlFor="E-mail">First Name</label>
       <Input
         type="text"
         placeholder="Vorname"
@@ -62,12 +63,10 @@ return (
         value={lastName}
         onChange={(e) => setLastname(e.target.value)}
       />
-        <img src={`${imageIcon}`} alt="" />
         <label>Profile picture</label>
-        <Input type="file" src="" alt={` Image-Upload`}/>
-      <Button className="bg-[#3563E9] w-full">Sign up</Button>
+        <Input type="file" value={image} onChange={(e) => setImage(e.target.value)}/>
+      <Button className="bg-[#3563E9]">Sign up</Button>
     </form>
-    </div>
   </div>
 );
 }
