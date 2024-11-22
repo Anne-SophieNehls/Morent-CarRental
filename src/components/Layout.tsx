@@ -7,7 +7,7 @@ export default function Layout() {
   const { theme } = useThemeContext();
 
   return (
-    <div className={`theme--${theme}-hf`}>
+    <div className={`theme--${theme}-hf` }>
       <Header />
       <main className={`bg-[#F6F7F9] ${`theme--${theme}-bg`}`}>
         <Outlet />

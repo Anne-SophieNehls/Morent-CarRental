@@ -145,7 +145,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className={`bg-[#F6F7F9] flex justify-center ${`theme--${theme}-bg`}`}>
+    <div className={`bg-[#F6F7F9] flex ${`theme--${theme}-bg`} justify-center`}>
       {sidebarVisible && <Sidebar />}
       <div className="flex flex-col w-11/12">
         <div className="flex gap-5 mb-40 justify-around mt-5">
@@ -204,13 +204,12 @@ export default function HomePage() {
             </div>
           </form>
         </div>
-        <div className="text-right mr-24 mb-5">
+        <div className="text-right mr-20 mb-5">
           <Button disabled={!locationsFilter || locationsFilter === "Please Select"} className="bg-[#3563E9]" onClick={toggleSidebar}>
             Filter
           </Button>
         </div>
-        <div>
-          <div className="flex flex-wrap gap-5 justify-around">
+        	<div className="flex flex-wrap gap-5 mb-10">
             {vehiclesData?.map((el) => {
               return (
                 <CarCard
@@ -228,9 +227,9 @@ export default function HomePage() {
                 ></CarCard>
               );
             })}
-          </div>
-        </div>
-      </div>
+        	</div>
+
+    	</div>
     </div>
   );
 }
