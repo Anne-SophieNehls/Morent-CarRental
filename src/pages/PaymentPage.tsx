@@ -1,15 +1,26 @@
 import { CarCardProps } from "@/components/CarCard";
 import { Input } from "@/components/ui/input";
 import { useThemeContext } from "@/context/LightDarkModeContext";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function PaymentPage(props: CarCardProps) {
   const { id } = useParams();
   const { theme } = useThemeContext();
+  const [locationsData, setLocationsData] = useState<LocationsData | null>(
+    null
+  );
+  const [locationsFilter, setLocationsFilter] = useState("");
+
+  type LocationsData = QueryData<ReturnType<typeof getLocations>>;
+  const locationsString = locationsData?.locations?.toString();
+  const locationsArray = locationsString?.split(",");
 
   return (
     <section className="relative h-1/2">
-      <div className={`top-0 right-0 rounded-lg theme--${theme}-card`}>
+      <div
+        className={`top-0 p-5 my-3 mx-auto right-0 rounded-lg theme--${theme}-card`}
+      >
         <div>
           <h2>Rental Summary</h2>
           <p>
@@ -35,7 +46,7 @@ export default function PaymentPage(props: CarCardProps) {
         </div>
       </div>
       <article className={`inset-y-0 left-0  rounded-lg theme--${theme}-card`}>
-        <form>
+        <form className="p-5 my-3 mx-auto rounded-md">
           <div className="flex justify-between items-center m-6">
             <div>
               <h2>Billing Info</h2>
@@ -82,7 +93,7 @@ export default function PaymentPage(props: CarCardProps) {
             </div>
           </div>
         </form>
-        <form>
+        <form className="p-5 my-3 mx-auto rounded-md">
           <div className="flex justify-between items-center m-6">
             <div>
               <h2>Rental Info</h2>
@@ -91,12 +102,87 @@ export default function PaymentPage(props: CarCardProps) {
             <p className="text-[#90A3BF]">Step 2 von 4</p>
           </div>
           <article>
-            <h3></h3>
+            <form
+              className={`bg-white rounded-lg p-4 shadow-sm ${`theme--${theme}-card`}`}
+            >
+              <h3>Pickup</h3>
+              <div className="flex">
+                <div>
+                  <p>Location:</p>
+                  <select onChange={handleLocation}>
+                    <option>Please Select</option>
+                    {locationsArray?.map((el, index) => (
+                      <option key={index} value={el}>
+                        {el}
+                      </option>
+                    ))}
+                    ;
+                  </select>
+                </div>
+                <div>
+                  <p>Date</p>
+                  <input type="date" />
+                </div>
+                <div>
+                  <p>Time</p>
+                  <input type="time" />
+                </div>
+              </div>
+            </form>
+            <form
+              className={`rounded-lg p-4  bg-white shadow-sm ${`theme--${theme}-card`}`}
+            >
+              <h3>Drop-Off</h3>
+              <div className="flex">
+                <div>
+                  <p>Location:</p>
+                  <select>
+                    <option>Please Select</option>
+                    {locationsArray?.map((el, index) => (
+                      <option key={index} value={el}>
+                        {el}
+                      </option>
+                    ))}
+                    ;
+                  </select>
+                </div>
+                <div className="">
+                  <p>Date</p>
+                  <input type="date" />
+                </div>
+                <div>
+                  <p>Time</p>
+                  <input type="time" />
+                </div>
+              </div>
+            </form>
           </article>
         </form>
-        <div></div>
-        <div></div>
-        <div></div>
+        <form className="p-5 my-3 mx-auto rounded-md">
+          <div className="flex justify-between items-center m-6">
+            <div>
+              <h2>Payment Metod</h2>
+              <p>Please enter your payment method</p>
+            </div>
+            <p className="text-[#90A3BF]">Step 3 von 4</p>
+          </div>
+          <div>
+            <form>
+              <div className="flex justify-between items-center m-6">
+                <div>
+                  <h2>Confirmation</h2>
+                  <p>
+                    We are getting to the end. Just a few clicks and your rental
+                    is ready!
+                  </p>
+                </div>
+                <p className="text-[#90A3BF]">Step 4 von 4</p>
+              </div>
+            </form>
+            <div></div>
+            <div></div>
+          </div>
+        </form>
         <div></div>
       </article>
     </section>
