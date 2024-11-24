@@ -43,100 +43,94 @@ export default function Sidebar() {
   };
 
   return (
-      <form action="" className=" p-4 w-1/5 bg-white">
-        <p className="text-xs text-[#90A3BF] my-6">TYPE</p>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilterSport)}
-          />
-          <p className="ml-2">Sport</p>
-          <p className="text-[#90A3BF] ml-1">{`(${availableSportsCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilterSUV)}
-          />
-          <p className="ml-2">SUV</p>
-          <p className="text-[#90A3BF] ml-1">{`(${availableSUVCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilterMPV)}
-          />
-          <p className="ml-2">MPV</p>
-          <p className="text-[#90A3BF] ml-1">{`(${availableMPVCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilterSedan)}
-          />
-          <p className="ml-2">Sedan</p>
-          <p className="text-[#90A3BF] ml-1">{`(${availableSedanCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilterCoupe)}
-          />
-          <p className="ml-2">Electric Car</p>
-          <p className="text-[#90A3BF] ml-1">{`(${availableCoupeCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilterHatchback)}
-          />
-          <p className="ml-2">Hatchback</p>
-          <p className="text-[#90A3BF] ml-1">{`(${availableHatchbackCars})`}</p>
-        </div>
-
-        <p className="text-xs text-[#90A3BF] my-6">CAPACITY</p>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilter2Seats)}
-          />
-          <p className="ml-2">2 Seats</p>
-          <p className="text-[#90A3BF] ml-1">{`(${available2PersonCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilter4Seats)}
-          />
-          <p className="ml-2">4 Seats</p>
-          <p className="text-[#90A3BF] ml-1">{`(${available4PersonCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilter5Seats)}
-          />
-          <p className="ml-2">5 Seats</p>
-          <p className="text-[#90A3BF] ml-1">{`(${available6PersonCars})`}</p>
-        </div>
-        <div className="flex">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange(setFilter7Seats)}
-          />
-          <p className="ml-2">7 Seats</p>
-          <p className="text-[#90A3BF] ml-1">{`(${available8OrMorePersonCars})`}</p>
-        </div>
-
-        <p className="text-xs text-[#90A3BF] my-6">PRICE</p>
+    <form action="" className=" p-4 w-1/5 bg-white -mt-10 -ml-10">
+      <p className="text-xs text-[#90A3BF] my-6">TYPE</p>
+      <div className="flex">
         <input
-          type="range"
-          min="0"
-          max={highestPrice}
-          value={filteByPriceRange.toString()}
-          onChange={handlePriceChange}
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilterSport)}
         />
-        <p className="text-[#6C757D]">{`Max. $${filteByPriceRange}`}</p>
-      </form>
+        <p className="ml-2">Sport</p>
+        <p className="text-[#90A3BF] ml-1">{`(${availableSportsCars})`}</p>
+      </div>
+      <div className="flex">
+        <input type="checkbox" onChange={handleCheckboxChange(setFilterSUV)} />
+        <p className="ml-2">SUV</p>
+        <p className="text-[#90A3BF] ml-1">{`(${availableSUVCars})`}</p>
+      </div>
+      <div className="flex">
+        <input type="checkbox" onChange={handleCheckboxChange(setFilterMPV)} />
+        <p className="ml-2">MPV</p>
+        <p className="text-[#90A3BF] ml-1">{`(${availableMPVCars})`}</p>
+      </div>
+      <div className="flex">
+        <input
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilterSedan)}
+        />
+        <p className="ml-2">Sedan</p>
+        <p className="text-[#90A3BF] ml-1">{`(${availableSedanCars})`}</p>
+      </div>
+      <div className="flex">
+        <input
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilterCoupe)}
+        />
+        <p className="ml-2">Electric Car</p>
+        <p className="text-[#90A3BF] ml-1">{`(${availableCoupeCars})`}</p>
+      </div>
+      <div className="flex">
+        <input
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilterHatchback)}
+        />
+        <p className="ml-2">Hatchback</p>
+        <p className="text-[#90A3BF] ml-1">{`(${availableHatchbackCars})`}</p>
+      </div>
+
+      <p className="text-xs text-[#90A3BF] my-6">CAPACITY</p>
+      <div className="flex">
+        <input
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilter2Seats)}
+        />
+        <p className="ml-2">2 Seats</p>
+        <p className="text-[#90A3BF] ml-1">{`(${available2PersonCars})`}</p>
+      </div>
+      <div className="flex">
+        <input
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilter4Seats)}
+        />
+        <p className="ml-2">4 Seats</p>
+        <p className="text-[#90A3BF] ml-1">{`(${available4PersonCars})`}</p>
+      </div>
+      <div className="flex">
+        <input
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilter5Seats)}
+        />
+        <p className="ml-2">5 Seats</p>
+        <p className="text-[#90A3BF] ml-1">{`(${available6PersonCars})`}</p>
+      </div>
+      <div className="flex">
+        <input
+          type="checkbox"
+          onChange={handleCheckboxChange(setFilter7Seats)}
+        />
+        <p className="ml-2">7 Seats</p>
+        <p className="text-[#90A3BF] ml-1">{`(${available8OrMorePersonCars})`}</p>
+      </div>
+
+      <p className="text-xs text-[#90A3BF] my-6">PRICE</p>
+      <input
+        type="range"
+        min="0"
+        max={highestPrice}
+        value={filteByPriceRange.toString()}
+        onChange={handlePriceChange}
+      />
+      <p className="text-[#6C757D]">{`Max. $${filteByPriceRange}`}</p>
+    </form>
   );
 }

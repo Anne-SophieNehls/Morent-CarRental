@@ -29,85 +29,80 @@ export default function HomePage() {
     filterSport,
     filterHatchback,
     filterMPV,
-	filteByPriceRange
+    filteByPriceRange,
   } = useFilter();
   const [sidebarVisible, setSidebarVisible] = useState(false);
 
   const filtersVehicles = [
-	{isActive: filterCoupe, value: "vehicleType.eq.Electric Car"},
-	{isActive: filterSUV, value: "vehicleType.eq.SUV"},
-	{isActive: filterSedan, value: "vehicleType.eq.Sedan"},
-	{isActive: filterSport, value: "vehicleType.eq.Sportscar"},
-	{isActive: filterHatchback, value: "vehicleType.eq.Hatchback"},
-	{isActive: filterMPV, value: "vehicleType.eq.Van"}
+    { isActive: filterCoupe, value: "vehicleType.eq.Electric Car" },
+    { isActive: filterSUV, value: "vehicleType.eq.SUV" },
+    { isActive: filterSedan, value: "vehicleType.eq.Sedan" },
+    { isActive: filterSport, value: "vehicleType.eq.Sportscar" },
+    { isActive: filterHatchback, value: "vehicleType.eq.Hatchback" },
+    { isActive: filterMPV, value: "vehicleType.eq.Van" },
   ];
   const filterSeats = [
-	{isActive: filter2Seats, value: "seats.eq.2"},
-	{isActive: filter5Seats, value: "seats.eq.5"},
-	{isActive: filter7Seats, value: "seats.eq.7"},
-	{isActive: filter4Seats, value: "seats.eq.4"},
+    { isActive: filter2Seats, value: "seats.eq.2" },
+    { isActive: filter5Seats, value: "seats.eq.5" },
+    { isActive: filter7Seats, value: "seats.eq.7" },
+    { isActive: filter4Seats, value: "seats.eq.4" },
   ];
 
-
-  function getFilterVehicles(){
-	const filterStrings: String[] = [];
-	filtersVehicles.forEach((filter) => {
-		if (filter.isActive) {
-		  filterStrings.push(filter.value);
-		}
-		else {
-			const index = filterStrings.indexOf(filter.value);
-			if (index !== -1) {
-			  filterStrings.splice(index, 1);
-			}
-		  }
-	  });
-	  if (filterStrings.length == 0){
-		  filtersVehicles.forEach((filter) => {
-			  filterStrings.push(filter.value);
-		  })
-		return (filterStrings.join(","));
-	  }
-	return filterStrings.join(",");
-  }
-  
-  function getFilterSeats(){
-	const filterStrings: String[] = [];
-	filterSeats.forEach((filter) => {
-		if (filter.isActive) {
-		  filterStrings.push(filter.value);
-		}
-		else {
-			const index = filterStrings.indexOf(filter.value);
-			if (index !== -1) {
-			  filterStrings.splice(index, 1);
-			}
-		  }
-	  });
-	  if (filterStrings.length == 0){
-		  filterSeats.forEach((filter) => {
-			  filterStrings.push(filter.value);
-		  })
-		return (filterStrings.join(","));
-	  }
-	return filterStrings.join(",");
+  function getFilterVehicles() {
+    const filterStrings: String[] = [];
+    filtersVehicles.forEach((filter) => {
+      if (filter.isActive) {
+        filterStrings.push(filter.value);
+      } else {
+        const index = filterStrings.indexOf(filter.value);
+        if (index !== -1) {
+          filterStrings.splice(index, 1);
+        }
+      }
+    });
+    if (filterStrings.length == 0) {
+      filtersVehicles.forEach((filter) => {
+        filterStrings.push(filter.value);
+      });
+      return filterStrings.join(",");
+    }
+    return filterStrings.join(",");
   }
 
-  const priceRange = () =>
-  {
-	if (filteByPriceRange == 0)
-		return 350
-	return filteByPriceRange;
+  function getFilterSeats() {
+    const filterStrings: String[] = [];
+    filterSeats.forEach((filter) => {
+      if (filter.isActive) {
+        filterStrings.push(filter.value);
+      } else {
+        const index = filterStrings.indexOf(filter.value);
+        if (index !== -1) {
+          filterStrings.splice(index, 1);
+        }
+      }
+    });
+    if (filterStrings.length == 0) {
+      filterSeats.forEach((filter) => {
+        filterStrings.push(filter.value);
+      });
+      return filterStrings.join(",");
+    }
+    return filterStrings.join(",");
   }
+
+  const priceRange = () => {
+    if (filteByPriceRange == 0) return 350;
+    return filteByPriceRange;
+  };
   const getVehicles = async () => {
     const result = await supabase
       .from("vehicles")
       .select("*")
       .ilike("brand", `%${searchFor}%`)
-	  .or(getFilterVehicles())
-	  .or(getFilterSeats())
-	  .lte("pricePerDay", priceRange())
-	  .ilike("locations", `%${locationsFilter}%`);
+      .or(getFilterVehicles())
+      .or(getFilterSeats())
+      .lte("pricePerDay", priceRange())
+      .ilike("locations", `%${locationsFilter}%`);
     return result;
   };
   const getLocations = async () => {
@@ -122,30 +117,45 @@ export default function HomePage() {
 
   useEffect(() => {
     getVehicles().then((result) => setVehiclesData(result.data));
-  }, [searchFor, filter2Seats, filter4Seats, filter5Seats, filter7Seats, filterCoupe,
-	filterHatchback, filterSUV, filterSedan, filterSport, filterMPV, filteByPriceRange, locationsFilter]);
+  }, [
+    searchFor,
+    filter2Seats,
+    filter4Seats,
+    filter5Seats,
+    filter7Seats,
+    filterCoupe,
+    filterHatchback,
+    filterSUV,
+    filterSedan,
+    filterSport,
+    filterMPV,
+    filteByPriceRange,
+    locationsFilter,
+  ]);
 
   useEffect(() => {
     getLocations().then((locations) => setLocationsData(locations.data));
   }, [searchFor]);
 
   const handleLocation = (event: React.ChangeEvent<HTMLSelectElement>) => {
-	const selectedLocation = event.target.value;
-	if (selectedLocation === "Please Select") {
-	  setLocationsFilter("");
-	  setSidebarVisible(false);
-	} else {
-	  setLocationsFilter(selectedLocation);
-	}
-	console.log(locationsFilter)
+    const selectedLocation = event.target.value;
+    if (selectedLocation === "Please Select") {
+      setLocationsFilter("");
+      setSidebarVisible(false);
+    } else {
+      setLocationsFilter(selectedLocation);
+    }
+    console.log(locationsFilter);
   };
-  
+
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
-  }
+  };
 
   return (
-    <div className={`bg-[#F6F7F9] flex ${`theme--${theme}-bg`} justify-center`}>
+    <div
+      className={`bg-[#F6F7F9] flex ${`theme--${theme}-bg`} justify-center `}
+    >
       {sidebarVisible && <Sidebar />}
       <div className="flex flex-col w-11/12">
         <div className="flex gap-5 mb-40 justify-around mt-5">
@@ -189,8 +199,11 @@ export default function HomePage() {
                 <select>
                   <option>Please Select</option>
                   {locationsArray?.map((el, index) => (
-                    <option key={index} value={el}>{el}</option>
-                  ))};
+                    <option key={index} value={el}>
+                      {el}
+                    </option>
+                  ))}
+                  ;
                 </select>
               </div>
               <div className="">
@@ -205,31 +218,34 @@ export default function HomePage() {
           </form>
         </div>
         <div className="text-right mr-20 mb-5">
-          <Button disabled={!locationsFilter || locationsFilter === "Please Select"} className="bg-[#3563E9]" onClick={toggleSidebar}>
+          <Button
+            disabled={!locationsFilter || locationsFilter === "Please Select"}
+            className="bg-[#3563E9]"
+            onClick={toggleSidebar}
+          >
             Filter
           </Button>
         </div>
-        	<div className="flex flex-wrap gap-5 mb-10">
-            {vehiclesData?.map((el) => {
-              return (
-                <CarCard
-                  id={el.id}
-                  key={el.id}
-                  brand={el.brand}
-                  carImg={el.carImg}
-                  model={el.model}
-                  gearType={el.gearType}
-                  vehicleType={el.vehicleType}
-                  year={el.year.toString()}
-                  seats={el.seats.toString()}
-                  pricePerDay={el.pricePerDay.toString()}
-                  consumption={el.consumption}
-                ></CarCard>
-              );
-            })}
-        	</div>
-
-    	</div>
+        <div className="flex flex-wrap gap-5 mb-10">
+          {vehiclesData?.map((el) => {
+            return (
+              <CarCard
+                id={el.id}
+                key={el.id}
+                brand={el.brand}
+                carImg={el.carImg}
+                model={el.model}
+                gearType={el.gearType}
+                vehicleType={el.vehicleType}
+                year={el.year.toString()}
+                seats={el.seats.toString()}
+                pricePerDay={el.pricePerDay.toString()}
+                consumption={el.consumption}
+              ></CarCard>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

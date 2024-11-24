@@ -31,12 +31,12 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="w-96 p-3 bg-white rounded-lg">
+    <form className="w-96 p-3 bg-white rounded-lg mx-auto">
       <h1 className="font-semibold text-2xl text-center mb-7">
         Neuen Account anlegen
       </h1>
       <div>
-        <form onSubmit={handleSubmit}>
+        <div onSubmit={handleSubmit}>
           <label htmlFor="E-mail">E-mail</label>
           <Input
             type="text"
@@ -69,8 +69,8 @@ export default function SignUpPage() {
           <label>Profile picture</label>
           <Input type="file" src="" alt={` Image-Upload`} ref={fileRef} />
           <Button className="bg-[#3563E9] w-full">Sign up</Button>
-        </form>
+        </div>
       </div>
-    </div>
+    </form>
   );
 }
