@@ -14,6 +14,8 @@ export const supabase = createClient<Database>(supaBaseURL, supabaseAnonKey);
 
 export function getStorageURL(path: string | null) {
     if (path === null) return null;
-    const URL = supabase + "/storage/v1/object/public/" + path;
+    const URL = supabase + "/storage/buckets/profile_image/" + path;
     return URL;
   }
+
+   // storage/v1/object/public/

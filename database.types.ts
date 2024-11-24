@@ -120,18 +120,21 @@ export type Database = {
       }
       profiles: {
         Row: {
+          favorites: string | null
           first_name: string | null
           id: string
           image_url: string | null
           last_name: string | null
         }
         Insert: {
-          first_name?: string | null
+          favorites?: string | null
+          first_name: string
           id: string
           image_url?: string | null
-          last_name?: string | null
+          last_name: string
         }
         Update: {
+          favorites?: string | null
           first_name?: string | null
           id?: string
           image_url?: string | null
