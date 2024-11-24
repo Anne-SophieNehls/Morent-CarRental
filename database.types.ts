@@ -25,7 +25,7 @@ export type Database = {
           pick_up_time: string
           town: string
           user_id: string
-          vehicleID: string
+          vehicle_id: string
         }
         Insert: {
           address: string
@@ -42,7 +42,7 @@ export type Database = {
           pick_up_time: string
           town: string
           user_id: string
-          vehicleID: string
+          vehicle_id: string
         }
         Update: {
           address?: string
@@ -59,21 +59,43 @@ export type Database = {
           pick_up_time?: string
           town?: string
           user_id?: string
-          vehicleID?: string
+          vehicle_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "bookings_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
+            foreignKeyName: "bookings_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
             referencedRelation: "vehicles"
             referencedColumns: ["id"]
           },
+        ]
+      }
+      favorites: {
+        Row: {
+          created_at: string
+          id: number
+          user_id: string
+          vehicle_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          user_id: string
+          vehicle_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          user_id?: string
+          vehicle_id?: string
+        }
+        Relationships: [
           {
-            foreignKeyName: "bookings_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "favorites_vehicle_id_fkey"
+            columns: ["vehicle_id"]
             isOneToOne: false
-            referencedRelation: "profiles"
+            referencedRelation: "vehicles"
             referencedColumns: ["id"]
           },
         ]
@@ -98,22 +120,25 @@ export type Database = {
       }
       profiles: {
         Row: {
+          favorites: string | null
           first_name: string
           id: string
+          image_url: string | null
           last_name: string
-          profile_img: string | null
         }
         Insert: {
+          favorites?: string | null
           first_name: string
-          id?: string
+          id: string
+          image_url?: string | null
           last_name: string
-          profile_img?: string | null
         }
         Update: {
+          favorites?: string | null
           first_name?: string
           id?: string
+          image_url?: string | null
           last_name?: string
-          profile_img?: string | null
         }
         Relationships: []
       }
@@ -125,6 +150,7 @@ export type Database = {
           name: string
           stars: number
           text: string
+          user_id: string | null
           vehicleID: string
         }
         Insert: {
@@ -134,6 +160,7 @@ export type Database = {
           name: string
           stars: number
           text: string
+          user_id?: string | null
           vehicleID: string
         }
         Update: {
@@ -143,6 +170,7 @@ export type Database = {
           name?: string
           stars?: number
           text?: string
+          user_id?: string | null
           vehicleID?: string
         }
         Relationships: []
@@ -160,7 +188,7 @@ export type Database = {
           gearType: string
           horstpower: string
           id: string
-          locations: Json
+          locations: string
           luggage: number
           model: string
           pricePerDay: number
@@ -182,7 +210,7 @@ export type Database = {
           gearType: string
           horstpower: string
           id?: string
-          locations: Json
+          locations: string
           luggage: number
           model: string
           pricePerDay: number
@@ -204,7 +232,7 @@ export type Database = {
           gearType?: string
           horstpower?: string
           id?: string
-          locations?: Json
+          locations?: string
           luggage?: number
           model?: string
           pricePerDay?: number

@@ -17,7 +17,6 @@ import { useThemeContext } from "@/context/LightDarkModeContext";
 //import { user } from "@/context/userContext";
 
 export default function Header() {
-
   const { theme } = useThemeContext();
 
   const { user, setUser } = useUserContext();
@@ -66,6 +65,7 @@ export default function Header() {
               size={"icon"}
               className="h-14 w-14 rounded-full mx-2"
             >
+              {/* {!user img : } */}
               <img
                 src="/img/icons/profile-without-profilpictuare.svg"
                 alt="profil img"
