@@ -1,4 +1,5 @@
 import { CarCardProps } from "@/components/CarCard";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useThemeContext } from "@/context/LightDarkModeContext";
 import { useState } from "react";
@@ -179,8 +180,9 @@ export default function PaymentPage(props: CarCardProps) {
                 <p className="text-[#90A3BF]">Step 4 von 4</p>
               </div>
             </form>
-            <div></div>
-            <div></div>
+          </div>
+          <div>
+            <Button onSubmit={handelSubmitRent}>Rent Now</Button>
           </div>
         </form>
         <div></div>
