@@ -52,7 +52,7 @@ In your profile, you can easily access your booking history, saved favorite cars
  
  ### Fovorites
  <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="Project Screenshot">
+  <img src="./public/img/read-me/Like-card.png" alt="Project Screenshot">
 </div>
 <br/>
  bla bla
@@ -127,7 +127,7 @@ The Morent Web-App uses the following third-party libraries:
 - `jsonwebtoken` - An implementation of JSON Web Tokens.
 - `react-router-dom` - DOM bindings for React Router.
 - `shadcn` - Is a Librarie for CSS Components coded with Tailwind.
-- `bla`- For the Map Components
+- `leaflet-js`- For the Map Components
 - `TanStack Query v5` - Used for Fetches, Loading and Loding-error-handle
 
 
