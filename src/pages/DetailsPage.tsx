@@ -36,7 +36,7 @@ export default function DetailsPage() {
 
   return (
     <div className="h-80 grid grid-cols-3 grid-rows-1 gap-8">
-      <div className=" w-auto bg-white rounded-lg">
+      <div className=" w-auto h-80 bg-white rounded-lg ml-7">
         <img
           className="rounded-xl w-full h-full"
           src={car.carImg}
