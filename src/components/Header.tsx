@@ -73,7 +73,7 @@ export default function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className={`w-56 bg-white  p-12 rounded-lg drop-shadow-lg mr-10 flex flex-col gap-4 theme--${theme}-drop z-10	`}
+            className={`w-56 bg-white  p-12 rounded-lg drop-shadow-lg mr-10 flex flex-col gap-4 theme--${theme}-drop z-50	`}
           >
             <DropdownMenuLabel>Hi, {/* {user.name} */}</DropdownMenuLabel>
             <DropdownMenuSeparator />

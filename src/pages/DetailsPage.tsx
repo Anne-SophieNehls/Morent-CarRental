@@ -9,7 +9,6 @@ import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
 import Map from "@/components/Map";
 
-
 export default function DetailsPage() {
   const { id } = useParams();
   const [car, setCar] = useState<CarData | null>(null);
@@ -24,11 +23,14 @@ export default function DetailsPage() {
   };
   type CarData = QueryData<ReturnType<typeof getCar>>;
 
-  useEffect(() => {
-    if (id) {
-      getCar(id).then((result) => setCar(result.data));
-    }
-  }, []);
+  useEffect(
+    () => {
+      if (id) {
+        getCar(id).then((result) => setCar(result.data));
+      }
+    } /* eslint-disable */,
+    [] /* eslint-enable */
+  );
 
   if (!car) {
     return "Loading...?";
@@ -43,95 +45,107 @@ export default function DetailsPage() {
           alt="Car Image"
         />
       </div>
-        <div
-          className={` h-80 p-3 grid grid-rows-auto w-full gap-6 bg-white rounded-lg`}>
-          <div>
-            <h2 className={`font-bold mb-2 mx-2 `}>
-              {car.brand} {car.model} ({car.year})
-            </h2>
-            <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
-              {car.vehicleType}
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-5">
-            <div className="flex gap-14 items-center">
-              <div className="flex gap-1">
-                <img src={tankIcon} alt="fuel" />
-                <p className="text-[#62707c] font-medium text- self-center">Fuel:</p>
-              </div>
-              <div>
-                <p className="text-[#6C757D] font-light text-sm self-center">
-                  {car.fuel}
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-10 items-center">
-              <div className="flex gap-1">
-                <img src={tankIcon} alt="tank-l-pro-100km" />
-                <p className="text-[#62707c] font-medium text- self-center">Consumption:</p>
-              </div>
-              <p className="text-[#6C757D] font-light text-sm self-center">
-                {car.consumption} L
+      <div
+        className={` h-80 p-3 grid grid-rows-auto w-full gap-6 bg-white rounded-lg`}
+      >
+        <div>
+          <h2 className={`font-bold mb-2 mx-2 `}>
+            {car.brand} {car.model} ({car.year})
+          </h2>
+          <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
+            {car.vehicleType}
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-5">
+          <div className="flex gap-14 items-center">
+            <div className="flex gap-1">
+              <img src={tankIcon} alt="fuel" />
+              <p className="text-[#62707c] font-medium text- self-center">
+                Fuel:
               </p>
             </div>
-            <div className="flex gap-10 items-center">
-              <div className="flex gap-1">
-                <img src={typeIcon} alt="type-icon" />
-                <p className="text-[#62707c] font-medium text- self-center">Gear:</p>
-              </div>
-              <div>
-                <p className="text-[#6C757D] font-light text-sm self-center">
-                  {car.gearType}
-                </p>
-              </div>
+            <div>
+              <p className="text-[#6C757D] font-light text-sm self-center">
+                {car.fuel}
+              </p>
             </div>
-            <div className="flex gap-10 items-center">
-              <div className="flex gap-1">
-                <img src={seatsIcon} alt="how many people" />
-                <p className="text-[#62707c] font-medium text- self-center">Seats:</p>
-              </div>
-              <div>
-                <p className="text-[#6C757D] font-light text-sm self-center">
-                  {car.seats} Persons
-                </p>
-              </div>
+          </div>
+          <div className="flex gap-10 items-center">
+            <div className="flex gap-1">
+              <img src={tankIcon} alt="tank-l-pro-100km" />
+              <p className="text-[#62707c] font-medium text- self-center">
+                Consumption:
+              </p>
             </div>
-            <div className="flex gap-10 items-center">
-              <div className="flex gap-1">
+            <p className="text-[#6C757D] font-light text-sm self-center">
+              {car.consumption} L
+            </p>
+          </div>
+          <div className="flex gap-10 items-center">
+            <div className="flex gap-1">
+              <img src={typeIcon} alt="type-icon" />
+              <p className="text-[#62707c] font-medium text- self-center">
+                Gear:
+              </p>
+            </div>
+            <div>
+              <p className="text-[#6C757D] font-light text-sm self-center">
+                {car.gearType}
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-10 items-center">
+            <div className="flex gap-1">
               <img src={seatsIcon} alt="how many people" />
-              <p className="text-[#62707c] font-medium text- self-center">Luggage:</p>
-              </div>
-              <div>
+              <p className="text-[#62707c] font-medium text- self-center">
+                Seats:
+              </p>
+            </div>
+            <div>
+              <p className="text-[#6C757D] font-light text-sm self-center">
+                {car.seats} Persons
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-10 items-center">
+            <div className="flex gap-1">
+              <img src={seatsIcon} alt="how many people" />
+              <p className="text-[#62707c] font-medium text- self-center">
+                Luggage:
+              </p>
+            </div>
+            <div>
               <p className="text-[#6C757D] font-light text-sm self-center">
                 {car.luggage}
               </p>
-              </div>
             </div>
-            <div className="flex gap-10 items-center">
-              <div className="flex gap-1">
+          </div>
+          <div className="flex gap-10 items-center">
+            <div className="flex gap-1">
               <img src={seatsIcon} alt="how many people" />
-              <p className="text-[#62707c] font-medium text- self-center">Color:</p>
-              </div>
-              <div>
+              <p className="text-[#62707c] font-medium text- self-center">
+                Color:
+              </p>
+            </div>
+            <div>
               <p className="text-[#6C757D] font-light text-sm self-center">
                 {car.colors}
               </p>
-              </div>
             </div>
           </div>
-          <div className="flex justify-between items-center">
-            <h2 className="font-bold">
-              {`${car.pricePerDay}/`}
-              <span className="text-xs text-[#90A3BF]">day</span>
-            </h2>
-            <Link to={`/details/${car.id}`}>
-              <Button className="bg-[#3563E9]">Rent now</Button>
-            </Link>
-          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <h2 className="font-bold">
+            {`${car.pricePerDay}/`}
+            <span className="text-xs text-[#90A3BF]">day</span>
+          </h2>
+          <Link to={`/rent/${car.id}`}>
+            <Button className="bg-[#3563E9]">Rent now</Button>
+          </Link>
+        </div>
       </div>
       <Map></Map>
-      <div>
-      </div>
+      <div></div>
     </div>
   );
 }
