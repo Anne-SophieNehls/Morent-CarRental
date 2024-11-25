@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+/* import { useParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
@@ -22,9 +22,9 @@ type Favorite = {
   user_id: string;
   vehicle_id: Vehicle;
 };
-
+ */
 export default function FavoritesPage() {
-  const { userid } = useParams();
+  /*   const { userid } = useParams();
   const [favoritesData, setFavoritesData] = useState<FavoritesData | null>(
     null
   );
@@ -46,12 +46,12 @@ export default function FavoritesPage() {
     getFavorites().then((result) => {
       if (result?.data) setFavoritesData(result.data);
     });
-  }, [userid]);
+  }, [userid]); */
 
   return (
     <div>
       <h1>Your Favorites</h1>
-      {favoritesData ? (
+      {/* {favoritesData ? (
         favoritesData.map((favorite: Favorite) => (
           <CarCard
             id={favorite.vehicle_id.id}
@@ -69,7 +69,7 @@ export default function FavoritesPage() {
         ))
       ) : (
         <p>Loading favorites...</p>
-      )}
+      )} */}
     </div>
   );
 }

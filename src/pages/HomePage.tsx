@@ -157,87 +157,106 @@ export default function HomePage() {
     <div
       className={`bg-[#F6F7F9] flex ${`theme--${theme}-bg`} justify-center `}
     >
-    	{sidebarVisible && <Sidebar />}
-    	<div className="flex flex-col w-11/12 ">
-        	<div className="flex gap-5 mb-40 justify-around mt-5">
-          	<CarAddOne />
-          	<CarAddTwo />
-        	</div>
-        	<div className="flex justify-around mb-10 items-center">
-          		<form className={`bg-white rounded-lg p-4 shadow-sm ${`theme--${theme}-card`}`}>
-            		<h3>Pickup</h3>
-            		<div className="flex">
-              			<div>
-                			<p>Location:</p>
-                			<select onChange={handleLocation}>
-                  				<option>Please Select</option>
-                  					{locationsArray?.map((el, index) => (
-                    				<option key={index} value={el}>{el}</option>))};
-                			</select>
-              			</div>
-              			<div>
-                			<p>Date</p>
-                			<input type="date" />
-              			</div>
-              			<div>
-                			<p>Time</p>
-                			<input type="time" />
-              			</div>
-            		</div>
-          		</form>
-          		<Button size={"lg"} className="bg-[#3563E9]">
-            		↑↓
-          		</Button>
-          		<form className={`rounded-lg p-4  bg-white shadow-sm ${`theme--${theme}-card`}`}>
-            		<h3>Drop-Off</h3>
-            		<div className="flex">
-              			<div>
-                			<p>Location:</p>
-                			<select>
-                  				<option>Please Select</option>
-                  					{locationsArray?.map((el, index) => (
-                    			<option key={index} value={el}>{el}</option>))};
-                			</select>
-              			</div>
-              			<div className="">
-                			<p>Date</p>
-                			<input type="date" />
-              			</div>
-              			<div>
-                			<p>Time</p>
-                			<input type="time" />
-              			</div>
-            		</div>
-        		</form>
-        	</div>
-        	<div className="text-right mr-20 mb-5">
-          		<Button
-            	disabled={!locationsFilter || locationsFilter === "Please Select"}
-            	className="bg-[#3563E9]"
-            	onClick={toggleSidebar}
-          		>
-            	Filter
-        		</Button>
-        	</div>
-        	<div className={`grid ${sidebarVisible ? 'grid-cols-3' : 'grid-cols-4'} gap-5 mb-10 justify-items-center`}>
-          	{vehiclesData?.map((el) => {
-            	return (
-            	<CarCard
-                	id={el.id}
-                	key={el.id}
-                	brand={el.brand}
-                	carImg={el.carImg}
-                	model={el.model}
-                	gearType={el.gearType}
-                	vehicleType={el.vehicleType}
-                	year={el.year.toString()}
-                	seats={el.seats.toString()}
-                	pricePerDay={el.pricePerDay.toString()}
-                	consumption={el.consumption}
-					heartIcon={whiteHeartIcon}
-            	></CarCard>)})}:
-        	</div>
-      	</div>
+      {sidebarVisible && <Sidebar />}
+      <div className="flex flex-col w-11/12 ">
+        <div className="flex gap-5 mb-40 justify-around mt-5">
+          <CarAddOne />
+          <CarAddTwo />
+        </div>
+        <div className="flex justify-around mb-10 items-center">
+          <form
+            className={`bg-white rounded-lg p-4 shadow-sm ${`theme--${theme}-card`}`}
+          >
+            <h3>Pickup</h3>
+            <div className="flex">
+              <div>
+                <p>Location:</p>
+                <select onChange={handleLocation}>
+                  <option>Please Select</option>
+                  {locationsArray?.map((el, index) => (
+                    <option key={index} value={el}>
+                      {el}
+                    </option>
+                  ))}
+                  ;
+                </select>
+              </div>
+              <div>
+                <p>Date</p>
+                <input type="date" />
+              </div>
+              <div>
+                <p>Time</p>
+                <input type="time" />
+              </div>
+            </div>
+          </form>
+          <Button size={"lg"} className="bg-[#3563E9]">
+            ↑↓
+          </Button>
+          <form
+            className={`rounded-lg p-4  bg-white shadow-sm ${`theme--${theme}-card`}`}
+          >
+            <h3>Drop-Off</h3>
+            <div className="flex">
+              <div>
+                <p>Location:</p>
+                <select>
+                  <option>Please Select</option>
+                  {locationsArray?.map((el, index) => (
+                    <option key={index} value={el}>
+                      {el}
+                    </option>
+                  ))}
+                  ;
+                </select>
+              </div>
+              <div className="">
+                <p>Date</p>
+                <input type="date" />
+              </div>
+              <div>
+                <p>Time</p>
+                <input type="time" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="text-right mr-20 mb-5">
+          <Button
+            disabled={!locationsFilter || locationsFilter === "Please Select"}
+            className="bg-[#3563E9]"
+            onClick={toggleSidebar}
+          >
+            Filter
+          </Button>
+        </div>
+        <div
+          className={`grid ${
+            sidebarVisible ? "grid-cols-3" : "grid-cols-4"
+          } gap-5 mb-10 justify-items-center`}
+        >
+          {vehiclesData?.map((el) => {
+            return (
+              <CarCard
+                id={el.id}
+                key={el.id}
+                brand={el.brand}
+                carImg={el.carImg}
+                model={el.model}
+                gearType={el.gearType}
+                vehicleType={el.vehicleType}
+                year={el.year.toString()}
+                seats={el.seats.toString()}
+                pricePerDay={el.pricePerDay.toString()}
+                consumption={el.consumption}
+                heartIcon={whiteHeartIcon}
+              ></CarCard>
+            );
+          })}
+          :
+        </div>
+      </div>
     </div>
   );
 }
