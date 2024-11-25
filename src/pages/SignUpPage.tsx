@@ -10,7 +10,7 @@ export default function SignUpPage() {
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
+  //const [image, setImage] = useState("");
   const { setUser } = useUserContext();
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -20,7 +20,11 @@ export default function SignUpPage() {
       email,
       password,
       options: {
-        data: { first_name: firstName, last_name: lastName, image_url: image },
+        data: {
+          first_name: firstName,
+          last_name: lastName,
+          image_url: fileRef.current?.value,
+        },
       },
     });
     if (result.error) {
@@ -29,6 +33,8 @@ export default function SignUpPage() {
       setUser(result.data.user);
     }
   };
+  //const img = fileRef.current?.value
+  //setImage(img)
 
   return (
     <form className="w-96 p-3 bg-white rounded-lg mx-auto">

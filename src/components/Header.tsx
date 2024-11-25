@@ -25,7 +25,7 @@ export default function Header() {
     supabase.auth.signOut();
   };
   const { setSearchFor } = useSearch();
-  const { searchFor } = useSearch();
+  // const { searchFor } = useSearch();
   return (
     <header
       className={`flex justify-between items-center mb-10 mx-10 pt-10 theme--${theme}-hf`}
