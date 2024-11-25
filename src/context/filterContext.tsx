@@ -1,17 +1,17 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 interface FilterContext {
-	available2SeatsCars: Number
-    available4SeatsCars: Number
-    available5SeatsCars: Number
-    available7SeatsCars: Number
-	availableSportsCars: Number;
-	availableSUVs: Number;
-	availableMPVs: Number;
-	availableElectricCars: Number;
-	availableSedans: Number;
-	availableHatchbacks: Number;
-	availableCoupes: Number;
+	available2SeatsCars: number
+    available4SeatsCars: number
+    available5SeatsCars: number
+    available7SeatsCars: number
+	availableSportsCars: number;
+	availableSUVs: number;
+	availableMPVs: number;
+	availableElectricCars: number;
+	availableSedans: number;
+	availableHatchbacks: number;
+	availableCoupes: number;
 	filterSport: boolean;
 	filterSUV: boolean;
 	filterMPV: boolean;
@@ -22,7 +22,7 @@ interface FilterContext {
 	filter4Seats: boolean;
 	filter7Seats: boolean;
 	filter5Seats: boolean;
-	filteByPriceRange: Number;
+	filteByPriceRange: number;
 	setFilterSport: (term: boolean) => void;
 	setFilterSUV: (term: boolean) => void;
 	setFilterMPV: (term: boolean) => void;
@@ -95,6 +95,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFilter = () => {
   const context = useContext(FilterContext);
   if (!context) {

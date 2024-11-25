@@ -1,21 +1,19 @@
-import { useParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
-import redHeartIcon from "/img/icons/heart-red-icon.svg";
-
+import { useUserContext } from "@/context/userContext";
 
 export default function FavoritesPage() {
-  const { userid } = useParams();
+  const { user } = useUserContext();
   const [favoritesData, setFavoritesData] = useState<FavoritesData>(null);
 
      const getFavorites = async () => {
-    if (!userid) return null;
+    if (!user) return null;
 
     const result = await supabase
       .from("favorites")
       .select("*, vehicles(*)")
-      .eq("user_id", userid);
+      .eq("user_id", user.id);
       return result.data;
   };
 
@@ -26,8 +24,9 @@ export default function FavoritesPage() {
       if (result)
       setFavoritesData(result);
     });
-  }, [userid]); 
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
+  console.log(favoritesData)
   return (
     <div>
       <h1>Your Favorites</h1>
@@ -45,7 +44,6 @@ export default function FavoritesPage() {
 				seats={favorite.vehicles!.seats?.toString()}
 				pricePerDay={favorite.vehicles!.pricePerDay?.toString()}
 				consumption={favorite.vehicles!.consumption}
-				heartIcon={redHeartIcon}
 				/>
 			))
 			) : (<p>You have no fovorite cars</p>)

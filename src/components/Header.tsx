@@ -14,7 +14,6 @@ import { useSearch } from "@/context/searchContext";
 import { supabase } from "@/lib/supabase";
 import { useUserContext } from "@/context/userContext";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-//import { user } from "@/context/userContext";
 
 export default function Header() {
   const { theme } = useThemeContext();
@@ -96,7 +95,7 @@ export default function Header() {
             </DropdownMenuItem>
 
             <DropdownMenuItem>
-              <Link to="/favorites/:id">
+              <Link to={`/favorites/${user?.id}`}>
                 <span className="flex gap-2">
                   <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
                   Favorites
