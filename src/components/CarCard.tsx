@@ -2,7 +2,7 @@ import tankIcon from "/img/icons/tank-icon.svg";
 import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
 // import redHeartIcon from "/img/icons/heart-red-icon.svg";
-// import whiteHeartIcon from "/img/icons/heart-outline-white.svg";
+import whiteHeartIcon from "/img/icons/heart-outline-white.svg";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { useThemeContext } from "@/context/LightDarkModeContext";
