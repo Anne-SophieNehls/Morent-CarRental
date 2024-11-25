@@ -28,7 +28,6 @@ export default function SignUpPage() {
       setUser(result.data.user);
 
       const file = fileRef.current?.files?.[0] || null;
-      //let imagePath: string | null = null;
 
       if (file && result.data.user) {
         const uploadResult = await supabase.storage
@@ -36,7 +35,6 @@ export default function SignUpPage() {
           .upload(`${result.data.user.id}/profile`, file, {
             upsert: true,
           });
-        // imagePath = uploadResult.data?.fullPath || null;
         if (uploadResult.data) {
           await supabase
             .from("profiles")
