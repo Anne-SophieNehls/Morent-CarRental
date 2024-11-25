@@ -50,7 +50,7 @@ export default function HomePage() {
   ];
 
   function getFilterVehicles() {
-    const filterStrings: String[] = [];
+    const filterStrings: string[] = [];
     filtersVehicles.forEach((filter) => {
       if (filter.isActive) {
         filterStrings.push(filter.value);
@@ -71,7 +71,7 @@ export default function HomePage() {
   }
 
   function getFilterSeats() {
-    const filterStrings: String[] = [];
+    const filterStrings: string[] = [];
     filterSeats.forEach((filter) => {
       if (filter.isActive) {
         filterStrings.push(filter.value);
@@ -116,23 +116,26 @@ export default function HomePage() {
   const locationsString = locationsData?.locations?.toString();
   const locationsArray = locationsString?.split(",");
 
-  useEffect(() => {
-    getVehicles().then((result) => setVehiclesData(result.data));
-  }, [
-    searchFor,
-    filter2Seats,
-    filter4Seats,
-    filter5Seats,
-    filter7Seats,
-    filterCoupe,
-    filterHatchback,
-    filterSUV,
-    filterSedan,
-    filterSport,
-    filterMPV,
-    filteByPriceRange,
-    locationsFilter,
-  ]);
+  useEffect(
+    () => {
+      getVehicles().then((result) => setVehiclesData(result.data));
+    },
+    /* eslint-disable */ [
+      searchFor,
+      filter2Seats,
+      filter4Seats,
+      filter5Seats,
+      filter7Seats,
+      filterCoupe,
+      filterHatchback,
+      filterSUV,
+      filterSedan,
+      filterSport,
+      filterMPV,
+      filteByPriceRange,
+      locationsFilter,
+    ] /* eslint-enable */
+  );
 
   useEffect(() => {
     getLocations().then((locations) => setLocationsData(locations.data));
