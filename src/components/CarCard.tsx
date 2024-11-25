@@ -6,6 +6,9 @@ import whiteHeartIcon from "/img/icons/heart-outline-white.svg";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { useThemeContext } from "@/context/LightDarkModeContext";
+import { supabase } from "@/lib/supabase";
+import { useState } from "react";
+import { useUserContext } from "@/context/userContext";
 
 export interface CarCardProps {
   id: string;
@@ -22,7 +25,19 @@ export interface CarCardProps {
 }
 
 export default function CarCard(props: CarCardProps) {
-  const { theme } = useThemeContext();
+	const { theme } = useThemeContext();
+	const [isFavorited, setIsFavorited] = useState(false);
+
+	const handleFavorite = async () => {
+    	const {user} = useUserContext();
+		if (user)
+		{
+			const result = await supabase
+			.from("favorites")
+			.insert([{user_id: user, vehicle_id: props.id,},]);
+		}
+
+  };
 
   return (
     <div className={`p-3 bg-white rounded-lg theme--${theme}-card`}>
@@ -31,7 +46,7 @@ export default function CarCard(props: CarCardProps) {
           className={`font-bold mb-2 mx-2 `}
         >{`${props.brand} ${props.model}`}</h2>
         <div>
-          <img className="hover:h-7" src={props.heartIcon} alt="favorited" />
+          <img className="hover:h-7" src={props.heartIcon} alt="favorited" onClick={handleFavorite}/>
         </div>
       </div>
       <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">

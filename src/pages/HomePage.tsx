@@ -50,7 +50,7 @@ export default function HomePage() {
   ];
 
   function getFilterVehicles() {
-    const filterStrings: String[] = [];
+    const filterStrings: string[] = [];
     filtersVehicles.forEach((filter) => {
       if (filter.isActive) {
         filterStrings.push(filter.value);
@@ -71,7 +71,7 @@ export default function HomePage() {
   }
 
   function getFilterSeats() {
-    const filterStrings: String[] = [];
+    const filterStrings: string[] = [];
     filterSeats.forEach((filter) => {
       if (filter.isActive) {
         filterStrings.push(filter.value);
@@ -98,7 +98,7 @@ export default function HomePage() {
   const getVehicles = async () => {
     const result = await supabase
       .from("vehicles")
-      .select("*")
+      .select("*, favorites(*)")
       .ilike("brand", `%${searchFor}%`)
       .or(getFilterVehicles())
       .or(getFilterSeats())
@@ -106,6 +106,7 @@ export default function HomePage() {
       .ilike("locations", `%${locationsFilter}%`);
     return result;
   };
+
   const getLocations = async () => {
     const result = await supabase.from("locations").select("*").single();
     return result;

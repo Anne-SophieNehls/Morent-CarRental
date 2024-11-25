@@ -1,22 +1,8 @@
-/* import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
 import redHeartIcon from "/img/icons/heart-red-icon.svg";
-
-
-/* type Vehicle = {
-  id: string;
-  brand: string;
-  model: string;
-  year: number;
-  carImg: string;
-  gearType: string;
-  vehicleType: string;
-  seats: number;
-  pricePerDay: number;
-  consumption: string;
-};
 
 
 export default function FavoritesPage() {
@@ -45,24 +31,26 @@ export default function FavoritesPage() {
   return (
     <div>
       <h1>Your Favorites</h1>
-          { favoritesData ? (favoritesData.map((favorite) => (
-            <CarCard
-              id={favorite.vehicles!.id}
-              key={favorite.vehicles!.id}
-              brand={favorite.vehicles!.brand}
-              carImg={favorite.vehicles!.carImg}
-              model={favorite.vehicles!.model}
-              gearType={favorite.vehicles!.gearType}
-              vehicleType={favorite.vehicles!.vehicleType}
-              year={favorite.vehicles!.year.toString()}
-              seats={favorite.vehicles!.seats?.toString()}
-              pricePerDay={favorite.vehicles!.pricePerDay?.toString()}
-              consumption={favorite.vehicles!.consumption}
-			  heartIcon={redHeartIcon}
-            />
-          ))
-        ) : (<p>You have no fovorite cars</p>)
-      }
+	  <div className="grid grid-cols-4 gap-5">
+			{ favoritesData ? (favoritesData.map((favorite) => (
+				<CarCard
+				id={favorite.vehicles!.id}
+				key={favorite.vehicles!.id}
+				brand={favorite.vehicles!.brand}
+				carImg={favorite.vehicles!.carImg}
+				model={favorite.vehicles!.model}
+				gearType={favorite.vehicles!.gearType}
+				vehicleType={favorite.vehicles!.vehicleType}
+				year={favorite.vehicles!.year.toString()}
+				seats={favorite.vehicles!.seats?.toString()}
+				pricePerDay={favorite.vehicles!.pricePerDay?.toString()}
+				consumption={favorite.vehicles!.consumption}
+				heartIcon={redHeartIcon}
+				/>
+			))
+			) : (<p>You have no fovorite cars</p>)
+		}
+	  </div>
     </div>
   );
 }
