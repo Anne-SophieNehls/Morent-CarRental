@@ -1,14 +1,14 @@
 import tankIcon from "/img/icons/tank-icon.svg";
 import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
-// import redHeartIcon from "/img/icons/heart-red-icon.svg";
+import redHeartIcon from "/img/icons/heart-red-icon.svg";
 import whiteHeartIcon from "/img/icons/heart-outline-white.svg";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { useThemeContext } from "@/context/LightDarkModeContext";
 import { supabase } from "@/lib/supabase";
-import { useState } from "react";
 import { useUserContext } from "@/context/userContext";
+import { useEffect, useState } from "react";
 
 export interface CarCardProps {
   id: string;
@@ -21,23 +21,53 @@ export interface CarCardProps {
   seats: string;
   consumption: string;
   gearType: string;
-  heartIcon: string;
 }
 
 export default function CarCard(props: CarCardProps) {
 	const { theme } = useThemeContext();
-	const [isFavorited, setIsFavorited] = useState(false);
+	const { user } = useUserContext();
+	const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+	const checkFavorite = async () => {
+		if (!user)
+			return;
+
+		const { data, error } = await supabase
+		.from("favorites")
+		.select("id")
+		.eq("user_id", user.id)
+		.eq("vehicle_id", props.id);
+	  
+	  if (error) {
+		console.error("Fehler bei der Favoritenabfrage:", error);
+	  }
+
+		setIsFavorite(!!data);
+	}
 
 	const handleFavorite = async () => {
-    	const {user} = useUserContext();
-		if (user)
-		{
-			const result = await supabase
-			.from("favorites")
-			.insert([{user_id: user, vehicle_id: props.id,},]);
+		if (user ){
+			if (!isFavorite){
+				await supabase
+				.from("favorites")
+				.insert([{user_id: user.id, vehicle_id: props.id,},]);
+				setIsFavorite(true);
+			} else {
+				await supabase
+				.from("favorites")
+				.delete()
+				.eq("user_id", user.id)
+				.eq("vehicle_id", props.id);
+			  setIsFavorite(false);
+			}
 		}
+	};
 
-  };
+	useEffect(() => {
+		checkFavorite();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [user]);
+
 
   return (
     <div className={`p-3 bg-white rounded-lg theme--${theme}-card`}>
@@ -46,7 +76,7 @@ export default function CarCard(props: CarCardProps) {
           className={`font-bold mb-2 mx-2 `}
         >{`${props.brand} ${props.model}`}</h2>
         <div>
-          <img className="hover:h-7" src={props.heartIcon} alt="favorited" onClick={handleFavorite}/>
+          <img className="hover:h-7" src={isFavorite ? whiteHeartIcon : redHeartIcon} alt="favorited" onClick={handleFavorite}/>
         </div>
       </div>
       <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">

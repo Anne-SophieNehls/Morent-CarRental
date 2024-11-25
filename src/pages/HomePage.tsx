@@ -9,7 +9,6 @@ import Sidebar from "@/components/Sidebar";
 import { useSearch } from "@/context/searchContext";
 import { useFilter } from "@/context/filterContext";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-import whiteHeartIcon from "/img/icons/heart-outline-white.svg";
 
 export default function HomePage() {
   const { theme } = useThemeContext();
@@ -254,7 +253,6 @@ export default function HomePage() {
                 seats={el.seats.toString()}
                 pricePerDay={el.pricePerDay.toString()}
                 consumption={el.consumption}
-                heartIcon={whiteHeartIcon}
               ></CarCard>
             );
           })}

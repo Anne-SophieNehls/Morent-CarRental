@@ -9,6 +9,7 @@ interface ThemeContextProviderProps {
   children: React.ReactNode;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ThemeContext = createContext<ThemeContext>(null!);
 
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
@@ -26,4 +27,5 @@ export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
     </ThemeContext.Provider>
   );
 }
+// eslint-disable-next-line react-refresh/only-export-components
 export const useThemeContext = () => useContext(ThemeContext);
