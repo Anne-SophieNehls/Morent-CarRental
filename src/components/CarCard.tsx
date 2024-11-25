@@ -24,7 +24,7 @@ export default function CarCard(props: CarCardProps) {
   const { theme } = useThemeContext();
 
   return (
-    <div className={`w-1/4 p-3 bg-white rounded-lg theme--${theme}-card`}>
+    <div className={`p-3 bg-white rounded-lg theme--${theme}-card`}>
       <div className="flex justify-between">
         <h2
           className={`font-bold mb-2 mx-2 `}
