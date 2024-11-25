@@ -1,30 +1,11 @@
-/* import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
 import { QueryData } from "@supabase/supabase-js";
 
-type Vehicle = {
-  id: string;
-  brand: string;
-  model: string;
-  year: number;
-  carImg: string;
-  gearType: string;
-  vehicleType: string;
-  seats: number;
-  pricePerDay: number;
-  consumption: string;
-};
-
-type Favorite = {
-  id: number;
-  user_id: string;
-  vehicle_id: Vehicle;
-};
- */
 export default function FavoritesPage() {
-  /*   const { userid } = useParams();
+  const { userid } = useParams();
   const [favoritesData, setFavoritesData] = useState<FavoritesData | null>(
     null
   );
@@ -46,30 +27,31 @@ export default function FavoritesPage() {
     getFavorites().then((result) => {
       if (result?.data) setFavoritesData(result.data);
     });
-  }, [userid]); */
+  }, [userid]);
 
   return (
     <div>
       <h1>Your Favorites</h1>
-      {/* {favoritesData ? (
-        favoritesData.map((favorite: Favorite) => (
-          <CarCard
-            id={favorite.vehicle_id.id}
-            key={favorite.vehicle_id.id}
-            brand={favorite.vehicle_id.brand}
-            carImg={favorite.vehicle_id.carImg}
-            model={favorite.vehicle_id.model}
-            gearType={favorite.vehicle_id.gearType}
-            vehicleType={favorite.vehicle_id.vehicleType}
-            year={favorite.vehicle_id.year.toString()}
-            seats={favorite.vehicle_id.seats?.toString()}
-            pricePerDay={favorite.vehicle_id.pricePerDay?.toString()}
-            consumption={favorite.vehicle_id.consumption}
-          />
-        ))
-      ) : (
-        <p>Loading favorites...</p>
-      )} */}
+	  <div className="grid grid-cols-4 gap-5">
+			{ favoritesData ? (favoritesData.map((favorite) => (
+				<CarCard
+				id={favorite.vehicles!.id}
+				key={favorite.vehicles!.id}
+				brand={favorite.vehicles!.brand}
+				carImg={favorite.vehicles!.carImg}
+				model={favorite.vehicles!.model}
+				gearType={favorite.vehicles!.gearType}
+				vehicleType={favorite.vehicles!.vehicleType}
+				year={favorite.vehicles!.year.toString()}
+				seats={favorite.vehicles!.seats?.toString()}
+				pricePerDay={favorite.vehicles!.pricePerDay?.toString()}
+				consumption={favorite.vehicles!.consumption}
+				heartIcon={redHeartIcon}
+				/>
+			))
+			) : (<p>You have no fovorite cars</p>)
+		}
+	 </div>
     </div>
   );
 }
