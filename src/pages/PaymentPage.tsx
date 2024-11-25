@@ -2,20 +2,21 @@ import { CarCardProps } from "@/components/CarCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+//import { QueryData } from "@supabase/supabase-js";
+//import { useState } from "react";
+// import { Link, useParams } from "react-router-dom";
 
 export default function PaymentPage(props: CarCardProps) {
-  const { id } = useParams();
+  // const { id } = useParams();
   const { theme } = useThemeContext();
-  const [locationsData, setLocationsData] = useState<LocationsData | null>(
-    null
-  );
-  const [locationsFilter, setLocationsFilter] = useState("");
+  //const [locationsData, setLocationsData] = useState<LocationsData | null>( null );
+  // const [locationsFilter, setLocationsFilter] = useState("");
 
-  type LocationsData = QueryData<ReturnType<typeof getLocations>>;
-  const locationsString = locationsData?.locations?.toString();
-  const locationsArray = locationsString?.split(",");
+  //type LocationsData = QueryData<ReturnType<typeof  /* getLocations */>>;
+  ///const locationsString = locationsData?.locations?.toString();
+  // const locationsArray = locationsString?.split(",");
+  // setLocationsData
+  function handelSubmitRent() {}
 
   return (
     <section className="relative h-1/2">
@@ -110,7 +111,7 @@ export default function PaymentPage(props: CarCardProps) {
               <div className="flex">
                 <div>
                   <p>Location:</p>
-                  <select onChange={handleLocation}>
+                  {/*  <select onChange={handleLocation}>
                     <option>Please Select</option>
                     {locationsArray?.map((el, index) => (
                       <option key={index} value={el}>
@@ -118,7 +119,7 @@ export default function PaymentPage(props: CarCardProps) {
                       </option>
                     ))}
                     ;
-                  </select>
+                  </select> */}
                 </div>
                 <div>
                   <p>Date</p>
@@ -137,7 +138,7 @@ export default function PaymentPage(props: CarCardProps) {
               <div className="flex">
                 <div>
                   <p>Location:</p>
-                  <select>
+                  {/*  <select>
                     <option>Please Select</option>
                     {locationsArray?.map((el, index) => (
                       <option key={index} value={el}>
@@ -145,7 +146,7 @@ export default function PaymentPage(props: CarCardProps) {
                       </option>
                     ))}
                     ;
-                  </select>
+                  </select> */}
                 </div>
                 <div className="">
                   <p>Date</p>

@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
+/* import { useParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
-import { useEffect, useState } from "react";
-import CarCard from "@/components/CarCard";
-import { QueryData } from "@supabase/supabase-js";
+ import { useEffect, useState } from "react";
+ import CarCard from "@/components/CarCard";
+import { QueryData } from "@supabase/supabase-js"; */
 
-type Vehicle = {
+/* type Vehicle = {
   id: string;
   brand: string;
   model: string;
@@ -16,43 +16,41 @@ type Vehicle = {
   pricePerDay: number;
   consumption: string;
 };
-
-type Favorite = {
+ */
+/* type Favorite = {
   id: number;
   user_id: string;
   vehicle_id: Vehicle;
-};
-
+}; */
 
 export default function FavoritesPage() {
-  const { userid } = useParams();
-  const [favoritesData, setFavoritesData] = useState<FavoritesData | null>(null);
+  //  const { userid } = useParams();
+  // const [favoritesData, setFavoritesData] = useState<FavoritesData | null>(  null );
 
-  const getFavorites = async () => {
-    if (!userid)
-      return null;
+  /*   const getFavorites = async () => {
+    if (!userid) return null;
 
     const result = await supabase
       .from("favorites")
       .select("*, vehicle_id(*)")
       .eq("user_id", userid);
 
-      return result;
-  };
+    return result;
+  }; */
 
-  type FavoritesData = QueryData<ReturnType<typeof getFavorites>>;
+  //type FavoritesData = QueryData<ReturnType<typeof getFavorites>>;
 
-  useEffect(() => {
+  /*  useEffect(() => {
     getFavorites().then((result) => {
       if (result?.data)
       setFavoritesData(result.data);
     });
-  }, [userid]);
+  }, [userid]); */
 
   return (
     <div>
       <h1>Your Favorites</h1>
-          { favoritesData ? (favoritesData.map((favorite: Favorite) => (
+      {/*  { favoritesData ? (favoritesData.map((favorite: Favorite) => (
             <CarCard
               id={favorite.vehicle_id.id}
               key={favorite.vehicle_id.id}
@@ -68,7 +66,7 @@ export default function FavoritesPage() {
             />
           ))
         ) : (<p>Loading favorites...</p>)
-      }
+      } */}
     </div>
   );
 }
