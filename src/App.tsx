@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import DetailsPage from "./pages/DetailsPage";
 import RentPage from "./pages/RentPage";
 import BookingPage from "./pages/BookingPage";
-import FavoritesPage from "./pages/FavoritesPage";
+// import FavoritesPage from "./pages/FavoritesPage";
 import ProfilePage from "./pages/ProfilePage";
 import Layout from "./components/Layout";
 import SignUpPage from "./pages/SignUpPage";
@@ -29,7 +29,7 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/details/:id" element={<DetailsPage />} />
                     <Route path="/bookings" element={<BookingPage />} />
-                    <Route path="/favorites/:userid" element={<FavoritesPage />} />
+                    {/* <Route path="/favorites/:userid" element={<FavoritesPage />} /> */}
                     <Route path="/profile/:id" element={<ProfilePage />} />
                     <Route path="/rent/:id" element={<RentPage />} />
                     <Route path="/login" element={<LoginPage />} />
