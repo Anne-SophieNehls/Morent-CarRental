@@ -51,13 +51,25 @@ We hade dvanced search filters integried: Refine your search by vehicle type, pr
 In your profile, you can easily access your booking history, saved favorite cars, and update your personal details.
  
  ### Fovorites
+ <div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/" alt="Project Screenshot">
+</div>
+<br/>
  bla bla
  hier bild von einzeln Favorisierten Cards einfügen
 
+<div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/" alt="Project Screenshot">
+</div>
+<br/>
  bla bla
  hier bild von Favoriten Page anzeigen
 
  ### My Bookings
+ <div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/" alt="Project Screenshot">
+</div>
+<br/>
  bla bla
  hier bild von Bookingpage einfügen
 
@@ -85,8 +97,6 @@ For added comfort, we've included a dark mode option, easily accessible from the
 ![Nodejs](https://img.shields.io/badge/Nodejs-09131B?style=for-the-badge&logo=node.js&logoColor=3C873A)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) 
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-![Static Badge](https://img.shields.io/badge/Supabase?style=flat&logo=%3Csvg%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3ESupabase%3C%2Ftitle%3E%3Cpath%20d%3D%22M11.9%201.036c-.015-.986-1.26-1.41-1.874-.637L.764%2012.05C-.33%2013.427.65%2015.455%202.409%2015.455h9.579l.113%207.51c.014.985%201.259%201.408%201.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z%22%2F%3E%3C%2Fsvg%3E&logoColor=3ecf8eff)
-
  <br/>
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) 
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
@@ -94,6 +104,7 @@ For added comfort, we've included a dark mode option, easily accessible from the
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
+![Static Badge](https://img.shields.io/badge/Supabase?style=flat&logo=%3Csvg%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3ESupabase%3C%2Ftitle%3E%3Cpath%20d%3D%22M11.9%201.036c-.015-.986-1.26-1.41-1.874-.637L.764%2012.05C-.33%2013.427.65%2015.455%202.409%2015.455h9.579l.113%207.51c.014.985%201.259%201.408%201.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z%22%2F%3E%3C%2Fsvg%3E&logoColor=3ecf8eff)
 
 ## Getting Started
 
