@@ -27,6 +27,30 @@
 
 ## Features
 
+### Filter
+<div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/Filterfunktion.png" alt="Project Screenshot">
+</div>
+<br/>
+
+### Payment
+<div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/" alt="Project Screenshot">
+</div>
+<br/>
+
+### Darkmode
+<div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/Darkmode.png" alt="Project Screenshot">
+</div>
+<br/>
+
+### Profil Dropdown
+<div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/profil-dropdown.png" alt="Project Screenshot">
+</div>
+<br/>
+
 ## Tech Stack
 
 ![React](https://img.shields.io/badge/-React-09131B?style=for-the-badge&logo=react&logoColor=61DBFB)
