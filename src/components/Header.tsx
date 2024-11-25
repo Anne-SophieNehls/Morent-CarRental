@@ -75,10 +75,7 @@ export default function Header() {
         <LightDarkThemeSwitcher />
 
         <Button variant={"outline"} className="rounded-full h-14  mx-2">
-          <img
-            src="../../public/img/icons/glocke-grau-notification.svg"
-            alt="profil img"
-          />
+          <img src="/img/icons/glocke-grau-notification.svg" alt="profil img" />
         </Button>
         <Button variant={"outline"} className="rounded-full h-14 mx-2">
           <img src="/img/icons/setting-zahnrad-icon.svg" alt="profil img" />
