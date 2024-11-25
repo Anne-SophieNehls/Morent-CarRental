@@ -13,6 +13,8 @@ export default function SignUpPage() {
   const { user, setUser } = useUserContext();
   const fileRef = useRef<HTMLInputElement>(null);
 
+  console.log(user);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = await supabase.auth.signUp({

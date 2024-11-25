@@ -2,31 +2,32 @@ import { useParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
-import redHeartIcon from "/img/icons/heart-red-icon.svg";
-
+import { QueryData } from "@supabase/supabase-js";
 
 export default function FavoritesPage() {
   const { userid } = useParams();
-  const [favoritesData, setFavoritesData] = useState<FavoritesData>(null);
+  const [favoritesData, setFavoritesData] = useState<FavoritesData | null>(
+    null
+  );
 
-     const getFavorites = async () => {
+  const getFavorites = async () => {
     if (!userid) return null;
 
     const result = await supabase
       .from("favorites")
-      .select("*, vehicles(*)")
+      .select("*, vehicle_id(*)")
       .eq("user_id", userid);
-      return result.data;
+
+    return result;
   };
 
-  type FavoritesData = Awaited<ReturnType<typeof getFavorites>>;
+  type FavoritesData = QueryData<ReturnType<typeof getFavorites>>;
 
-    useEffect(() => {
+  useEffect(() => {
     getFavorites().then((result) => {
-      if (result)
-      setFavoritesData(result);
+      if (result?.data) setFavoritesData(result.data);
     });
-  }, [userid]); 
+  }, [userid]);
 
   return (
     <div>
@@ -50,7 +51,7 @@ export default function FavoritesPage() {
 			))
 			) : (<p>You have no fovorite cars</p>)
 		}
-	  </div>
+	 </div>
     </div>
   );
 }
