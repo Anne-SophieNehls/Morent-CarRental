@@ -35,10 +35,10 @@ export default function DetailsPage() {
   }
 
   return (
-    <div className="h-80 grid grid-cols-3 grid-rows-1">
-      <div className=" w-auto p-3 bg-white rounded-lg">
+    <div className="h-80 grid grid-cols-3 grid-rows-1 gap-8">
+      <div className=" w-auto bg-white rounded-lg">
         <img
-          className="rounded-xl w-full"
+          className="rounded-xl w-full h-full"
           src={car.carImg}
           alt="Car Image"
         />
@@ -119,7 +119,7 @@ export default function DetailsPage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center">
             <h2 className="font-bold">
               {`${car.pricePerDay}/`}
               <span className="text-xs text-[#90A3BF]">day</span>
