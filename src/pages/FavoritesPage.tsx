@@ -1,8 +1,9 @@
 /* import { useParams } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
- import { useEffect, useState } from "react";
- import CarCard from "@/components/CarCard";
-import { QueryData } from "@supabase/supabase-js"; */
+import { useEffect, useState } from "react";
+import CarCard from "@/components/CarCard";
+import redHeartIcon from "/img/icons/heart-red-icon.svg";
+
 
 /* type Vehicle = {
   id: string;
@@ -16,57 +17,52 @@ import { QueryData } from "@supabase/supabase-js"; */
   pricePerDay: number;
   consumption: string;
 };
- */
-/* type Favorite = {
-  id: number;
-  user_id: string;
-  vehicle_id: Vehicle;
-}; */
+
 
 export default function FavoritesPage() {
-  //  const { userid } = useParams();
-  // const [favoritesData, setFavoritesData] = useState<FavoritesData | null>(  null );
+  const { userid } = useParams();
+  const [favoritesData, setFavoritesData] = useState<FavoritesData>(null);
 
-  /*   const getFavorites = async () => {
+     const getFavorites = async () => {
     if (!userid) return null;
 
     const result = await supabase
       .from("favorites")
-      .select("*, vehicle_id(*)")
+      .select("*, vehicles(*)")
       .eq("user_id", userid);
+      return result.data;
+  };
 
-    return result;
-  }; */
+  type FavoritesData = Awaited<ReturnType<typeof getFavorites>>;
 
-  //type FavoritesData = QueryData<ReturnType<typeof getFavorites>>;
-
-  /*  useEffect(() => {
+    useEffect(() => {
     getFavorites().then((result) => {
-      if (result?.data)
-      setFavoritesData(result.data);
+      if (result)
+      setFavoritesData(result);
     });
-  }, [userid]); */
+  }, [userid]); 
 
   return (
     <div>
       <h1>Your Favorites</h1>
-      {/*  { favoritesData ? (favoritesData.map((favorite: Favorite) => (
+          { favoritesData ? (favoritesData.map((favorite) => (
             <CarCard
-              id={favorite.vehicle_id.id}
-              key={favorite.vehicle_id.id}
-              brand={favorite.vehicle_id.brand}
-              carImg={favorite.vehicle_id.carImg}
-              model={favorite.vehicle_id.model}
-              gearType={favorite.vehicle_id.gearType}
-              vehicleType={favorite.vehicle_id.vehicleType}
-              year={favorite.vehicle_id.year.toString()}
-              seats={favorite.vehicle_id.seats?.toString()}
-              pricePerDay={favorite.vehicle_id.pricePerDay?.toString()}
-              consumption={favorite.vehicle_id.consumption}
+              id={favorite.vehicles!.id}
+              key={favorite.vehicles!.id}
+              brand={favorite.vehicles!.brand}
+              carImg={favorite.vehicles!.carImg}
+              model={favorite.vehicles!.model}
+              gearType={favorite.vehicles!.gearType}
+              vehicleType={favorite.vehicles!.vehicleType}
+              year={favorite.vehicles!.year.toString()}
+              seats={favorite.vehicles!.seats?.toString()}
+              pricePerDay={favorite.vehicles!.pricePerDay?.toString()}
+              consumption={favorite.vehicles!.consumption}
+			  heartIcon={redHeartIcon}
             />
           ))
-        ) : (<p>Loading favorites...</p>)
-      } */}
+        ) : (<p>You have no fovorite cars</p>)
+      }
     </div>
   );
 }

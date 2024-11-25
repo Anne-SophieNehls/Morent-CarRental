@@ -18,6 +18,7 @@ export interface CarCardProps {
   seats: string;
   consumption: string;
   gearType: string;
+  heartIcon: string;
 }
 
 export default function CarCard(props: CarCardProps) {
@@ -30,7 +31,7 @@ export default function CarCard(props: CarCardProps) {
           className={`font-bold mb-2 mx-2 `}
         >{`${props.brand} ${props.model}`}</h2>
         <div>
-          <img className="hover:h-7" src={whiteHeartIcon} alt="favorited" />
+          <img className="hover:h-7" src={props.heartIcon} alt="favorited" />
         </div>
       </div>
       <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
