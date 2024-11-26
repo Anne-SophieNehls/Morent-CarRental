@@ -14,7 +14,6 @@ import { useSearch } from "@/context/searchContext";
 import { supabase } from "@/lib/supabase";
 import { useUserContext } from "@/context/userContext";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-import { userInfo } from "os";
 import { useEffect, useState } from "react";
 import { QueryData } from "@supabase/supabase-js";
 
