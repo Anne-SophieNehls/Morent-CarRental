@@ -111,7 +111,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="bookings">
                 <span className="flex gap-2 my-3">
-                  <img src="/img/icons/save-icon.svg" alt="to profil" />
+                  <img src="/img/icons/save-icon.svg" alt="to my bookings" />
                   My Bookings
                 </span>
               </Link>
@@ -120,7 +120,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to={`/favorites/${user?.id}`}>
                 <span className="flex gap-2">
-                  <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
+                  <img src="/img/icons/heart-gray-icon.svg" alt="to my favorites" />
                   Favorites
                 </span>
               </Link>
