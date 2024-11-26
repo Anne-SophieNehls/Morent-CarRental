@@ -8,65 +8,44 @@ import { Link } from "react-router-dom";
 import { useThemeContext } from "@/context/LightDarkModeContext";
 import { supabase } from "@/lib/supabase";
 import { useUserContext } from "@/context/userContext";
-import { useEffect, useState } from "react";
 
 export interface CarCardProps {
-  id: string;
-  brand: string;
-  carImg: string;
-  model: string;
-  vehicleType: string;
-  year: string;
-  pricePerDay: string;
-  seats: string;
-  consumption: string;
-  gearType: string;
+	vehicle: {
+  		id: string;
+  		brand: string;
+		carImg: string;
+		model: string;
+		vehicleType: string;
+		year: number;
+		pricePerDay: number;
+		seats: number;
+		consumption: string;
+		gearType: string;
+	};
+	isFavorited: boolean;
+	onFavoritteClick?: () => void;
 }
 
 export default function CarCard(props: CarCardProps) {
 	const { theme } = useThemeContext();
 	const { user } = useUserContext();
-	const [isFavorite, setIsFavorite] = useState<boolean>(false);
-
-	const checkFavorite = async () => {
-		if (!user)
-			return;
-
-		const { data, error } = await supabase
-		.from("favorites")
-		.select("id")
-		.eq("user_id", user.id)
-		.eq("vehicle_id", props.id);
-	  
-	  if (error) {
-		console.error("Fehler bei der Favoritenabfrage:", error);
-	  }
-
-		setIsFavorite(!!data);
-	}
 
 	const handleFavorite = async () => {
 		if (user ){
-			if (!isFavorite){
+			if (!props.isFavorited){
 				await supabase
 				.from("favorites")
-				.insert([{user_id: user.id, vehicle_id: props.id,},]);
-				setIsFavorite(true);
+				.insert([{user_id: user.id, vehicle_id: props.vehicle.id,},]);
 			} else {
 				await supabase
 				.from("favorites")
 				.delete()
 				.eq("user_id", user.id)
-				.eq("vehicle_id", props.id);
-			  setIsFavorite(false);
+				.eq("vehicle_id", props.vehicle.id);
 			}
+			if (props.onFavoritteClick) props.onFavoritteClick();
 		}
 	};
-
-	useEffect(() => {
-		checkFavorite();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [user]);
 
 
   return (
@@ -74,41 +53,41 @@ export default function CarCard(props: CarCardProps) {
       <div className="flex justify-between">
         <h2
           className={`font-bold mb-2 mx-2 `}
-        >{`${props.brand} ${props.model}`}</h2>
+        >{`${props.vehicle.brand} ${props.vehicle.model}`}</h2>
         <div>
-          <img className="hover:h-7" src={isFavorite ? whiteHeartIcon : redHeartIcon} alt="favorited" onClick={handleFavorite}/>
+          <img className="hover:h-7" src={props.isFavorited ? whiteHeartIcon : redHeartIcon} alt="favorited" onClick={handleFavorite}/>
         </div>
       </div>
       <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
-        {props.vehicleType}
+        {props.vehicle.vehicleType}
       </p>
-      <img className="rounded-xl mb-4" src={props.carImg} alt="Car Image" />
+      <img className="rounded-xl mb-4" src={props.vehicle.carImg} alt="Car Image" />
       <div className="flex justify-between mb-6">
         <div className="flex">
           <img src={tankIcon} alt="tank-l-pro-100km" />
           <p className="text-[#6C757D] font-light text-sm self-center">
-            {props.consumption}
+            {props.vehicle.consumption}
           </p>
         </div>
         <div className="flex">
           <img src={typeIcon} alt="type-icon" />
           <p className="text-[#6C757D] font-light text-sm self-center">
-            {props.gearType}
+            {props.vehicle.gearType}
           </p>
         </div>
         <div className="flex">
           <img src={seatsIcon} alt="how many people" />
           <p className="text-[#6C757D] font-light text-sm self-center">
-            {props.seats}
+            {props.vehicle.seats}
           </p>
         </div>
       </div>
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-bold">
-          {`${props.pricePerDay}/`}
+          {`${props.vehicle.pricePerDay}/`}
           <span className="text-xs text-[#90A3BF]">day</span>
         </h2>
-        <Link to={`/details/${props.id}`}>
+        <Link to={`/details/${props.vehicle.id}`}>
           <Button className="bg-[#3563E9]">Rent now</Button>
         </Link>
       </div>

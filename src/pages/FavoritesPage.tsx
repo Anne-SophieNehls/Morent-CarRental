@@ -14,16 +14,14 @@ export default function FavoritesPage() {
       .from("favorites")
       .select("*, vehicles(*)")
       .eq("user_id", user.id);
+	  setFavoritesData(result.data);
       return result.data;
   };
 
   type FavoritesData = Awaited<ReturnType<typeof getFavorites>>;
 
     useEffect(() => {
-    getFavorites().then((result) => {
-      if (result)
-      setFavoritesData(result);
-    });
+    getFavorites();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
   console.log(favoritesData)
@@ -33,17 +31,9 @@ export default function FavoritesPage() {
 	  <div className="grid grid-cols-4 gap-5">
 			{ favoritesData ? (favoritesData.map((favorite) => (
 				<CarCard
-				id={favorite.vehicles!.id}
-				key={favorite.vehicles!.id}
-				brand={favorite.vehicles!.brand}
-				carImg={favorite.vehicles!.carImg}
-				model={favorite.vehicles!.model}
-				gearType={favorite.vehicles!.gearType}
-				vehicleType={favorite.vehicles!.vehicleType}
-				year={favorite.vehicles!.year.toString()}
-				seats={favorite.vehicles!.seats?.toString()}
-				pricePerDay={favorite.vehicles!.pricePerDay?.toString()}
-				consumption={favorite.vehicles!.consumption}
+				vehicle={favorite.vehicles!}
+				isFavorited={true}
+				onFavoritteClick={getFavorites}
 				/>
 			))
 			) : (<p>You have no fovorite cars</p>)
