@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <div className={`theme--${theme}-hf`}>
       <Header />
-      <main className={`bg-[#F6F7F9] ${`theme--${theme}-bg`} p-10`}>
+      <main className={`bg-[#F6F7F9] ${`theme--${theme}-bg`}`}>
         <Outlet />
       </main>
       <Footer />

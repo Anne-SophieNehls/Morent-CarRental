@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
-
+import { Input } from "@/components/ui/input";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -22,29 +22,33 @@ export default function LoginPage() {
     }
   };
   return (
-    <div className="w-96 p-3 bg-white rounded-lg">
-      <form onSubmit={handleSubmit}>
-        <h1 className="font-semibold text-2xl text-center mb-7">Login</h1>
-        <input
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="passwort"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button className="bg-[#3563E9] w-full">Sign in</Button>
-      </form>
-        <p>
+    <section className="sm:w-screen flex justify-center">
+      <div className="w-96 p-3 bg-white rounded-lg flex flex-col items-center justify-center m-8">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+          <h1 className="font-semibold text-2xl text-center mb-7">Login</h1>
+          <Input
+            className="rounded-full"
+            type="text"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            className="rounded-full"
+            type="password"
+            placeholder="passwort"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button className="bg-[#3563E9] w-full">Sign in</Button>
+        </form>
+        <p className="mt-5">
           No Account? Register
           <Button asChild variant="ghost">
             {!user && <NavLink to="/sign-up">Here</NavLink>}
           </Button>
         </p>
-    </div>
+      </div>
+    </section>
   );
 }
