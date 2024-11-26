@@ -105,6 +105,7 @@ export default function HomePage() {
       .ilike("locations", `%${locationsFilter}%`);
     return result;
   };
+  
 
   const getLocations = async () => {
     const result = await supabase.from("locations").select("*").single();
@@ -242,17 +243,8 @@ export default function HomePage() {
           {vehiclesData?.map((el) => {
             return (
               <CarCard
-                id={el.id}
-                key={el.id}
-                brand={el.brand}
-                carImg={el.carImg}
-                model={el.model}
-                gearType={el.gearType}
-                vehicleType={el.vehicleType}
-                year={el.year.toString()}
-                seats={el.seats.toString()}
-                pricePerDay={el.pricePerDay.toString()}
-                consumption={el.consumption}
+                vehicle={el}
+				isFavorited={el.favorites.length > 0}
               ></CarCard>
             );
           })}
