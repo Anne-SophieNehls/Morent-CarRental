@@ -23,7 +23,7 @@ export default function LoginPage() {
     }
   };
   return (
-    <div className={`w-96 p-3 bg-white rounded-lgtheme--${theme}-card`}>
+    <div className={`w-96 p-3 bg-white rounded-lg theme--${theme}-card`}>
       <form onSubmit={handleSubmit}>
         <h1 className="font-semibold text-2xl text-center mb-7">Login</h1>
         <input
