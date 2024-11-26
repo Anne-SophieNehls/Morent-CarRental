@@ -23,7 +23,7 @@ export interface CarCardProps {
 		gearType: string;
 	};
 	isFavorited: boolean;
-	onFavoritteClick?: () => void;
+	onFavoritteClick: () => void;
 }
 
 export default function CarCard(props: CarCardProps) {
@@ -55,7 +55,7 @@ export default function CarCard(props: CarCardProps) {
           className={`font-bold mb-2 mx-2 `}
         >{`${props.vehicle.brand} ${props.vehicle.model}`}</h2>
         <div>
-          <img className="hover:h-7" src={props.isFavorited ? whiteHeartIcon : redHeartIcon} alt="favorited" onClick={handleFavorite}/>
+          <img className="hover:h-7" src={props.isFavorited ? redHeartIcon : whiteHeartIcon} alt="favorited" onClick={handleFavorite}/>
         </div>
       </div>
       <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
