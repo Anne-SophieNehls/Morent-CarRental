@@ -103,6 +103,8 @@ For added comfort, we've included a dark mode option, easily accessible from the
 ![Nodejs](https://img.shields.io/badge/Nodejs-09131B?style=for-the-badge&logo=node.js&logoColor=3C873A)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) 
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+[![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=for-the-badge&logo=supabase&labelColor=white&logoColor=3ECF8E)](https://supabase.com/) 
+
  <br/>
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) 
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
@@ -110,7 +112,6 @@ For added comfort, we've included a dark mode option, easily accessible from the
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
-[![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=for-the-badge&logo=supabase&labelColor=white&logoColor=3ECF8E)](https://supabase.com/) 
 
 
 ## Getting Started
@@ -175,20 +176,26 @@ Our Page uses JWT authentication. The app generates a JWT token when a user regi
 
 ### Backend Routes
 `/` - HomePage 
+<br/>
 `/details/:id` - DetailsPage 
+<br/>
 `/login` - LoginPage 
+<br/>
 `/sign-up` - SignUpPage 
+<br/>
 `/bookings` - BookingPage 
+<br/>
 `/favorites/:user_id` - FavoritesPage 
+<br/>
 `/profile/:id` - ProfilePage 
+<br/>
 `/rent/:id` - RentPage 
 
 
 ## Design
 
 The Web-App's UI/UX was designed and Figma The app's wireframes were designed using Figma
-
-to the Figmaboard: https://www.figma.com/design/twugK8WykfNtQEiSJQf3FR/Car-Rent-Website-Design---Abschluss-Projekt-(Copy)?node-id=1-5&node-type=canvas&t=hasJ8sb9aChDel2o-0
+[to the Figmaboard](https://www.figma.com/design/twugK8WykfNtQEiSJQf3FR/Car-Rent-Website-Design---Abschluss-Projekt-(Copy)?node-id=1-5&node-type=canvas&t=hasJ8sb9aChDel2o-0)
 
 
 ## Libraries & Tools
