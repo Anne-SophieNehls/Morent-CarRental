@@ -4,8 +4,11 @@ import imageIcon from "../../public/img/icons/image-upload-icon.svg";
 import { useRef, useState } from "react";
 import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
+import { useThemeContext } from "@/context/LightDarkModeContext";
 
 export default function SignUpPage() {
+  const { theme } = useThemeContext();
+
   const [email, setEmail] = useState("");
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
@@ -48,7 +51,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="w-96 p-3 bg-white rounded-lg">
+    <div className={`w-96 p-3 bg-white rounded-lg theme--${theme}-card`}>
       <h1 className="font-semibold text-2xl text-center mb-7">
         Neuen Account anlegen
       </h1>

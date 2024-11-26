@@ -3,9 +3,10 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
-
+import { useThemeContext } from "@/context/LightDarkModeContext";
 
 export default function LoginPage() {
+  const { theme } = useThemeContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, setUser } = useUserContext();
@@ -22,7 +23,7 @@ export default function LoginPage() {
     }
   };
   return (
-    <div className="w-96 p-3 bg-white rounded-lg">
+    <div className={`w-96 p-3 bg-white rounded-lgtheme--${theme}-card`}>
       <form onSubmit={handleSubmit}>
         <h1 className="font-semibold text-2xl text-center mb-7">Login</h1>
         <input
@@ -39,12 +40,12 @@ export default function LoginPage() {
         />
         <Button className="bg-[#3563E9] w-full">Sign in</Button>
       </form>
-        <p>
-          No Account? Register
-          <Button asChild variant="ghost">
-            {!user && <NavLink to="/sign-up">Here</NavLink>}
-          </Button>
-        </p>
+      <p>
+        No Account? Register
+        <Button asChild variant="ghost">
+          {!user && <NavLink to="/sign-up">Here</NavLink>}
+        </Button>
+      </p>
     </div>
   );
 }
