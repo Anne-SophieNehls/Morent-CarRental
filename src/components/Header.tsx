@@ -51,7 +51,7 @@ export default function Header() {
   // const { searchFor } = useSearch();
   return (
     <header
-      className={`flex justify-between gap-10 items-center mb-10 pt-10 pl-10 theme--${theme}-hf`}
+      className={`flex justify-between gap-10 items-center mb-5 pt-5 pl-10 pr-5 theme--${theme}-hf`}
     >
       <nav>
         <NavLink to="/">
@@ -103,7 +103,7 @@ export default function Header() {
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <Link to="/profile/:id">
-                <span className="flex gap-2">
+                <span className="flex gap-2 hover:bg-[#3562e91b] rounded-xl p-1">
                   <img src="/img/icons/zum-profile-icon.svg" alt="to profil" />
                   Profile
                 </span>
@@ -111,7 +111,7 @@ export default function Header() {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Link to="bookings">
-                <span className="flex gap-2 my-3">
+                <span className="flex gap-2 my-3 hover:bg-[#3562e91b] rounded-xl p-1">
                   <img src="/img/icons/save-icon.svg" alt="to profil" />
                   My Bookings
                 </span>
@@ -120,7 +120,7 @@ export default function Header() {
 
             <DropdownMenuItem>
               <Link to={`/favorites/${user?.id}`}>
-                <span className="flex gap-2">
+                <span className="flex gap-2 hover:bg-[#3562e91b] rounded-xl p-1">
                   <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
                   Favorites
                 </span>
