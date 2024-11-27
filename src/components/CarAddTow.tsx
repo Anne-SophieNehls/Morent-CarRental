@@ -10,7 +10,9 @@ export default function CarAddTwo() {
         price.
       </p>
       <Button className="bg-[#54a6ff] ">
-        <Link to="/rent/:id">Rental Car</Link>
+        <Link to="/details/302a27aa-706f-4a24-a287-019a1f3066fc">
+          Rental Car
+        </Link>
       </Button>
       <img
         src="/img/autoAdd2.png"
