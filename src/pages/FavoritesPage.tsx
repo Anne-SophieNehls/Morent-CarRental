@@ -30,6 +30,7 @@ export default function FavoritesPage() {
 	  <div className="grid grid-cols-4 gap-5 m-8">
 			{ favoritesData ? (favoritesData.map((favorite) => (
 				<CarCard
+				key={favorite.id}
 				vehicle={favorite.vehicles!}
 				isFavorited={true}
 				onFavoritteClick={getFavorites}

@@ -6,7 +6,6 @@ import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Map from "@/components/Map";
 
 export default function RentPage() {
 	const { theme } = useThemeContext();
