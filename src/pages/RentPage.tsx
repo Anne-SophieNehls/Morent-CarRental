@@ -1,19 +1,60 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useThemeContext } from "@/context/LightDarkModeContext";
+import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import Map from "@/components/Map";
 
 export default function RentPage() {
 	const { theme } = useThemeContext();
 	const { id } = useParams();
 	const [vehicle, setVehicle] = useState<VehicleData | null>(null);
+	const nameRef = useRef<HTMLInputElement>(null);
+	const telRef = useRef<HTMLInputElement>(null);
+	const addressRef = useRef<HTMLInputElement>(null);
+	const townRef = useRef<HTMLInputElement>(null);
+	const pickUpLocationRef = useRef<HTMLInputElement>(null);
+	const pickUpDateRef = useRef<HTMLInputElement>(null);
+	const pickUpTimeRef = useRef<HTMLInputElement>(null);
+	const dropOffLocationRef = useRef<HTMLInputElement>(null);
+	const dropOffDateRef = useRef<HTMLInputElement>(null);
+	const dropOffTimeRef = useRef<HTMLInputElement>(null);
+	const [paymentMethod, setPaymentMethod] = useState<string>("");
+	const { user } = useUserContext();
+	
 
 	const getVehicle = async () => {
 		const result = await supabase.from("vehicles").select("*").eq("id", id!).single();
 		return result;
+	}
+
+	const insertBooking = async () => {
+		if (user && vehicle) {
+		  const bookingData = {
+			user_id: user.id,
+			vehicle_id: vehicle.id,
+			// name: nameRef.current?.value,
+			// phone_number: telRef.current?.value,
+			// address: addressRef.current?.value,
+			// town: townRef.current?.value,
+			pick_up_location: pickUpLocationRef.current?.value,
+			pick_up_date: pickUpDateRef.current?.value,
+			// pick_up_time: pickUpTimeRef.current?.value,
+			drop_off_location: dropOffLocationRef.current?.value,
+			drop_off_date: dropOffDateRef.current?.value,
+			// drop_off_time: dropOffTimeRef.current?.value,
+			// payment_method: paymentMethod,
+			// created_at: '',
+		  };
+		  await supabase.from("bookings").insert([bookingData]);
+		}
+	  };
+
+	const handleButton = () => {
+		insertBooking();
 	}
 
 	useEffect(() => {
@@ -46,6 +87,7 @@ export default function RentPage() {
 								type="text"
 								placeholder="Your name"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={nameRef}
 							/>
 						</div>
 						<div>
@@ -55,6 +97,7 @@ export default function RentPage() {
 								type="text"
 								placeholder="Phone number"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={telRef}
 							/>
 						</div>
 						<div>
@@ -64,6 +107,7 @@ export default function RentPage() {
 								type="text"
 								placeholder="Address"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={addressRef}
 							/>
 						</div>
 						<div>
@@ -73,6 +117,7 @@ export default function RentPage() {
 								type="text"
 								placeholder="Town or City"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={townRef}
 							/>
 						</div>
 					</div>
@@ -94,6 +139,7 @@ export default function RentPage() {
 								type="text"
 								placeholder="Town or City"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={pickUpLocationRef}
 							/>
 						</div>
 						<div>
@@ -102,6 +148,7 @@ export default function RentPage() {
 								id="Date"
 								type="date"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={pickUpDateRef}
 							/>
 						</div>
 						<div>
@@ -110,6 +157,7 @@ export default function RentPage() {
 								id="Time"
 								type="time"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={pickUpTimeRef}
 							/>
 						</div>
 					</div>
@@ -122,14 +170,16 @@ export default function RentPage() {
 								type="text"
 								placeholder="Town or City"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={dropOffLocationRef}
 							/>
 						</div>
 						<div>
-							<label htmlFor="Town">Date</label>
+							<label htmlFor="Date">Date</label>
 							<Input
 								id="Date"
 								type="date"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={dropOffDateRef}
 							/>
 						</div>
 						<div>
@@ -138,6 +188,7 @@ export default function RentPage() {
 								id="Time"
 								type="time"
 								className="pr-60 rounded-md bg-[#F6F7F9]"
+								ref={dropOffTimeRef}
 							/>
 						</div>
 					</div>
@@ -154,7 +205,7 @@ export default function RentPage() {
 						<div className="mt-3">
 							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
 								<div className="flex items-center">
-									<input className="ml-5" type="radio" />
+									<input className="ml-5" type="radio" onChange={() => setPaymentMethod("Credit Card")}/>
 									<p className="ml-3 text-sm">Credit Card</p>
 								</div>
 							</div>
@@ -162,7 +213,7 @@ export default function RentPage() {
 						<div className="mt-3">
 							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
 								<div className="flex items-center">
-									<input className="ml-5" type="radio" />
+									<input className="ml-5" type="radio" onChange={() => setPaymentMethod("Paypal")}/>
 									<p className="ml-3 text-sm">Paypal</p>
 								</div>
 							</div>
@@ -170,7 +221,7 @@ export default function RentPage() {
 						<div className="mt-3">
 							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
 								<div className="flex items-center">
-									<input className="ml-5" type="radio" />
+									<input className="ml-5" type="radio" onChange={() => setPaymentMethod("Bitcoin")}/>
 									<p className="ml-3 text-sm">Bitcoin</p>
 								</div>
 							</div>
@@ -228,7 +279,7 @@ export default function RentPage() {
 				</div>
 			</div>
 		</section>
-		<Button className="mt-12">Rent now!</Button>
+		<Button onClick={handleButton} className="mt-12">Rent now!</Button>
 	</div>
   );
 }
