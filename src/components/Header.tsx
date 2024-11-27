@@ -51,7 +51,7 @@ export default function Header() {
   // const { searchFor } = useSearch();
   return (
     <header
-      className={`flex justify-between gap-10 items-center mb-5 pt-5 pl-10 pr-5 theme--${theme}-hf`}
+      className={` mx-10 flex justify-between gap-10 items-center mb-10 p-5 pt-10 theme--${theme}-hf`}
     >
       <nav>
         <NavLink to="/">
@@ -99,7 +99,9 @@ export default function Header() {
           <DropdownMenuContent
             className={`w-56 bg-white  p-12 rounded-lg drop-shadow-lg mr-10 flex flex-col gap-4 theme--${theme}-drop z-50	`}
           >
-            <DropdownMenuLabel className="text-center">{user?.email}</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-center">
+              {user?.email}
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <Link to="/profile/:id">
