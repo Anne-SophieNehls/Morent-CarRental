@@ -1,8 +1,11 @@
+import { useThemeContext } from "@/context/LightDarkModeContext";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const { theme } = useThemeContext();
+
   return (
-    <footer className="p-5">
+    <footer className={`p-5 theme--${theme}-hf`}>
       <section className="flex justify-between px-4">
         <div className="w-auto">
           <h2 className="logo text-3xl">MORENT</h2>

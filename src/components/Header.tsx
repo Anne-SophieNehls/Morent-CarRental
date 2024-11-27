@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import { QueryData } from "@supabase/supabase-js";
 
 export default function Header() {
+  const { theme } = useThemeContext();
   const { id } = useParams();
   const [name, setName] = useState<NameData | null>(null);
 
@@ -39,8 +40,6 @@ export default function Header() {
     } /* eslint-disable */,
     [] /* eslint-enable */
   );
-
-  const { theme } = useThemeContext();
 
   const { user, setUser } = useUserContext();
   const handleLogoutClick = () => {
