@@ -1,4 +1,5 @@
 import svg from "../assets/svg/SVG (3).png"
+import Map from "@/components/Map";
 
 export default function CarBookedCard(){
 	return (
@@ -23,7 +24,7 @@ export default function CarBookedCard(){
 							<p className="text-xl text-[#6C757D]">Bremen</p>
 						</div>
 					</div>
-					{/* <Map></Map> */}
+					<Map></Map>
 				</div>
 			</div>
 		</div>
