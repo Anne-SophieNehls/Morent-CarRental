@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import imageIcon from "../../public/img/icons/image-upload-icon.svg";
+// import imageIcon from "../../public/img/icons/image-upload-icon.svg";
 import { useRef, useState } from "react";
 import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
