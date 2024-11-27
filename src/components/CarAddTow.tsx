@@ -9,7 +9,7 @@ export default function CarAddTwo() {
         Ease of doing a car rental safely and reliably. Of course at a low
         price.
       </p>
-      <Button className="bg-[#54a6ff] ">
+      <Button className="bg-[#54a6ff]  my-2">
         <Link to="/details/302a27aa-706f-4a24-a287-019a1f3066fc">
           Rental Car
         </Link>
