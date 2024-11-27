@@ -10,8 +10,6 @@ import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
 import Map from "@/components/Map";
 import { useThemeContext } from "@/context/LightDarkModeContext";
 
-
-
 export default function DetailsPage() {
   const { theme } = useThemeContext();
   const { id } = useParams();
