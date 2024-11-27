@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
+// import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useUserContext } from "@/context/userContext";
 import {
@@ -10,10 +10,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
   const { user } = useUserContext();
+
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  // const [email, setEmail] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
 
   return (
     <div>
