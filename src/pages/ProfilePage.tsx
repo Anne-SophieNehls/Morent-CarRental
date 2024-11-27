@@ -25,7 +25,6 @@ interface Profile {
 export default function ProfilePage() {
   const { theme } = useThemeContext();
   const { user } = useUserContext();
-
   const [profile, setProfile] = useState<Profile>();
   //let imageLink = profile?.image_url ? getStorageURL(profile.image_url) : null;
 
