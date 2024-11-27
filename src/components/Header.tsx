@@ -16,6 +16,7 @@ import { useUserContext } from "@/context/userContext";
 import { useThemeContext } from "@/context/LightDarkModeContext";
 import { useEffect, useState } from "react";
 import { QueryData } from "@supabase/supabase-js";
+//${getStorageURL(name?.image_url)} ||   (img profile bild , läuft leider nicht)
 
 export default function Header() {
   const { id } = useParams();
@@ -51,7 +52,7 @@ export default function Header() {
   // const { searchFor } = useSearch();
   return (
     <header
-      className={`flex justify-between gap-10 items-center mb-5 pt-5 pl-10 pr-5 theme--${theme}-hf`}
+      className={` mx-10 flex justify-between gap-10 items-center mb-10 p-5 pt-10 theme--${theme}-hf`}
     >
       <nav>
         <NavLink to="/">
@@ -88,9 +89,8 @@ export default function Header() {
               size={"icon"}
               className="h-14 w-14 rounded-full mx-2"
             >
-              {/* {!user img : } */}
               <img
-                src="/img/icons/profile-without-profilpictuare.svg"
+                src={`/img/icons/profile-without-profilpictuare.svg`}
                 alt="profil img"
                 className="h-14"
               />
@@ -99,10 +99,12 @@ export default function Header() {
           <DropdownMenuContent
             className={`w-56 bg-white  p-12 rounded-lg drop-shadow-lg mr-10 flex flex-col gap-4 theme--${theme}-drop z-50	`}
           >
-            <DropdownMenuLabel className="text-center">{user?.email}</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-center">
+              {user?.email}
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link to="/profile/:id">
+              <Link to={`/profile/${user?.id}`}>
                 <span className="flex gap-2 hover:bg-[#3562e91b] rounded-xl p-1">
                   <img src="/img/icons/zum-profile-icon.svg" alt="to profil" />
                   Profile
