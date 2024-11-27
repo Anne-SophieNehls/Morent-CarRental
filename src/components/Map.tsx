@@ -1,5 +1,5 @@
 import { TileLayer } from "react-leaflet/TileLayer";
-import { MapContainer, Marker, Popup } from "react-leaflet";
+import { MapContainer, Marker } from "react-leaflet";
 
 export default function Map() {
   return (
@@ -19,9 +19,6 @@ export default function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={[53.56, 10]}>
-        <Popup>
-          Steve's Car location <br /> Easily customizable.
-        </Popup>
       </Marker>
     </MapContainer>
   );

@@ -242,6 +242,7 @@ export default function HomePage() {
           {vehiclesData?.map((el) => {
             return (
               <CarCard
+				key={el.id}
                 vehicle={el}
                 isFavorited={el.favorites.length > 0}
                 onFavoritteClick={() => setReload(!reload)}
