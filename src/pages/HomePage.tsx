@@ -176,7 +176,7 @@ export default function HomePage() {
                 <p className="text-base font-semibold">Location:</p>
                 <select onChange={handleLocation}>
                   <option>Please Select</option>
-                  {locationsArray?.map((el, index) => (
+                  {locationsArray?.map((el: string, index: number) => (
                     <option key={index} value={el}>
                       {el}
                     </option>
@@ -206,7 +206,7 @@ export default function HomePage() {
                 <p className="text-base font-semibold">Location:</p>
                 <select>
                   <option>Please Select</option>
-                  {locationsArray?.map((el, index) => (
+                  {locationsArray?.map((el: string, index: number) => (
                     <option key={index} value={el}>
                       {el}
                     </option>
