@@ -5,8 +5,10 @@ import { useRef, useState } from "react";
 import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
 import { Link } from "react-router-dom";
+import { useThemeContext } from "@/context/LightDarkModeContext";
 
 export default function SignUpPage() {
+  const { theme } = useThemeContext();
   const [email, setEmail] = useState("");
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
@@ -50,7 +52,9 @@ export default function SignUpPage() {
 
   return (
     <section className="sm:w-screen flex justify-center">
-      <div className="w-96 p-3 bg-white rounded-lg flex flex-col items-center justify-center m-8">
+      <div
+        className={`w-96 p-3 bg-white shadow-sm ${`theme--${theme}-card`} rounded-lg flex flex-col items-center justify-center m-8`}
+      >
         <h1 className="font-semibold text-2xl text-center mb-7">
           Create a new account
         </h1>
