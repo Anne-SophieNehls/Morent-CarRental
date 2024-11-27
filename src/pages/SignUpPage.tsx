@@ -6,7 +6,6 @@ import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
 import { Link } from "react-router-dom";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const { theme } = useThemeContext();

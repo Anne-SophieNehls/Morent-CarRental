@@ -1,41 +1,64 @@
 import { Button } from "@/components/ui/button";
 // import { Form } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+//import { Input } from "@/components/ui/input";
 import { useThemeContext } from "@/context/LightDarkModeContext";
 import { useUserContext } from "@/context/userContext";
-import { getStorageURL, supabase } from "@/lib/supabase";
-import {
+import { /* getStorageURL, */ supabase } from "@/lib/supabase";
+/* import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
-import { useEffect, useRef, useState } from "react";
+} from "@radix-ui/react-dropdown-menu"; */
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+interface Profile {
+  id: string;
+  first_name: string;
+  last_name: string;
+  image_url: string;
+}
 
 export default function ProfilePage() {
   const { theme } = useThemeContext();
-
   const { user } = useUserContext();
-  const fileRef = useRef<HTMLInputElement>(null);
+
+  const [profile, setProfile] = useState<Profile>();
+  //let imageLink = profile?.image_url ? getStorageURL(profile.image_url) : null;
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (user) {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .single();
+
+        if (error) {
+          console.error("Error loading user profile:", error);
+        } else {
+          return data;
+        }
+        setProfile(data!);
+      }
+    };
+
+    if (user) {
+      fetchProfile();
+    }
+  }, [user]);
+
+  /* const fileRef = useRef<HTMLInputElement>(null);
   // const [email, setEmail] = useState("");
   const [firstName, setFirstname] = useState("");
   const [lastName, setLastname] = useState("");
-  const [profilImg, setprofilImg] = useState<string | null>(null);
+  const [profilImg, setprofilImg] = useState<string | null>(null); */
 
-  const getUserData = async () => {
-    const resultprofil = await supabase
-      .from("profiles")
-      .select("*") /* eslint-disable */
-      .eq("id", user?.id!)
-      /* eslint-enable */
-      .single();
-    return resultprofil;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  /*   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = await supabase.from("profiles")({
       options: {
@@ -61,28 +84,28 @@ export default function ProfilePage() {
         }
       }
     }
-  };
-
+  }; */
+  /* 
   useEffect(() => {
     getUserData().then((result) => {
       setFirstname(result.data?.first_name || null);
       setLastname(result.data?.last_name || null);
       setprofilImg(result.data?.image_url || null);
     });
-  }, []);
-
-  const imageURL = getStorageURL(profilImg);
+  }, []); */
 
   return (
-    <div>
+    <div
+      className={`w-96 p-3 bg-white shadow-sm ${`theme--${theme}-card`} rounded-lg`}
+    >
       <h2>My Profile</h2>
-      <img
-        src={imageURL || `/img/icons/profile-without-profilpictuare.svg`}
+      {/*  <img
+        src={imageLink || `/img/icons/profile-without-profilpictuare.svg`}
         alt="Profile Picture"
-      />
-      <p>First Name: {user?.id}</p>
-      <p>Last Name: </p>
-      <p>Email: </p>
+      /> */}
+      <p>First Name: {profile?.first_name}</p>
+      <p>Last Name: {profile?.last_name}</p>
+      <p>Email: {user?.email}</p>
       <div>
         <Link to="/favorites">
           <Button>Your Favorites</Button>
@@ -91,7 +114,7 @@ export default function ProfilePage() {
           <Button>Your Bookings</Button>
         </Link>
       </div>
-      <DropdownMenu>
+      {/*  <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             variant={"outline"}
@@ -136,21 +159,17 @@ export default function ProfilePage() {
                   ref={fileRef}
                 />
               </div>
-              <Button className="bg-[#3563E9] mt-5 w-full">
-                Confirm your Changes
+
+              <Button
+                className="bg-[#3563E9] mt-5 w-full"
+                onSubmit={handleSubmit}
+              >
+                <span className="flex gap-2 my-3">submit Changes</span>
               </Button>
             </form>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link to="bookings">
-              <span className="flex gap-2 my-3">
-                <img src="/img/icons/save-icon.svg" alt="to profil" />
-                My Bookings
-              </span>
-            </Link>
-          </DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu> */}
     </div>
   );
 }
