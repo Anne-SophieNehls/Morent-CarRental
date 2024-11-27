@@ -23,6 +23,7 @@ export default function CarBookedCard(){
 							<p className="text-xl text-[#6C757D]">Bremen</p>
 							<p className="text-xl text-[#6C757D]">Bremen</p>
 						</div>
+						<div></div>
 					</div>
 					<Map></Map>
 				</div>

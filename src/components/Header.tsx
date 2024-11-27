@@ -19,7 +19,6 @@ import { QueryData } from "@supabase/supabase-js";
 //${getStorageURL(name?.image_url)} ||   (img profile bild , läuft leider nicht)
 
 export default function Header() {
-
   const { id } = useParams();
   const [name, setName] = useState<NameData | null>(null);
 
@@ -65,7 +64,7 @@ export default function Header() {
           type="text"
           id="search"
           placeholder="Search here"
-          className="rounded-full"
+          className="rounded-full text-center"
           onChange={(e) => {
             setSearchFor(e.target.value);
           }}
@@ -100,7 +99,7 @@ export default function Header() {
           <DropdownMenuContent
             className={`w-56 bg-white  p-12 rounded-lg drop-shadow-lg mr-10 flex flex-col gap-4 theme--${theme}-drop z-50	`}
           >
-            <DropdownMenuLabel>Hi,{name?.first_name}</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-center">{user?.email}</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <Link to={`/profile/${user?.id}`}>
