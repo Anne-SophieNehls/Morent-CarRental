@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 // import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useUserContext } from "@/context/userContext";
-import { supabase } from "@/lib/supabase";
+import { getStorageURL, supabase } from "@/lib/supabase";
 import {
   DropdownMenu,
   DropdownMenuContent,
