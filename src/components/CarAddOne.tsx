@@ -11,7 +11,9 @@ export default function CarAddOne() {
         Providing cheap car rental services and safe and comfortable facilities.
       </p>
       <Button className="bg-[#3563E9] my-5">
-        <Link to="/rent/:id">Rental Car</Link>
+        <Link to="/details/16d32f41-715b-4738-b306-8ebb138c8bc0">
+          Rental Car
+        </Link>
       </Button>
       <img
         src="/img/autoAdd1.png"

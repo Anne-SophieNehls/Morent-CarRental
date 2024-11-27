@@ -8,8 +8,10 @@ import tankIcon from "/img/icons/tank-icon.svg";
 import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
 import Map from "@/components/Map";
+import { useThemeContext } from "@/context/LightDarkModeContext";
 
 export default function DetailsPage() {
+  const { theme } = useThemeContext();
   const { id } = useParams();
   const [car, setCar] = useState<CarData | null>(null);
 
@@ -47,7 +49,6 @@ export default function DetailsPage() {
           />
         </div>
         <div
-          className={` h-80 p-3 grid grid-rows w-full gap-6 bg-white rounded-lg`}
         >
           <div>
             <h2 className={`font-bold mb-2 mx-2 `}>
