@@ -37,7 +37,7 @@ export default function DetailsPage() {
   );
 
   if (!car) {
-    return "Loading...?";
+    return <div className="loader pl-11 p-2.5"></div>;
   }
 
   return (
