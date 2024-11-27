@@ -169,7 +169,7 @@ export default function HomePage() {
           <CarAddOne />
           <CarAddTwo />
         </div>
-        <div className="flex justify-around mb-10 items-center">
+        <div className="flex  mb-10 items-center w-screen">
           <form
             className={`bg-white rounded-lg p-4 shadow-sm ${`theme--${theme}-card`}`}
           >
@@ -238,8 +238,8 @@ export default function HomePage() {
           </Button>
         </div>
         <div
-          className={`grid ${
-            sidebarVisible ? "grid-cols-3" : "grid-cols-4"
+          className={` md:grid ${
+            sidebarVisible ? "grid-cols-2" : "grid-cols-3"
           } gap-5 mb-10 justify-items-center`}
         >
           {vehiclesData?.map((el) => {

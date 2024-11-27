@@ -14,7 +14,6 @@ import { useSearch } from "@/context/searchContext";
 import { supabase } from "@/lib/supabase";
 import { useUserContext } from "@/context/userContext";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-//import { userInfo } from "os";
 import { useEffect, useState } from "react";
 import { QueryData } from "@supabase/supabase-js";
 
@@ -52,11 +51,11 @@ export default function Header() {
   // const { searchFor } = useSearch();
   return (
     <header
-      className={`flex justify-between items-center mb-10 mx-10 pt-10 theme--${theme}-hf`}
+      className={`flex justify-between gap-10 items-center mb-10 pt-10 theme--${theme}-hf`}
     >
       <nav>
         <NavLink to="/">
-          <h1 className="logo text-5xl	">MORENT</h1>
+          <h1 className="logo text-4xl">MORENT</h1>
         </NavLink>
       </nav>
       <form>
@@ -64,7 +63,7 @@ export default function Header() {
           type="text"
           id="search"
           placeholder="Search here"
-          className="pr-60 rounded-full"
+          className="rounded-full"
           onChange={(e) => {
             setSearchFor(e.target.value);
           }}
@@ -73,7 +72,7 @@ export default function Header() {
       <div className="flex">
         <LightDarkThemeSwitcher />
 
-        <Button variant={"outline"} className="rounded-full h-14  mx-2">
+        <Button variant={"outline"} className="rounded-full h-auto ">
           <img
             src="/img/icons/glocke-grau-notification.png"
             alt="notification"
