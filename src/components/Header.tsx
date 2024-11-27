@@ -16,9 +16,9 @@ import { useUserContext } from "@/context/userContext";
 import { useThemeContext } from "@/context/LightDarkModeContext";
 import { useEffect, useState } from "react";
 import { QueryData } from "@supabase/supabase-js";
+//${getStorageURL(name?.image_url)} ||   (img profile bild , läuft leider nicht)
 
 export default function Header() {
-
   const { id } = useParams();
   const [name, setName] = useState<NameData | null>(null);
 
@@ -52,7 +52,7 @@ export default function Header() {
   // const { searchFor } = useSearch();
   return (
     <header
-      className={`flex justify-between gap-10 items-center mb-10 pt-10 pl-10 theme--${theme}-hf`}
+      className={` mx-10 flex justify-between gap-10 items-center mb-10 p-5 pt-10 theme--${theme}-hf`}
     >
       <nav>
         <NavLink to="/">
@@ -64,7 +64,7 @@ export default function Header() {
           type="text"
           id="search"
           placeholder="Search here"
-          className="rounded-full"
+          className="rounded-full text-center"
           onChange={(e) => {
             setSearchFor(e.target.value);
           }}
@@ -89,9 +89,8 @@ export default function Header() {
               size={"icon"}
               className="h-14 w-14 rounded-full mx-2"
             >
-              {/* {!user img : } */}
               <img
-                src="/img/icons/profile-without-profilpictuare.svg"
+                src={`/img/icons/profile-without-profilpictuare.svg`}
                 alt="profil img"
                 className="h-14"
               />
@@ -100,11 +99,13 @@ export default function Header() {
           <DropdownMenuContent
             className={`w-56 bg-white  p-12 rounded-lg drop-shadow-lg mr-10 flex flex-col gap-4 theme--${theme}-drop z-50	`}
           >
-            <DropdownMenuLabel>Hi,{name?.first_name}</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-center">
+              {user?.email}
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link to="/profile/:id">
-                <span className="flex gap-2">
+              <Link to={`/profile/${user?.id}`}>
+                <span className="flex gap-2 hover:bg-[#3562e91b] rounded-xl p-1">
                   <img src="/img/icons/zum-profile-icon.svg" alt="to profil" />
                   Profile
                 </span>
@@ -112,7 +113,7 @@ export default function Header() {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Link to="bookings">
-                <span className="flex gap-2 my-3">
+                <span className="flex gap-2 my-3 hover:bg-[#3562e91b] rounded-xl p-1">
                   <img src="/img/icons/save-icon.svg" alt="to profil" />
                   My Bookings
                 </span>
@@ -121,7 +122,7 @@ export default function Header() {
 
             <DropdownMenuItem>
               <Link to={`/favorites/${user?.id}`}>
-                <span className="flex gap-2">
+                <span className="flex gap-2 hover:bg-[#3562e91b] rounded-xl p-1">
                   <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
                   Favorites
                 </span>

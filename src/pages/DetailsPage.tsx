@@ -8,8 +8,12 @@ import tankIcon from "/img/icons/tank-icon.svg";
 import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
 import Map from "@/components/Map";
+import { useThemeContext } from "@/context/LightDarkModeContext";
+
+
 
 export default function DetailsPage() {
+  const { theme } = useThemeContext();
   const { id } = useParams();
   const [car, setCar] = useState<CarData | null>(null);
 
@@ -33,13 +37,13 @@ export default function DetailsPage() {
   );
 
   if (!car) {
-    return "Loading...?";
+    return <div className="loader pl-11 p-2.5"></div>;
   }
 
   return (
     <section className="flex flex-wrap justify-center lg:flex flex-col">
       <div className="grid grid-rows-3 p-20 gap-8 lg:grid-cols-3 lg:grid-rows-1 lg:p-10">
-        <div className=" w-auto h-80 bg-white rounded-lg ml-5">
+        <div className=" w-auto h-80 bg-white ${`theme--${theme}-bg`} rounded-xl ml-5">
           <img
             className="rounded-xl object-cover w-full h-full"
             src={car.carImg}
@@ -47,7 +51,7 @@ export default function DetailsPage() {
           />
         </div>
         <div
-          className={` h-80 p-3 grid grid-rows w-full gap-6 bg-white rounded-lg`}
+          className={` h-80 p-3 grid grid-rows w-full gap-6 bg-white shadow-sm ${`theme--${theme}-card`} rounded-xl`}
         >
           <div>
             <h2 className={`font-bold mb-2 mx-2 `}>
@@ -147,8 +151,6 @@ export default function DetailsPage() {
         </div>
         <Map></Map>
       </div>
-
     </section>
   );
 }
-

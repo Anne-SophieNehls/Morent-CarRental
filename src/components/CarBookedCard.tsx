@@ -32,7 +32,7 @@ export default function CarBookedCard(props: CarBookedCard) {
 	  };
 	  
 	const days = calculateDaysBetweenDates(props.pick_up_date, props.drop_off_date);
-
+  
   return (
     <div className="w-11/12 mb-10">
       <p className="text-xl font-semibold mb-5 mt-7">{props.pick_up_date}</p>
@@ -60,3 +60,4 @@ export default function CarBookedCard(props: CarBookedCard) {
     </div>
   );
 }
+
