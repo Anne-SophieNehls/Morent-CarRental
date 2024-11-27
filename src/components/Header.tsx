@@ -18,7 +18,6 @@ import { useEffect, useState } from "react";
 import { QueryData } from "@supabase/supabase-js";
 
 export default function Header() {
-
   const { id } = useParams();
   const [name, setName] = useState<NameData | null>(null);
 
@@ -52,7 +51,7 @@ export default function Header() {
   // const { searchFor } = useSearch();
   return (
     <header
-      className={`flex justify-between gap-10 items-center mb-10 pt-10 theme--${theme}-hf`}
+      className={`flex justify-between gap-10 items-center mb-10 p-5 pt-10 theme--${theme}-hf`}
     >
       <nav>
         <NavLink to="/">
@@ -64,7 +63,7 @@ export default function Header() {
           type="text"
           id="search"
           placeholder="Search here"
-          className="rounded-full"
+          className="rounded-full w-96"
           onChange={(e) => {
             setSearchFor(e.target.value);
           }}

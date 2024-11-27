@@ -169,7 +169,7 @@ export default function HomePage() {
           <CarAddTwo />
         </div>
         <div className="flex flex-col gap-5 md:mb-10 items-center w-full xl:flex-row justify-center">
-          <form className={`bg-white rounded-lg shadow-sm `}>
+          <form className={`bg-white rounded-lg shadow-sm p-5`}>
             <h3>Pickup</h3>
             <div className="flex">
               <div>
@@ -198,7 +198,7 @@ export default function HomePage() {
             ↑↓
           </Button>
           <form
-            className={`rounded-lg  bg-white shadow-sm ${`theme--${theme}-card`}`}
+            className={`rounded-lg p-5  bg-white shadow-sm ${`theme--${theme}-card`}`}
           >
             <h3>Drop-Off</h3>
             <div className="flex">

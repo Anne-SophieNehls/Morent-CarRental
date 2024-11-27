@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className="p-5">
       <section className="flex justify-between px-4">
         <div className="w-auto">
           <h2 className="logo text-3xl">MORENT</h2>
