@@ -168,12 +168,9 @@ export default function HomePage() {
           <CarAddOne />
           <CarAddTwo />
         </div>
-        <div className="flex flex-col gap-5 md:mb-10 items-center w-full xl:flex-row justify-center">
-          <form className={`bg-white rounded-lg shadow-sm p-5`}>
-            <h3>Pickup</h3>
             <div className="flex">
               <div>
-                <p>Location:</p>
+                <p className="text-base font-semibold">Location:</p>
                 <select onChange={handleLocation}>
                   <option>Please Select</option>
                   {locationsArray?.map((el, index) => (
@@ -185,11 +182,11 @@ export default function HomePage() {
                 </select>
               </div>
               <div>
-                <p>Date</p>
+                <p className="text-base font-semibold">Date</p>
                 <input type="date" />
               </div>
               <div>
-                <p>Time</p>
+                <p className="text-base font-semibold">Time</p>
                 <input type="time" />
               </div>
             </div>
@@ -198,12 +195,11 @@ export default function HomePage() {
             ↑↓
           </Button>
           <form
-            className={`rounded-lg p-5  bg-white shadow-sm ${`theme--${theme}-card`}`}
           >
-            <h3>Drop-Off</h3>
+            <h3 className="text-base font-semibold">Drop-Off</h3>
             <div className="flex">
               <div>
-                <p>Location:</p>
+                <p className="text-base font-semibold">Location:</p>
                 <select>
                   <option>Please Select</option>
                   {locationsArray?.map((el, index) => (
@@ -215,11 +211,11 @@ export default function HomePage() {
                 </select>
               </div>
               <div className="">
-                <p>Date</p>
+                <p className="text-base font-semibold">Date</p>
                 <input type="date" />
               </div>
               <div>
-                <p>Time</p>
+                <p className="text-base font-semibold">Time</p>
                 <input type="time" />
               </div>
             </div>

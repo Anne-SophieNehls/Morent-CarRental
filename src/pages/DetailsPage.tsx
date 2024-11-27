@@ -39,22 +39,16 @@ export default function DetailsPage() {
   }
 
   return (
-    <section className="flex flex-col gap-20">
-      <div>
-        <Link to={`/`}>
-          <button className="border-none text-[#90A3BF]">↩︎ Back</button>
-        </Link>
-      </div>
-      <div className="h-80 grid grid-cols-3 grid-rows-1 gap-8">
+    <section className="flex flex-wrap justify-center lg:flex flex-col">
+      <div className="grid grid-rows-3 p-20 gap-8 lg:grid-cols-3 lg:grid-rows-1 lg:p-10">
         <div className=" w-auto h-80 bg-white rounded-lg ml-5">
           <img
-            className="rounded-xl w-full h-full"
+            className="rounded-xl object-cover w-full h-full"
             src={car.carImg}
             alt="Car Image"
           />
         </div>
         <div
-          className={` h-80 p-3 grid grid-rows-auto w-full gap-6 bg-white rounded-lg theme--${theme}-card`}
         >
           <div>
             <h2 className={`font-bold mb-2 mx-2 `}>
@@ -154,12 +148,7 @@ export default function DetailsPage() {
         </div>
         <Map></Map>
       </div>
-      <div className="flex justify-between">
-        <h3 className="text-[#90A3BF]">Available Nearby</h3>
-        <Link to={`/`}>
-          <button className="border-none text-[#90A3BF]">View All</button>
-        </Link>
-      </div>
+
     </section>
   );
 }
