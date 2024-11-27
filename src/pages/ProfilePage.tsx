@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 // import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useThemeContext } from "@/context/LightDarkModeContext";
 import { useUserContext } from "@/context/userContext";
 import { getStorageURL, supabase } from "@/lib/supabase";
 import {
@@ -15,6 +16,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
+  const { theme } = useThemeContext();
+
   const { user } = useUserContext();
   const fileRef = useRef<HTMLInputElement>(null);
   // const [email, setEmail] = useState("");
@@ -32,16 +35,31 @@ export default function ProfilePage() {
     return resultprofil;
   };
 
-  const handleFileUpload = async () => {
-    const file = fileRef.current?.files?.[0] || null;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await supabase.from("profiles")({
+      options: {
+        data: { first_name: firstName, last_name: lastName },
+      },
+    });
+    if (result.error) {
+      alert(result.error.message);
+    } else {
+      const file = fileRef.current?.files?.[0] || null;
 
-    let imagePath: string | null = null;
-
-    if (file) {
-      const uploadResult = await supabase.storage
-        .from("image")
-        .upload(`${user?.id}/${crypto.randomUUID()}`, file, { upsert: true });
-      imagePath = uploadResult.data?.fullPath || null;
+      if (file && result.data.user) {
+        const uploadResult = await supabase.storage
+          .from("profile_image")
+          .upload(`${result.data.user.id}/profile`, file, {
+            upsert: true,
+          });
+        if (uploadResult.data) {
+          await supabase
+            .from("profiles")
+            .update({ image_url: `${uploadResult.data.fullPath}` })
+            .eq("id", result.data.user.id);
+        }
+      }
     }
   };
 
