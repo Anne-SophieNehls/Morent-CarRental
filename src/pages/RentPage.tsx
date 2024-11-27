@@ -5,7 +5,7 @@ import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
 import { QueryData } from "@supabase/supabase-js";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Map from "@/components/Map";
 
 export default function RentPage() {
@@ -22,7 +22,6 @@ export default function RentPage() {
 	const dropOffLocationRef = useRef<HTMLInputElement>(null);
 	const dropOffDateRef = useRef<HTMLInputElement>(null);
 	const dropOffTimeRef = useRef<HTMLInputElement>(null);
-	const [paymentMethod, setPaymentMethod] = useState<string>("");
 	const { user } = useUserContext();
 	
 
@@ -36,18 +35,10 @@ export default function RentPage() {
 		  const bookingData = {
 			user_id: user.id,
 			vehicle_id: vehicle.id,
-			// name: nameRef.current?.value,
-			// phone_number: telRef.current?.value,
-			// address: addressRef.current?.value,
-			// town: townRef.current?.value,
 			pick_up_location: pickUpLocationRef.current?.value,
 			pick_up_date: pickUpDateRef.current?.value,
-			// pick_up_time: pickUpTimeRef.current?.value,
 			drop_off_location: dropOffLocationRef.current?.value,
 			drop_off_date: dropOffDateRef.current?.value,
-			// drop_off_time: dropOffTimeRef.current?.value,
-			// payment_method: paymentMethod,
-			// created_at: '',
 		  };
 		  await supabase.from("bookings").insert([bookingData]);
 		}
@@ -60,16 +51,14 @@ export default function RentPage() {
 	useEffect(() => {
 		if (id)
 			getVehicle().then((vehicle) => setVehicle(vehicle.data));
-	  // eslint-disable-next-line react-hooks/exhaustive-deps
 	  }, [id]);
 	
 
 	type VehicleData = QueryData<ReturnType<typeof getVehicle>>;
 	console.log(id);
   return (
-	<div>
-
-		<section className="flex">
+	<div className="mb-10">
+		<section className="flex mb-10">
 			<article className={`inset-y-0 left-0  rounded-lg theme--${theme}-card w-2/3`}>
 				<form className="bg bg-white mr-8 p-5 rounded-lg">
 					<div className="flex justify-between mb-3">
@@ -205,7 +194,7 @@ export default function RentPage() {
 						<div className="mt-3">
 							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
 								<div className="flex items-center">
-									<input className="ml-5" type="radio" onChange={() => setPaymentMethod("Credit Card")}/>
+									<input className="ml-5" type="radio"/>
 									<p className="ml-3 text-sm">Credit Card</p>
 								</div>
 							</div>
@@ -213,7 +202,7 @@ export default function RentPage() {
 						<div className="mt-3">
 							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
 								<div className="flex items-center">
-									<input className="ml-5" type="radio" onChange={() => setPaymentMethod("Paypal")}/>
+									<input className="ml-5" type="radio"/>
 									<p className="ml-3 text-sm">Paypal</p>
 								</div>
 							</div>
@@ -221,7 +210,7 @@ export default function RentPage() {
 						<div className="mt-3">
 							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
 								<div className="flex items-center">
-									<input className="ml-5" type="radio" onChange={() => setPaymentMethod("Bitcoin")}/>
+									<input className="ml-5" type="radio"/>
 									<p className="ml-3 text-sm">Bitcoin</p>
 								</div>
 							</div>
@@ -279,7 +268,9 @@ export default function RentPage() {
 				</div>
 			</div>
 		</section>
-		<Button onClick={handleButton} className="mt-12">Rent now!</Button>
+		<Link to="/bookings">
+			<Button onClick={handleButton} className="mt-12">Rent now!</Button>
+		</Link>
 	</div>
   );
 }
