@@ -1,193 +1,234 @@
-//import { CarCardProps } from "@/components/CarCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-//import { QueryData } from "@supabase/supabase-js";
-//import { useState } from "react";
-// import { Link, useParams } from "react-router-dom";
+import { supabase } from "@/lib/supabase";
+import { QueryData } from "@supabase/supabase-js";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-export default function RentPage(/* props: CarCardProps */) {
-  // const { id } = useParams();
-  const { theme } = useThemeContext();
-  //const [locationsData, setLocationsData] = useState<LocationsData | null>( null );
-  // const [locationsFilter, setLocationsFilter] = useState("");
+export default function RentPage() {
+	const { theme } = useThemeContext();
+	const { id } = useParams();
+	const [vehicle, setVehicle] = useState<VehicleData | null>(null);
 
-  //type LocationsData = QueryData<ReturnType<typeof  /* getLocations */>>;
-  ///const locationsString = locationsData?.locations?.toString();
-  // const locationsArray = locationsString?.split(",");
-  // setLocationsData
-  function handelSubmitRent() {}
+	const getVehicle = async () => {
+		const result = await supabase.from("vehicles").select("*").eq("id", id!).single();
+		return result;
+	}
 
+	useEffect(() => {
+		if (id)
+			getVehicle().then((vehicle) => setVehicle(vehicle.data));
+	  // eslint-disable-next-line react-hooks/exhaustive-deps
+	  }, [id]);
+	
+
+	type VehicleData = QueryData<ReturnType<typeof getVehicle>>;
+	console.log(id);
   return (
-    <section className="relative h-1/2">
-      <div
-        className={`top-0 p-5 my-3 mx-auto right-0 rounded-lg theme--${theme}-card`}
-      >
-        <div>
-          <h2>Rental Summary</h2>
-          <p>
-            Prices may change depending on the length of the rental and the
-            price of your rental car.
-          </p>
-        </div>
-        <div className="flex justify-between">
-          {/* <h2
-            className={`font-bold mb-2 mx-2 `}
-          >{`${props.brand} ${props.model}`}</h2>
-        </div>
-        <p className="text-xs font-semibold text-[#90A3BF] mb-1 mx-2">
-          {props.vehicleType}
-        </p>
-        <img className="rounded-xl mb-4" src={props.carImg} alt="Car Image" />
-        <hr />
-        <div className="flex justify-between items-center mb-6">
-          <p className="font-bold">
-            {`${props.pricePerDay}/`}
-            <span className="text-xs text-[#90A3BF]">day</span>
-          </p> */}
-        </div>
-      </div>
-      <article className={`inset-y-0 left-0  rounded-lg theme--${theme}-card`}>
-        <form className="p-5 my-3 mx-auto rounded-md">
-          <div className="flex justify-between items-center m-6">
-            <div>
-              <h2>Billing Info</h2>
-              <p>Please enter your billing info</p>
-            </div>
-            <p className="text-[#90A3BF]">Step 1 von 4</p>
-          </div>
-          <div>
-            <div>
-              <label htmlFor="Name">Name</label>
-              <Input
-                id="Name"
-                type="text"
-                placeholder="Your full Name"
-                className="pr-60 rounded-md"
-              />
-            </div>
-            <div>
-              <label htmlFor="Tel">Phone number</label>
-              <Input
-                id="Tel"
-                type="text"
-                placeholder="Your Phone number"
-                className="pr-60 rounded-md"
-              />
-            </div>{" "}
-            <div>
-              <label htmlFor="Adress">Adress</label>
-              <Input
-                id="Adress"
-                type="text"
-                placeholder="Your Street here"
-                className="pr-60 rounded-md"
-              />
-            </div>{" "}
-            <div>
-              <label htmlFor="Town">City / Town</label>
-              <Input
-                id="Town"
-                type="text"
-                placeholder="Your City / Town"
-                className="pr-60 rounded-md"
-              />
-            </div>
-          </div>
-        </form>
-        <form className="p-5 my-3 mx-auto rounded-md">
-          <div className="flex justify-between items-center m-6">
-            <div>
-              <h2>Rental Info</h2>
-              <p>Please select your rental date</p>
-            </div>
-            <p className="text-[#90A3BF]">Step 2 von 4</p>
-          </div>
-          <article>
-            <form
-              className={`bg-white rounded-lg p-4 shadow-sm ${`theme--${theme}-card`}`}
-            >
-              <h3>Pickup</h3>
-              <div className="flex">
-                <div>
-                  <p>Location:</p>
-                  {/*  <select onChange={handleLocation}>
-                    <option>Please Select</option>
-                    {locationsArray?.map((el, index) => (
-                      <option key={index} value={el}>
-                        {el}
-                      </option>
-                    ))}
-                    ;
-                  </select> */}
-                </div>
-                <div>
-                  <p>Date</p>
-                  <input type="date" />
-                </div>
-                <div>
-                  <p>Time</p>
-                  <input type="time" />
-                </div>
-              </div>
-            </form>
-            <form
-              className={`rounded-lg p-4  bg-white shadow-sm ${`theme--${theme}-card`}`}
-            >
-              <h3>Drop-Off</h3>
-              <div className="flex">
-                <div>
-                  <p>Location:</p>
-                  {/*  <select>
-                    <option>Please Select</option>
-                    {locationsArray?.map((el, index) => (
-                      <option key={index} value={el}>
-                        {el}
-                      </option>
-                    ))}
-                    ;
-                  </select> */}
-                </div>
-                <div className="">
-                  <p>Date</p>
-                  <input type="date" />
-                </div>
-                <div>
-                  <p>Time</p>
-                  <input type="time" />
-                </div>
-              </div>
-            </form>
-          </article>
-        </form>
-        <form className="p-5 my-3 mx-auto rounded-md">
-          <div className="flex justify-between items-center m-6">
-            <div>
-              <h2>Payment Metod</h2>
-              <p>Please enter your payment method</p>
-            </div>
-            <p className="text-[#90A3BF]">Step 3 von 4</p>
-          </div>
-          <div>
-            <form>
-              <div className="flex justify-between items-center m-6">
-                <div>
-                  <h2>Confirmation</h2>
-                  <p>
-                    We are getting to the end. Just a few clicks and your rental
-                    is ready!
-                  </p>
-                </div>
-                <p className="text-[#90A3BF]">Step 4 von 4</p>
-              </div>
-            </form>
-          </div>
-          <div>
-            <Button onSubmit={handelSubmitRent}>Rent Now</Button>
-          </div>
-        </form>
-        <div></div>
-      </article>
-    </section>
+	<div>
+
+		<section className="flex">
+			<article className={`inset-y-0 left-0  rounded-lg theme--${theme}-card w-2/3`}>
+				<form className="bg bg-white mr-8 p-5 rounded-lg">
+					<div className="flex justify-between mb-3">
+						<div>
+							<h2 className="text-2xl font-medium">Billing Info</h2>
+							<p className="text-sm text-[#7D8CA0] font-light">Please enter your billing info</p>
+						</div>
+						<p className="text-[#90A3BF] text-sm">Step 1 of 4</p>
+					</div>
+					<div className="grid grid-cols-2 gap-3 font-light">
+						<div>
+							<label htmlFor="Name">Name</label>
+							<Input
+								id="Name"
+								type="text"
+								placeholder="Your name"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+						<div>
+							<label htmlFor="Tel">Phone number</label>
+							<Input
+								id="Tel"
+								type="text"
+								placeholder="Phone number"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+						<div>
+							<label htmlFor="Address">Address</label>
+							<Input
+								id="Address"
+								type="text"
+								placeholder="Address"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+						<div>
+							<label htmlFor="Town">Town / City</label>
+							<Input
+								id="Town"
+								type="text"
+								placeholder="Town or City"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+					</div>
+				</form>
+				<form className="bg-white mr-8 p-5 rounded-lg mt-10">
+					<div className="flex justify-between items-center mb-3">
+						<div>
+							<h2 className="text-2xl font-medium">Rental Info</h2>
+							<p className="text-[#7D8CA0] text-sm font-light">Please select your rental date</p>
+						</div>
+						<p className="text-[#90A3BF] text-sm">Step 2 of 4</p>
+					</div>
+					<p className="mb-3">Pick - Up</p>
+					<div className="grid grid-cols-2 gap-3 font-light">
+						<div>
+							<label htmlFor="Locations">Locations</label>
+							<Input
+								id="Locations"
+								type="text"
+								placeholder="Town or City"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+						<div>
+							<label htmlFor="Town">Date</label>
+							<Input
+								id="Date"
+								type="date"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+						<div>
+							<label htmlFor="Time">Time</label>
+							<Input
+								id="Time"
+								type="time"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+					</div>
+					<p className="mt-6 pt-3 border-t-2 mb-3">Drop - Off</p>
+					<div className="grid grid-cols-2 gap-3 font-light">
+						<div>
+							<label htmlFor="Locations">Locations</label>
+							<Input
+								id="Locations"
+								type="text"
+								placeholder="Town or City"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+						<div>
+							<label htmlFor="Town">Date</label>
+							<Input
+								id="Date"
+								type="date"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+						<div>
+							<label htmlFor="Time">Time</label>
+							<Input
+								id="Time"
+								type="time"
+								className="pr-60 rounded-md bg-[#F6F7F9]"
+							/>
+						</div>
+					</div>
+				</form>
+				<form className="bg bg-white mr-8 p-5 rounded-lg mt-10">
+					<div className="flex justify-between mb-3">
+						<div>
+							<h2 className="text-2xl font-medium">Payment Method</h2>
+							<p className="text-sm text-[#7D8CA0] font-light">Please enter your payment method</p>
+						</div>
+						<p className="text-[#90A3BF] text-sm">Step 3 of 4</p>
+					</div>
+					<div className="">
+						<div className="mt-3">
+							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
+								<div className="flex items-center">
+									<input className="ml-5" type="radio" />
+									<p className="ml-3 text-sm">Credit Card</p>
+								</div>
+							</div>
+						</div>
+						<div className="mt-3">
+							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
+								<div className="flex items-center">
+									<input className="ml-5" type="radio" />
+									<p className="ml-3 text-sm">Paypal</p>
+								</div>
+							</div>
+						</div>
+						<div className="mt-3">
+							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
+								<div className="flex items-center">
+									<input className="ml-5" type="radio" />
+									<p className="ml-3 text-sm">Bitcoin</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<form className="bg bg-white mr-8 p-5 rounded-lg mt-10">
+					<div className="flex justify-between mb-3">
+						<div>
+							<h2 className="text-2xl font-medium">Confirmation</h2>
+							<p className="text-sm text-[#7D8CA0] font-light">We are getting tot he end. Just a few clicks and your rental is ready!</p>
+						</div>
+						<p className="text-[#90A3BF] text-sm">Step 4 of 4</p>
+					</div>
+					<div className="">
+						<div className="mt-3">
+							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
+								<div className="flex items-center">
+									<input className="ml-5" type="checkbox" />
+									<p className="ml-3 text-xs">I agree withs ending marketing and newsletter emails. No spam, promised!</p>
+								</div>
+							</div>
+						</div>
+						<div className="mt-3">
+							<div className="pr-60 rounded-md bg-[#F6F7F9] h-10 flex items-center">
+								<div className="flex items-center">
+									<input className="ml-5" type="checkbox" />
+									<p className="ml-3 text-xs">I agree with our terms and conditions and privacy policy</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p className="text-xs text-[#7D8CA0] mt-6">All your data is safe</p>
+					<p className="text-xs text-[#7D8CA0]">We are using the most advanced security to provide you the best experience ever.</p>
+				</form>
+				<div></div>
+			</article>
+			<div className="w-1/3">
+				<div className="bg-white p-5 rounded-md">
+					<h2 className="text-xl font-medium mb-1">Rental Summary</h2>
+					<p className="text-sm font-light text-[#7D8CA0]">Prices may change depending on the length of the rental and the price of your rental car.</p>
+					<div>
+						<img src={vehicle?.carImg} alt="" className="rounded-lg mt-5"/>
+						<div>
+							<p className="font-medium text-md mt-5">{`${vehicle?.brand} ${vehicle?.model}`}</p>
+							<div>
+								reviews, number of reviews
+							</div>
+						</div>
+						<div className="flex justify-between border-t mt-6 pt-5 text-sm font-light">
+							<p className="">Price per Day</p>
+							<p>{`${vehicle?.pricePerDay} $`}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<Button className="mt-12">Rent now!</Button>
+	</div>
   );
 }

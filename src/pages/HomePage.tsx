@@ -16,6 +16,7 @@ export default function HomePage() {
   const [locationsData, setLocationsData] = useState<LocationsData | null>(
     null
   );
+  const [reload, setReload] = useState(false);
   const { searchFor } = useSearch();
   const [locationsFilter, setLocationsFilter] = useState("");
   const {
@@ -122,6 +123,7 @@ export default function HomePage() {
       getVehicles().then((result) => setVehiclesData(result.data));
     },
     /* eslint-disable */ [
+		reload,
       searchFor,
       filter2Seats,
       filter4Seats,
@@ -245,6 +247,7 @@ export default function HomePage() {
               <CarCard
                 vehicle={el}
 				isFavorited={el.favorites.length > 0}
+				onFavoritteClick={()=>setReload(!reload)}
               ></CarCard>
             );
           })}

@@ -18,7 +18,6 @@ import { useEffect, useState } from "react";
 import { QueryData } from "@supabase/supabase-js";
 
 export default function Header() {
-
   const { id } = useParams();
   const [name, setName] = useState<NameData | null>(null);
 
@@ -75,12 +74,12 @@ export default function Header() {
 
         <Button variant={"outline"} className="rounded-full h-auto ">
           <img
-            src="../../public/img/icons/glocke-grau-notification.svg"
-            alt="profil img"
+            src="/img/icons/glocke-grau-notification.png"
+            alt="notification"
           />
         </Button>
         <Button variant={"outline"} className="rounded-full h-14 mx-2">
-          <img src="/img/icons/setting-zahnrad-icon.svg" alt="profil img" />
+          <img src="/img/icons/setting-zahnrad-icon.svg" alt="settings" />
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -113,7 +112,7 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to="bookings">
                 <span className="flex gap-2 my-3">
-                  <img src="/img/icons/save-icon.svg" alt="to profil" />
+                  <img src="/img/icons/save-icon.svg" alt="to my bookings" />
                   My Bookings
                 </span>
               </Link>
@@ -122,7 +121,10 @@ export default function Header() {
             <DropdownMenuItem>
               <Link to={`/favorites/${user?.id}`}>
                 <span className="flex gap-2">
-                  <img src="/img/icons/heart-gray-icon.svg" alt="to profil" />
+                  <img
+                    src="/img/icons/heart-gray-icon.svg"
+                    alt="to my favorites"
+                  />
                   Favorites
                 </span>
               </Link>

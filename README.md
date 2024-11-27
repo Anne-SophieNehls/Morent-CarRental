@@ -16,7 +16,6 @@ Our project is a web application designed to revolutionize the car rental experi
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Database](#database)
-- [API Integration](#api-integration)
 - [Authentication](#authentication)
 - [Backend Routes](#backend-routes)
 - [Design](#design)
@@ -52,40 +51,47 @@ In your profile, you can easily access your booking history, saved favorite cars
  
  ### Fovorites
  <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/Like-card.png" alt="Project Screenshot">
+  <img src="./public/img/read-me/Like-card.png" alt="Favorit Card Screenshot">
 </div>
 <br/>
- bla bla
- hier bild von einzeln Favorisierten Cards einfügen
+ you can favorated esaly the Cars 
 
 <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="Project Screenshot">
+  <img src="./public/img/read-me/" alt="Fav Screenshot">
 </div>
 <br/>
- bla bla
- hier bild von Favoriten Page anzeigen
+ and find them all in your Profil under "Favorites"
 
  ### My Bookings
  <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="Project Screenshot">
+  <img src="./public/img/read-me/" alt="My Bookings Screenshot">
 </div>
 <br/>
- bla bla
- hier bild von Bookingpage einfügen
+You can also view all past bookings under your profile
 
-### Payment
+### Payment Page
 <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="Project Screenshot">
+  <img src="./public/img/read-me/" alt="Payment Screenshot">
 </div>
 <br/>
-Bla bla payment page
+
+The invoicing and payment process takes place directly on one page
+
+
+### User Registration
+<div style="display: flex; justify-content: center;">
+  <img src="./public/img/read-me/" alt="Sign up Screenshot">
+</div>
+<br/>
+Users can register and log in so they have access to their own. Data and can, for example, view your old orders
 
 ### Darkmode
 <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/Darkmode.png" alt="Project Screenshot">
+  <img src="./public/img/read-me/Darkmode.png" alt="Darkmode Screenshot">
 </div>
 <br/>
 For added comfort, we've included a dark mode option, easily accessible from the header. This eye-friendly feature reduces strain on your eyes, making your browsing experience more pleasant.
+
 
 ## Tech Stack
 
@@ -97,28 +103,100 @@ For added comfort, we've included a dark mode option, easily accessible from the
 ![Nodejs](https://img.shields.io/badge/Nodejs-09131B?style=for-the-badge&logo=node.js&logoColor=3C873A)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) 
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=for-the-badge&logo=supabase&labelColor=white&logoColor=3ECF8E)
+
  <br/>
+ 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) 
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Figma](https://img.shields.io/badge/Figma-09131B?style=for-the-badge&logo=Figma)
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
 ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
-![Static Badge](https://img.shields.io/badge/Supabase?style=flat&logo=%3Csvg%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3ESupabase%3C%2Ftitle%3E%3Cpath%20d%3D%22M11.9%201.036c-.015-.986-1.26-1.41-1.874-.637L.764%2012.05C-.33%2013.427.65%2015.455%202.409%2015.455h9.579l.113%207.51c.014.985%201.259%201.408%201.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z%22%2F%3E%3C%2Fsvg%3E&logoColor=3ecf8eff)
+
 
 ## Getting Started
 
+To run Morent on your local machine, follow these steps:
+
+
+### Installation
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/Anne-SophieNehls/Morent-CarRental
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd morent
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
 ## Usage
 
-## Database
+1. Start the app:
 
-### API Integration
+   ```bash
+   npm run dev
+   ```
+
+   The frontend server will run on http://localhost:5173.
+
+2. Open the app in your browser at http://localhost:5173.
+
+3. Register a new account or log in with the following credentials:
+
+   ```bash
+   E-mail:
+    Password:
+    First Name:
+    Last Name:
+    Profile Picture, optional:
+   ```
+
+4. Explore the Web-App!
+
+5. To stop the server, press `Ctrl + C`.
+
+
+## Database
+We used Supabase as a database, here we can quickly and easily set up data tables, link them and maintain the policie
+
 
 ### Authentication
+Our Page uses JWT authentication. The app generates a JWT token when a user registers or logs in. The token is stored in local storage and is used to authenticate the user for protected routes. The token is valid for 24 hours. The Web-App uses the `jsonwebtoken` library to generate and verify tokens. The app uses the `bcrypt` library to hash passwords. The app uses the `axios` library to make HTTP requests.
+
 
 ### Backend Routes
+`/` - HomePage 
+<br/>
+`/details/:id` - DetailsPage 
+<br/>
+`/login` - LoginPage 
+<br/>
+`/sign-up` - SignUpPage 
+<br/>
+`/bookings` - BookingPage 
+<br/>
+`/favorites/:user_id` - FavoritesPage 
+<br/>
+`/profile/:id` - ProfilePage 
+<br/>
+`/rent/:id` - RentPage 
+
 
 ## Design
+
+The Web-App's UI/UX was designed and Figma The app's wireframes were designed using Figma
+[to the Figmaboard](https://www.figma.com/design/twugK8WykfNtQEiSJQf3FR/Car-Rent-Website-Design---Abschluss-Projekt-(Copy)?node-id=1-5&node-type=canvas&t=hasJ8sb9aChDel2o-0)
 
 
 ## Libraries & Tools

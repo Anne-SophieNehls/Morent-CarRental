@@ -3,7 +3,9 @@ import { Button } from "./ui/button";
 
 export default function CarAddOne() {
   return (
-    <div className="text-white h-80	rounded-md bg-[url('img/Background-Ads1.svg')] z-0 p-10 ">
+    <div
+      className={`text-white h-80	rounded-md bg-[url('/img/Background-Ads1.png')] z-0 p-10 `}
+    >
       <h2 className="text-3xl w-3/5	">The Best Platform for Car Rental</h2>
       <p className="my-5 w-2/3	">
         Providing cheap car rental services and safe and comfortable facilities.
