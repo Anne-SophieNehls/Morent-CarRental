@@ -225,7 +225,7 @@ export default function HomePage() {
             </div>
           </form>
         </div>
-        <div className="text-right mr-20 mb-5">
+        <div className="text-right mt-3 mr-20 mb-5">
           <Button
             disabled={!locationsFilter || locationsFilter === "Please Select"}
             className="bg-[#3563E9]"
@@ -235,7 +235,7 @@ export default function HomePage() {
           </Button>
         </div>
         <div
-          className={`md:grid ${
+          className={`flex flex-col gap-3 md:grid ${
             sidebarVisible ? "grid-cols-2" : "grid-cols-2"
           } lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-10 justify-items-center `}
         >

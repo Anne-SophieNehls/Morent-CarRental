@@ -25,9 +25,6 @@ export default function FavoritesPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
   return (
-    <div>
-      <h1 className="text-2xl font-semibold m-8">Your Favorite Cars</h1>
-	  <div className="grid grid-cols-4 gap-5 m-8">
 			{ favoritesData ? (favoritesData.map((favorite) => (
 				<CarCard
 				vehicle={favorite.vehicles!}

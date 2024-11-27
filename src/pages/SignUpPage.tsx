@@ -51,7 +51,7 @@ export default function SignUpPage() {
     <section className="sm:w-screen flex justify-center">
       <div className="w-96 p-3 bg-white rounded-lg flex flex-col items-center justify-center m-8">
         <h1 className="font-semibold text-2xl text-center mb-7">
-        Create a new account
+          Create a new account
         </h1>
         <div>
           <form className="flex flex-col gap-4 px-5" onSubmit={handleSubmit}>

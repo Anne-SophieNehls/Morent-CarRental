@@ -47,6 +47,7 @@ export default function CarBookedCard(props: CarBookedCard){
 							<p className="text-xl text-[#6C757D]">{props.pick_up_location}</p>
 							<p className="text-xl text-[#6C757D]">{props.drop_off_location}</p>
 						</div>
+						<div></div>
 					</div>
 					<Map></Map>
 				</div>

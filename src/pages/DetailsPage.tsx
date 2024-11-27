@@ -147,8 +147,6 @@ export default function DetailsPage() {
         </div>
         <Map></Map>
       </div>
-
     </section>
   );
 }
-
