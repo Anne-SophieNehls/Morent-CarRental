@@ -164,11 +164,11 @@ export default function HomePage() {
     >
       {sidebarVisible && <Sidebar />}
       <div className="flex flex-col w-9/12">
-        <div className="hidden md:flex gap-20 mb-40 flex-col justify-around mt-5 lg:flex-row">
+        <div className="hidden md:flex gap-10 mb-20 flex-col justify-around mt-5 lg:flex-row">
           <CarAddOne />
           <CarAddTwo />
         </div>
-        <div className="flex flex-col gap-5 md:mb-10 items-center w-full lg:flex-row justify-center">
+        <div className=" flex flex-col gap-5 md:mb-10 items-center lg:flex-row justify-center">
           <form className={`bg-white rounded-lg shadow-sm p-3`}>
             <h3 className="text-base font-semibold">Pickup</h3>
             <div className="flex">
@@ -236,8 +236,8 @@ export default function HomePage() {
         </div>
         <div
           className={`flex flex-col gap-3 md:grid ${
-            sidebarVisible ? "grid-cols-2" : "grid-cols-2"
-          } lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-10 justify-items-center `}
+            sidebarVisible ? "xl:grid-cols-3 lg:grid-cols-2" : "xl:grid-cols-4 lg-grid-cols-3"
+          } lg:grid-cols-3 gap-5 mb-10 justify-items-center `}
         >
           {vehiclesData?.map((el) => {
             return (
@@ -249,7 +249,6 @@ export default function HomePage() {
               ></CarCard>
             );
           })}
-          :
         </div>
       </div>
     </div>
