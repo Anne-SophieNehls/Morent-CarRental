@@ -35,7 +35,7 @@ export default function CarCard(props: CarCardProps) {
 			if (!props.isFavorited){
 				await supabase
 				.from("favorites")
-				.insert([{user_id: user.id, vehicle_id: props.vehicle.id,},]);
+				.insert([{user_id: user.id, vehicle_id: props.vehicle.id,}]);
 			} else {
 				await supabase
 				.from("favorites")
