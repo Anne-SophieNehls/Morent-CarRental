@@ -11,53 +11,29 @@ export type Database = {
     Tables: {
       bookings: {
         Row: {
-          address: string
-          created_at: string
           drop_off_date: string
           drop_off_location: string
-          drop_off_time: string
           id: string
-          name: string
-          payment_method: string
-          phone_number: number
           pick_up_date: string
           pick_up_location: string
-          pick_up_time: string
-          town: string
           user_id: string
           vehicle_id: string
         }
         Insert: {
-          address: string
-          created_at?: string
           drop_off_date: string
           drop_off_location: string
-          drop_off_time: string
           id?: string
-          name: string
-          payment_method: string
-          phone_number: number
           pick_up_date: string
           pick_up_location: string
-          pick_up_time: string
-          town: string
           user_id: string
           vehicle_id: string
         }
         Update: {
-          address?: string
-          created_at?: string
           drop_off_date?: string
           drop_off_location?: string
-          drop_off_time?: string
           id?: string
-          name?: string
-          payment_method?: string
-          phone_number?: number
           pick_up_date?: string
           pick_up_location?: string
-          pick_up_time?: string
-          town?: string
           user_id?: string
           vehicle_id?: string
         }
@@ -121,10 +97,10 @@ export type Database = {
       profiles: {
         Row: {
           favorites: string | null
-          first_name: string | null
+          first_name: string
           id: string
           image_url: string | null
-          last_name: string | null
+          last_name: string
         }
         Insert: {
           favorites?: string | null
@@ -135,10 +111,10 @@ export type Database = {
         }
         Update: {
           favorites?: string | null
-          first_name?: string | null
+          first_name?: string
           id?: string
           image_url?: string | null
-          last_name?: string | null
+          last_name?: string
         }
         Relationships: []
       }
