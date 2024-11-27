@@ -19,7 +19,7 @@ import { QueryData } from "@supabase/supabase-js";
 //${getStorageURL(name?.image_url)} ||   (img profile bild , läuft leider nicht)
 
 export default function Header() {
-  const { theme } = useThemeContext();
+
   const { id } = useParams();
   const [name, setName] = useState<NameData | null>(null);
 
@@ -42,6 +42,8 @@ export default function Header() {
     [] /* eslint-enable */
   );
 
+  const { theme } = useThemeContext();
+
   const { user, setUser } = useUserContext();
   const handleLogoutClick = () => {
     setUser(null);
@@ -63,7 +65,7 @@ export default function Header() {
           type="text"
           id="search"
           placeholder="Search here"
-          className="rounded-full w-96"
+          className="rounded-full"
           onChange={(e) => {
             setSearchFor(e.target.value);
           }}

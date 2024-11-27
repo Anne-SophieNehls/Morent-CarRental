@@ -8,10 +8,8 @@ import tankIcon from "/img/icons/tank-icon.svg";
 import typeIcon from "/img/icons/lenkrad-icon.svg";
 import seatsIcon from "/img/icons/personen-haben-gemietet-icon.svg";
 import Map from "@/components/Map";
-import { useThemeContext } from "@/context/LightDarkModeContext";
 
 export default function DetailsPage() {
-  const { theme } = useThemeContext();
   const { id } = useParams();
   const [car, setCar] = useState<CarData | null>(null);
 
