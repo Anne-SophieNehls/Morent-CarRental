@@ -24,6 +24,7 @@ export default function FavoritesPage() {
     getFavorites();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log(favoritesData);
   return (
     <div className="flex justify-center flex-col items-center mb-7 mx-28">
       <h1 className="font-bold text-2xl mb-6 mt-6">Your Favorite Cars</h1>
