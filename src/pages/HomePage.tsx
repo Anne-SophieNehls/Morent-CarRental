@@ -106,7 +106,6 @@ export default function HomePage() {
       .ilike("locations", `%${locationsFilter}%`);
     return result;
   };
-  
 
   const getLocations = async () => {
     const result = await supabase.from("locations").select("*").single();
@@ -123,7 +122,7 @@ export default function HomePage() {
       getVehicles().then((result) => setVehiclesData(result.data));
     },
     /* eslint-disable */ [
-		reload,
+      reload,
       searchFor,
       filter2Seats,
       filter4Seats,
@@ -164,15 +163,13 @@ export default function HomePage() {
       className={`bg-[#F6F7F9] flex ${`theme--${theme}-bg`} justify-center `}
     >
       {sidebarVisible && <Sidebar />}
-      <div className="flex flex-col w-11/12 ">
-        <div className="flex gap-5 mb-40 justify-around mt-5">
+      <div className="flex flex-col w-9/12">
+        <div className="hidden md:flex gap-20 mb-40 flex-col justify-around mt-5 lg:flex-row">
           <CarAddOne />
           <CarAddTwo />
         </div>
-        <div className="flex  mb-10 items-center w-screen">
-          <form
-            className={`bg-white rounded-lg p-4 shadow-sm ${`theme--${theme}-card`}`}
-          >
+        <div className="flex flex-col gap-5 md:mb-10 items-center w-full xl:flex-row justify-center">
+          <form className={`bg-white rounded-lg shadow-sm `}>
             <h3>Pickup</h3>
             <div className="flex">
               <div>
@@ -201,7 +198,7 @@ export default function HomePage() {
             ↑↓
           </Button>
           <form
-            className={`rounded-lg p-4  bg-white shadow-sm ${`theme--${theme}-card`}`}
+            className={`rounded-lg  bg-white shadow-sm ${`theme--${theme}-card`}`}
           >
             <h3>Drop-Off</h3>
             <div className="flex">
@@ -238,16 +235,16 @@ export default function HomePage() {
           </Button>
         </div>
         <div
-          className={` md:grid ${
-            sidebarVisible ? "grid-cols-2" : "grid-cols-3"
-          } gap-5 mb-10 justify-items-center`}
+          className={`md:grid ${
+            sidebarVisible ? "grid-cols-2" : "grid-cols-2"
+          } lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-10 justify-items-center `}
         >
           {vehiclesData?.map((el) => {
             return (
               <CarCard
                 vehicle={el}
-				isFavorited={el.favorites.length > 0}
-				onFavoritteClick={()=>setReload(!reload)}
+                isFavorited={el.favorites.length > 0}
+                onFavoritteClick={() => setReload(!reload)}
               ></CarCard>
             );
           })}
