@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
 import { useThemeContext } from "@/context/LightDarkModeContext";
+import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const { theme } = useThemeContext();
@@ -51,7 +52,9 @@ export default function SignUpPage() {
 
   return (
     <section className="sm:w-screen flex justify-center">
-      <div className={`w-96 p-3 bg-white shadow-sm ${`theme--${theme}-card`} rounded-lg flex flex-col items-center justify-center m-8`}>
+      <div
+        className={`w-96 p-3 bg-white shadow-sm ${`theme--${theme}-card`} rounded-lg flex flex-col items-center justify-center m-8`}
+      >
         <h1 className="font-semibold text-2xl text-center mb-7">
           Create a new account
         </h1>
@@ -105,7 +108,9 @@ export default function SignUpPage() {
                 ref={fileRef}
               />
             </div>
-            <Button className="bg-[#3563E9] mt-5 w-full">Sign up</Button>
+            <Link to="/">
+              <Button className="bg-[#3563E9] mt-5 w-full">Sign up</Button>
+            </Link>
           </form>
         </div>
       </div>
