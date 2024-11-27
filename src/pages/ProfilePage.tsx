@@ -56,6 +56,52 @@ export default function ProfilePage() {
   const imageURL = getStorageURL(profilImg);
 
   const { user } = useUserContext();
+  const fileRef = useRef<HTMLInputElement>(null);
+  // const [email, setEmail] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
+  const [profilImg, setprofilImg] = useState<string | null>(null);
+
+  const getUserData = async () => {
+    const resultprofil = await supabase
+      .from("profiles")
+      .select("*") /* eslint-disable */
+      .eq("id", user?.id!)
+      /* eslint-enable */
+      .single();
+    return resultprofil;
+  };
+
+  const handleFileUpload = async () => {
+    const file = fileRef.current?.files?.[0] || null;
+
+    let imagePath: string | null = null;
+
+    if (file) {
+      const uploadResult = await supabase.storage
+        .from("image")
+        .upload(`${user?.id}/${crypto.randomUUID()}`, file, { upsert: true });
+      imagePath = uploadResult.data?.fullPath || null;
+    }
+  };
+
+  useEffect(() => {
+    getUserData().then((result) => {
+      setFirstname(result.data?.first_name || null);
+      setLastname(result.data?.last_name || null);
+      setprofilImg(result.data?.image_url || null);
+    });
+  }, []);
+
+  const imageURL = getStorageURL(profilImg);
+
+  const { user } = useUserContext();
+
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  // const [email, setEmail] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastname] = useState("");
 
   return (
     <div>

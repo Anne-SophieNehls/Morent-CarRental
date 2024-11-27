@@ -52,7 +52,7 @@ export default function Header() {
   // const { searchFor } = useSearch();
   return (
     <header
-      className={`flex justify-between gap-10 items-center mb-5 pt-5 pl-10 pr-5 theme--${theme}-hf`}
+      className={` mx-10 flex justify-between gap-10 items-center mb-10 p-5 pt-10 theme--${theme}-hf`}
     >
       <nav>
         <NavLink to="/">
