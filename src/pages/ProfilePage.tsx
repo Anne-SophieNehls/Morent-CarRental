@@ -55,6 +55,8 @@ export default function ProfilePage() {
 
   const imageURL = getStorageURL(profilImg);
 
+  const { user } = useUserContext();
+
   return (
     <div>
       <h2>My Profile</h2>
