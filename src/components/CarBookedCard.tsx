@@ -1,4 +1,5 @@
 import svg from "../assets/svg/SVG (3).png"
+import Map from "@/components/Map";
 
 interface CarBookedCard {
 	id: string,
@@ -47,7 +48,7 @@ export default function CarBookedCard(props: CarBookedCard){
 							<p className="text-xl text-[#6C757D]">{props.drop_off_location}</p>
 						</div>
 					</div>
-					{/* <Map></Map> */}
+					<Map></Map>
 				</div>
 			</div>
 		</div>
