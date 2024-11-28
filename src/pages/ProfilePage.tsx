@@ -64,5 +64,6 @@ export default function ProfilePage() {
           <Button className="bg-[#3563E9] m-2">Your Bookings</Button>
         </Link>
       </div>
+      </div>
   );
 }
