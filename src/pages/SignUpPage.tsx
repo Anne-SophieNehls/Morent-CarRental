@@ -5,7 +5,6 @@ import { useRef, useState } from "react";
 import { useUserContext } from "@/context/userContext";
 import { supabase } from "@/lib/supabase";
 import { useThemeContext } from "@/context/LightDarkModeContext";
-import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const { theme } = useThemeContext();
@@ -108,9 +107,7 @@ export default function SignUpPage() {
                 ref={fileRef}
               />
             </div>
-            <Link to="/">
               <Button className="bg-[#3563E9] mt-5 w-full">Sign up</Button>
-            </Link>
           </form>
         </div>
       </div>
