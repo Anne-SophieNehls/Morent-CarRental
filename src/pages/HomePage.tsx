@@ -153,102 +153,97 @@ export default function HomePage() {
     }
     console.log(locationsFilter);
   };
-
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
 
   return (
-    <div
-      className={`bg-[#F6F7F9] flex ${`theme--${theme}-bg`} justify-center `}
-    >
-      {sidebarVisible && <Sidebar />}
-      <div className="flex flex-col w-9/12">
-        <div className="hidden md:flex gap-10 mb-20 flex-col justify-around mt-5 lg:flex-row">
-          <CarAddOne />
-          <CarAddTwo />
-        </div>
-        <div className=" flex flex-col gap-5 md:mb-10 items-center lg:flex-row justify-center">
-          <form className={`bg-white rounded-lg shadow-sm p-3`}>
-            <h3 className="text-base font-semibold">Pickup</h3>
-            <div className="flex">
-              <div>
-                <p className="text-base font-semibold">Location:</p>
-                <select onChange={handleLocation}>
-                  <option>Please Select</option>
-                  {locationsArray?.map((el: string, index: number) => (
-                    <option key={index} value={el}>
-                      {el}
-                    </option>
-                  ))}
-                  ;
-                </select>
-              </div>
-              <div>
-                <p className="text-base font-semibold">Date</p>
-                <input type="date" />
-              </div>
-              <div>
-                <p className="text-base font-semibold">Time</p>
-                <input type="time" />
-              </div>
+    <div className={`bg-[#F6F7F9] flex ${`theme--${theme}-bg`} justify-center`}>
+      <div className={`flex ${sidebarVisible ? 'w-full' : 'w-9/12'}`}>
+        {sidebarVisible && <Sidebar />}
+        <div className={`flex-1 transition-all ${sidebarVisible ? 'ml-5' : 'ml-0'}`}>
+          <div className="flex flex-col w-full">
+            <div className={`hidden md:flex gap-10 mb-20 flex-col justify-around mt-5 lg:flex-row`}>
+              <CarAddOne />
+              <CarAddTwo />
             </div>
-          </form>
-          <Button size={"lg"} className="bg-[#3563E9]">
-            ↑↓
-          </Button>
-          <form
-            className={`rounded-lg  bg-white shadow-sm ${`theme--${theme}-card`} p-3`}
-          >
-            <h3 className="text-base font-semibold">Drop-Off</h3>
-            <div className="flex">
-              <div>
-                <p className="text-base font-semibold">Location:</p>
-                <select>
-                  <option>Please Select</option>
-                  {locationsArray?.map((el: string, index: number) => (
-                    <option key={index} value={el}>
-                      {el}
-                    </option>
-                  ))}
-                  ;
-                </select>
-              </div>
-              <div className="">
-                <p className="text-base font-semibold">Date</p>
-                <input type="date" />
-              </div>
-              <div>
-                <p className="text-base font-semibold">Time</p>
-                <input type="time" />
-              </div>
+            <div className={`flex flex-col gap-5 md:mb-10 items-center lg:flex-row justify-center`}>
+              <form className={`bg-white rounded-lg shadow-sm p-3`}>
+                <h3 className="text-base font-semibold">Pickup</h3>
+                <div className="flex">
+                  <div>
+                    <p className="text-base font-semibold">Location:</p>
+                    <select onChange={handleLocation}>
+                      <option>Please Select</option>
+                      {locationsArray?.map((el: string, index: number) => (
+                        <option key={index} value={el}>
+                          {el}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <p className="text-base font-semibold">Date</p>
+                    <input type="date" />
+                  </div>
+                  <div>
+                    <p className="text-base font-semibold">Time</p>
+                    <input type="time" />
+                  </div>
+                </div>
+              </form>
+              <Button size={"lg"} className="bg-[#3563E9]">
+                ↑↓
+              </Button>
+              <form className={`rounded-lg bg-white shadow-sm p-3`}>
+                <h3 className="text-base font-semibold">Drop-Off</h3>
+                <div className="flex">
+                  <div>
+                    <p className="text-base font-semibold">Location:</p>
+                    <select>
+                      <option>Please Select</option>
+                      {locationsArray?.map((el: string, index: number) => (
+                        <option key={index} value={el}>
+                          {el}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="">
+                    <p className="text-base font-semibold">Date</p>
+                    <input type="date" />
+                  </div>
+                  <div>
+                    <p className="text-base font-semibold">Time</p>
+                    <input type="time" />
+                  </div>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-        <div className="text-right mt-3 mr-20 mb-5">
-          <Button
-            disabled={!locationsFilter || locationsFilter === "Please Select"}
-            className="bg-[#3563E9]"
-            onClick={toggleSidebar}
-          >
-            Filter
-          </Button>
-        </div>
-        <div
-          className={`flex flex-col gap-3 md:grid ${
-            sidebarVisible ? "xl:grid-cols-3 lg:grid-cols-2" : "xl:grid-cols-4 lg-grid-cols-3"
-          } lg:grid-cols-3 gap-5 mb-10 justify-items-center `}
-        >
-          {vehiclesData?.map((el) => {
-            return (
-              <CarCard
-				key={el.id}
-                vehicle={el}
-                isFavorited={el.favorites.length > 0}
-                onFavoritteClick={() => setReload(!reload)}
-              ></CarCard>
-            );
-          })}
+            <div className="text-right mt-3 mr-20 mb-5">
+              <Button
+                disabled={!locationsFilter || locationsFilter === "Please Select"}
+                className="bg-[#3563E9]"
+                onClick={toggleSidebar}
+              >
+                Filter
+              </Button>
+            </div>
+            <div
+              className={`flex flex-col gap-3 md:grid ${
+                sidebarVisible ? "xl:grid-cols-3 lg:grid-cols-2" : "xl:grid-cols-4 lg:grid-cols-4"
+              } gap-5 mb-10 justify-items-center`}
+            >
+              {vehiclesData?.map((el) => (
+                <CarCard
+                  key={el.id}
+                  vehicle={el}
+                  isFavorited={el.favorites.length > 0}
+                  onFavoritteClick={() => setReload(!reload)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
