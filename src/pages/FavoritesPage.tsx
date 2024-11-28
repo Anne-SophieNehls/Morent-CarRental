@@ -38,7 +38,7 @@ export default function FavoritesPage() {
 				/>
 			))
 			) : (<p>You have no fovorite cars</p>)
-		}
+		 }
 	  </div>
     </div>
   );

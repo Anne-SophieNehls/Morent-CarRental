@@ -58,8 +58,8 @@ export default function RentPage() {
   return (
 	<div className="mb-10">
 		<section className="flex mb-10">
-			<article className={`inset-y-0 left-0  rounded-lg theme--${theme}-card w-2/3`}>
-				<form className="bg bg-white mr-8 p-5 rounded-lg">
+			<form onSubmit={handleButton} className={`inset-y-0 left-0  rounded-lg theme--${theme}-card w-2/3`}>
+				<div className="bg bg-white mr-8 p-5 rounded-lg">
 					<div className="flex justify-between mb-3">
 						<div>
 							<h2 className="text-2xl font-medium">Billing Info</h2>
@@ -109,8 +109,8 @@ export default function RentPage() {
 							/>
 						</div>
 					</div>
-				</form>
-				<form className="bg-white mr-8 p-5 rounded-lg mt-10">
+				</div>
+				<div className="bg-white mr-8 p-5 rounded-lg mt-10">
 					<div className="flex justify-between items-center mb-3">
 						<div>
 							<h2 className="text-2xl font-medium">Rental Info</h2>
@@ -180,8 +180,8 @@ export default function RentPage() {
 							/>
 						</div>
 					</div>
-				</form>
-				<form className="bg bg-white mr-8 p-5 rounded-lg mt-10">
+				</div>
+				<div className="bg bg-white mr-8 p-5 rounded-lg mt-10">
 					<div className="flex justify-between mb-3">
 						<div>
 							<h2 className="text-2xl font-medium">Payment Method</h2>
@@ -215,8 +215,8 @@ export default function RentPage() {
 							</div>
 						</div>
 					</div>
-				</form>
-				<form className="bg bg-white mr-8 p-5 rounded-lg mt-10">
+				</div>
+				<div className="bg bg-white mr-8 p-5 rounded-lg mt-10">
 					<div className="flex justify-between mb-3">
 						<div>
 							<h2 className="text-2xl font-medium">Confirmation</h2>
@@ -244,9 +244,11 @@ export default function RentPage() {
 					</div>
 					<p className="text-xs text-[#7D8CA0] mt-6">All your data is safe</p>
 					<p className="text-xs text-[#7D8CA0]">We are using the most advanced security to provide you the best experience ever.</p>
-				</form>
-				<div></div>
-			</article>
+				</div>
+				<Link to="/bookings">
+					<Button className="mt-12">Rent now!</Button>
+				</Link>
+			</form>
 			<div className="w-1/3">
 				<div className="bg-white p-5 rounded-md">
 					<h2 className="text-xl font-medium mb-1">Rental Summary</h2>
@@ -267,9 +269,6 @@ export default function RentPage() {
 				</div>
 			</div>
 		</section>
-		<Link to="/bookings">
-			<Button onClick={handleButton} className="mt-12">Rent now!</Button>
-		</Link>
 	</div>
   );
 }
