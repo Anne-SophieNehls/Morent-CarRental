@@ -57,21 +57,21 @@ In your profile, you can easily access your booking history, saved favorite cars
  you can favorated esaly the Cars 
 
 <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="Fav Screenshot">
+  <img src="./public/img/read-me/favorites-page.png" alt="Fav Screenshot">
 </div>
 <br/>
  and find them all in your Profil under "Favorites"
 
  ### My Bookings
  <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="My Bookings Screenshot">
+  <img src="./public/img/read-me/booking page.png" alt="My Bookings Screenshot">
 </div>
 <br/>
 You can also view all past bookings under your profile
 
 ### Payment Page
 <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="Payment Screenshot">
+  <img src="./public/img/read-me/payment.png" alt="Payment Screenshot">
 </div>
 <br/>
 
@@ -80,7 +80,7 @@ The invoicing and payment process takes place directly on one page
 
 ### User Registration
 <div style="display: flex; justify-content: center;">
-  <img src="./public/img/read-me/" alt="Sign up Screenshot">
+  <img src="./public/img/read-me/sign up.png" alt="Sign up Screenshot">
 </div>
 <br/>
 Users can register and log in so they have access to their own. Data and can, for example, view your old orders

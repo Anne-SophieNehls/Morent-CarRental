@@ -163,7 +163,7 @@ export default function HomePage() {
         {sidebarVisible && <Sidebar />}
         <div className={`flex-1 transition-all ${sidebarVisible ? 'ml-5' : 'ml-0'}`}>
           <div className="flex flex-col w-full">
-            <div className={`hidden md:flex gap-10 mb-20 flex-col justify-around mt-5 lg:flex-row`}>
+            <div className={`hidden md:flex gap-10 mb-20 flex-col justify-around mt-5 lg:flex-row px-10`}>
               <CarAddOne />
               <CarAddTwo />
             </div>
