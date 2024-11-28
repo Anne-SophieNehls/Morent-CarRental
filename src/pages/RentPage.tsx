@@ -58,7 +58,7 @@ export default function RentPage() {
   return (
 	<div className="mb-10">
 		<section className="flex mb-10">
-			<form onSubmit={handleButton} className={`inset-y-0 left-0  rounded-lg theme--${theme}-card w-2/3`}>
+			<form className={`inset-y-0 left-0  rounded-lg theme--${theme}-card w-2/3`}>
 				<div className="bg bg-white mr-8 p-5 rounded-lg">
 					<div className="flex justify-between mb-3">
 						<div>
@@ -246,7 +246,7 @@ export default function RentPage() {
 					<p className="text-xs text-[#7D8CA0]">We are using the most advanced security to provide you the best experience ever.</p>
 				</div>
 				<Link to="/bookings">
-					<Button className="mt-12">Rent now!</Button>
+					<Button onClick={handleButton} className="mt-12">Rent now!</Button>
 				</Link>
 			</form>
 			<div className="w-1/3">
