@@ -42,9 +42,7 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Link to="/">
             <Button className="bg-[#3563E9] w-full">Sign in</Button>
-          </Link>
         </form>
         <p className="mt-5">
           No Account? Register

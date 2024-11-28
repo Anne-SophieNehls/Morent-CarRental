@@ -1,4 +1,31 @@
 import svg from "../assets/svg/SVG (3).png"
+import Map from "@/components/Map";
+
+interface CarBookedCard {
+	id: string,
+	vehicle: {
+		id: string;
+		brand: string;
+		carImg: string;
+		model: string;
+		vehicleType: string;
+		year: number;
+		pricePerDay: number;
+		seats: number;
+		consumption: string;
+		gearType: string;
+  	};
+	user_id: string;
+	pick_up_location: string;
+	pick_up_date: string;
+	drop_off_location: string;
+	drop_off_date: string;
+}
+
+export default function CarBookedCard(props: CarBookedCard){
+
+	const days = 2;
+
 
 interface CarBookedCard {
   id: string;

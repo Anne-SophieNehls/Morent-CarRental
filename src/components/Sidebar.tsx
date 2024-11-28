@@ -43,7 +43,7 @@ export default function Sidebar() {
   };
 
   return (
-    <form action="" className="p-4 w-1/5 bg-white -mt-10 -ml-10">
+    <form action="" className="p-4 w-1/5 bg-white -mt-10 -ml-20 mr-10 pl-10">
       <p className="text-xs text-[#90A3BF] my-6">TYPE</p>
       <div className="flex">
         <input

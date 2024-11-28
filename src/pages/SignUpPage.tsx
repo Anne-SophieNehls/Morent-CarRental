@@ -108,9 +108,7 @@ export default function SignUpPage() {
                 ref={fileRef}
               />
             </div>
-            <Link to="/">
               <Button className="bg-[#3563E9] mt-5 w-full">Sign up</Button>
-            </Link>
           </form>
         </div>
       </div>
