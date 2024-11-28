@@ -58,10 +58,10 @@ export default function ProfilePage() {
         <span className="font-semibold ">Email: </span> {user?.email}
       </p>
       <div>
-        <Link to="/favorites">
+        <Link to={`/favorites/${user!.id}`}>
           <Button className="bg-[#3563E9] m-2">Your Favorites</Button>
         </Link>
-        <Link to="/booking">
+        <Link to={`/bookings`}>
           <Button className="bg-[#3563E9] m-2">Your Bookings</Button>
         </Link>
       </div>

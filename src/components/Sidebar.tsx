@@ -43,7 +43,7 @@ export default function Sidebar() {
   };
 
   return (
-    <form action="" className="p-4 w-1/6 bg-white h-screen sticky top-0">
+    <form action="" className=" w-1/6 bg-white h-screen sticky top-0 p-4 -ml-4 -mt-4 ">
       <p className="text-xs text-[#90A3BF] my-6">TYPE</p>
       <div className="flex">
         <input
